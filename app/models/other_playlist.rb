@@ -3,11 +3,11 @@ class OtherPlaylist < ApplicationRecord
     foreign_key: :author_id,
     class_name: :User
 
-  has_many :likes,
-    foreign_key: :author_id,
+  has_many :main_playlist_likes,
+    foreign_key: :other_playlist_id,
     class_name: :OtherPlaylistLike
 
-  has_many :liked_song,
-    through: :likes,
+  has_many :songs,
+    through: :main_playlist_likes,
     source: :Song
 end
