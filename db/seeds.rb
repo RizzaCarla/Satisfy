@@ -16,3 +16,7 @@ shane = User.create!(username: 'PunnyShane', email: 'BestBoss@theoffice.com', pa
 izzi = User.create!(username: 'DizIzIzzie', email: 'IzziIsTooCool@foryou.com', password: 'Isabelle')
 jae = User.create!(username: 'DaddyJae', email: 'IamDaddy@tinder.com', password: 'CallMeDaddy')
 san = User.create!(username: 'SanSoSweet', email: 'SanSugarCane@candy.com', password: 'ImAnAngelInDisguise')
+
+# Satisfy Artists
+
+
