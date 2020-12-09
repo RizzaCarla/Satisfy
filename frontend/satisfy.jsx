@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import configureStore from './store/store'
+import Root from './components/root';
+import configureStore from './store/store';
+// Test
 import * as SessionAPIUtil from './util/api_session_util'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,6 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
   //End Testing
 
   const root = document.getElementById('root')
-  ReactDOM.render(<h1>Satisfy Your Music Cravings!</h1>, root)
+  ReactDOM.render(<Root store={store}/>, root)
 })
 // ReactDOM.render(<Root store={store}/>, root)
