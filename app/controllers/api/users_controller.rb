@@ -9,7 +9,7 @@ class Api::UsersController < ApplicationController
   def create 
     @user = User.new(user_params)
     if @user.save
-      login!(@user)
+      login(@user)
       render json: "/api/users/show"
     else
       render json: @user.errors.full_messages, status: 404
@@ -23,11 +23,6 @@ class Api::UsersController < ApplicationController
     else
       render json: @user.errors.full_messages, status: 404
     end
-  end
-
-  def destroy
-    logout!
-    redirect_to new_session_url
   end
 
   private
