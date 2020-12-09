@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ConfigureStore from './store/store'
+import configureStore from './store/store'
 import * as SessionAPIUtil from './util/api_session_util'
 
 document.addEventListener('DOMContentLoaded', () => {
