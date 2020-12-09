@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.login = SessionAPIUtil.login;
   window.logout = SessionAPIUtil.logout;
   window.signup = SessionAPIUtil.signup;
-  win
   //End Testing
 
   // const store = configureStore();
