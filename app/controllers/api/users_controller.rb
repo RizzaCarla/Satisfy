@@ -11,7 +11,7 @@ class Api::UsersController < ApplicationController
       login!(@user)
       render json: "/api/users/show"
     else
-      flash.now[:errors] = @user.errors.full_messages, status: 404
+      render json: @user.errors.full_messages, status: 404
     end
   end
 
@@ -20,7 +20,7 @@ class Api::UsersController < ApplicationController
     if @user.update
       render json: "/api/users/show"
     else
-      flash[:errors] = @user.errors.full_messages, status: 404
+      render json: @user.errors.full_messages, status: 404
     end
   end
 

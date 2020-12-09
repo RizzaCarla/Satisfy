@@ -1,3 +1,5 @@
+// For Users in Database
+
 export const login = (user) => (
   $.ajax({
     url: '/api/session',
@@ -5,13 +7,15 @@ export const login = (user) => (
     data: { user }
   })
 )
-
+  
 export const logout = () => (
   $.ajax({
     url: '/api/session',
     method: 'DELETE'
   })
 )
+
+// User Creation
 
 export const signup = (user) => (
   $.ajax({
