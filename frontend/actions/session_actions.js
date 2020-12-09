@@ -22,3 +22,13 @@ export const login = (user) => dispatch => (
   SessionAPIUtil.login(user) 
     .then((user) => dispatch(receiveCurrentUser(user)))
 )
+
+export const logout = () => dispatch => (
+  SessionAPIUtil.logout()
+    .then(() => dispatch(logoutCurrentUser(user)))
+)
+
+export const signup = (user) => dispatch => (
+  SessionAPIUtil.signup(user)
+    .then((user) => dispatch(receiveCurrentUser(user)))
+)
