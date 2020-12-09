@@ -1,5 +1,6 @@
-before_action :require_logged_in, only: [:update, :destroy, :show]
 class Api::UsersController < ApplicationController
+  before_action :require_logged_in, only: [:update, :destroy, :show]
+  
   def show
     @user = User.find_by(id: params[:id])
     render json: "/api/users/show"
