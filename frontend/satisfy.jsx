@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import ConfigureStore from './store/store'
+import ConfigureStore from './store/store'
 import * as SessionAPIUtil from './util/api_session_util'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.signup = SessionAPIUtil.signup;
   //End Testing
 
-  // const store = configureStore();
+  const store = configureStore();
   const root = document.getElementById('root')
-  ReactDOM.render(<h1>Welcome to Satisfy!</h1>, root)
+  ReactDOM.render(<Root store={store} />, root)
 })
 // ReactDOM.render(<Root store={store}/>, root)
