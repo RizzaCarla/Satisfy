@@ -4,9 +4,8 @@ import { login } from '../../actions/session_actions'
 
 const msp = state => ({
   user: {
-    username: '',
-    password: '',
-    email: ''
+    email: "",
+    password: ""
   }
 })
 
