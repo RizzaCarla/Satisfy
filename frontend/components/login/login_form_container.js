@@ -6,7 +6,8 @@ const msp = state => ({
   user: {
     email: "",
     password: ""
-  }
+  },
+  error: state.errors.session
 })
 
 const mdp = dispatch => ({

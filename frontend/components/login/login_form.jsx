@@ -23,6 +23,7 @@ class LoginForm extends React.Component {
     return (
       <div>
         <h1>Please, Login!</h1>
+        <h2>{this.props.error}</h2>
         <form onSubmit={this.handleSubmit}>
           <label>Email:
             <input

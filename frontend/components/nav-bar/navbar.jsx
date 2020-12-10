@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const NavBar = ({user, logout}) => {
   const loggedIn = () => (
     <div>
-      <button onClick={logout}>Logout</button>
+        <button onClick={logout}>Logout</button>
     </div>
   );
 
