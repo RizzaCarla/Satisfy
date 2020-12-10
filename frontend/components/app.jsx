@@ -7,12 +7,14 @@ import SignUpContainer from './signup/signup_form_container';
 import LoginContainer from './login/login_form_container';
 import Splash from './home/splash';
 import NavBarContainer from './nav-bar/navbar_container'
+import DemoLoginContainer from './login/demo_login_container'
 
 const App = () => (
   <div>
     <header>
       <Link to='/'>
-        <h1>Satisfy App</h1>
+        <img id="fullLogo" src={window.fullLogo} />
+        {/* <h1>Satisfy App</h1> */}
       </Link>
       <NavBarContainer/>
     </header>
@@ -25,6 +27,7 @@ const App = () => (
       <Route path='/search' component={}></Route>
       <Route path='/artist/:artistId' component={}></Route> */}
       <AuthRoute exact path='/login' component={LoginContainer}></AuthRoute>
+      <AuthRoute exact path='/demologin' component={DemoLoginContainer}></AuthRoute>
       <AuthRoute exact path='/signup' component={SignUpContainer}></AuthRoute>
       <Route path='/' component={Splash}></Route>
       <Route path='/'></Route>

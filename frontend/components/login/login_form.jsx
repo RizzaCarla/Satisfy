@@ -3,10 +3,7 @@ import React from 'react';
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      email: '',
-      password: ''
-    }
+    this.state = this.props.user;
     this.handleSubmit = this.handleSubmit.bind(this) 
   }
   handleSubmit(e) {

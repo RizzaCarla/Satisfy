@@ -23,11 +23,23 @@ class SignUpForm extends React.Component {
       // .then(() => this.props.history.push('/'))
   }
 
+  handleErrors() {
+    return(
+      <ul>
+        {this.props.errors.map((error, index) =>
+            <li key={`error-${index}`}>
+              {error}
+            </li>
+        )}
+      </ul>
+    )
+  }
+
   render() {
     return(
       <div>
         <h1>Sign Up!</h1>
-        {/* <h2>{this.props.error}</h2> */}
+        {this.handleErrors()}
         <form onSubmit={this.handleSubmit}>
           <label>Username:
             <input 
