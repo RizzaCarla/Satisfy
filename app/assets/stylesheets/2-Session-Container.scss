@@ -91,8 +91,78 @@
   
 }
 
-  #session-login {
-    display: block;
-    align-items: center;
+.session-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 300%;
+  background-color: white;
+  font-family: 'Montserrat', sans-serif;
+  width: 35%;
+  position: absolute;
+  right: 33%;
+  font-weight: 600;
+
+  .fb-login-button {
+    background-color: rgb(58, 88, 151);
+    border-radius: 500px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 15px 10px 15px 10px;
+    width: 105%;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    border: none;
+  }
+
+  .apple-login-button {
+    background-color: rgb(58, 88, 151);
+    border-radius: 500px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 15px 10px 15px 10px;
+    width: 105%;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    border: none;
+  }
+
+  .google-login-button {
+    background-color: rgb(58, 88, 151);
+    border-radius: 500px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 15px 10px 15px 10px;
+    width: 105%;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    border: none;
   }
   
+  .login-form {
+    font-size: 12px;
+    
+    #login-label {
+      line-height: 150%;
+      font-weight: bold;
+    }
+
+    #login-input-box {
+      width: 100%;
+      padding: 10px;
+    }
+
+    #form-login-button {
+      background-color:rgb(29, 185, 84);
+      padding: 15px 10px 15px 10px;
+      border-radius: 500px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      width: 105%;
+      color: white;
+      text-transform: uppercase;
+      border: none;
+    }
+    
+  }
+}
