@@ -3,6 +3,7 @@ import LoginForm from './login_form'
 import { login } from '../../actions/session_actions'
 
 const msp = state => ({
+  error: state.errors.session,
   user: {
     email: "LuckyDemoUser@gmail.com",
     password: "99999999"
