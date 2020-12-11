@@ -41,7 +41,9 @@ class SignUpForm extends React.Component {
         <br></br>
         <div id='signup-inner-header'>
           <h1 id='signup-greeting'>Sign up for free to start listening.</h1>
-          <button id='fb-signup-button'>Sign up with Facebook</button>
+          <a href='https://en-gb.facebook.com/login/?next'>
+            <button id='fb-signup-button'>Sign up with Facebook</button>
+          </a>
           <p id='signup-or'>or</p>
           <h2 id='signup-email-header'>Sign up with your email address</h2>
         </div>

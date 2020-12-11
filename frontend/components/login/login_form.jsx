@@ -22,11 +22,15 @@ class LoginForm extends React.Component {
         <br></br>
         <div id='login-inner-header'>
           <h1 id='login-greeting'>To continue, log in to Spotify.</h1>
-          <a href={'https://en-gb.facebook.com/login/?next'}>
+          <a href='https://en-gb.facebook.com/login/?next'>
             <button id='fb-login-button'>Continue with Facebook</button>
           </a>
-          <button id='apple-login-button'>Continue with Apple</button>
-          <button id='google-login-button'>Continue with Google</button>
+          <a href='https://www.apple.com/apple-music/'>
+            <button id='apple-login-button'>Continue with Apple</button>
+          </a>
+          <a href='https://accounts.google.com/login'>
+            <button id='google-login-button'>Continue with Google</button>
+          </a>
           <p id='login-or'>or</p>
         </div>
         <h2>{this.props.error}</h2>
