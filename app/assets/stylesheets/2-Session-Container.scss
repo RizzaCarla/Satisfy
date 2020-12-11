@@ -1,53 +1,98 @@
 #session-signup {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    line-height: 150%;
-    background-color: white;
-    font-size: 16px;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 300%;
+  background-color: white;
+  font-family: 'Montserrat', sans-serif;
+  width: 35%;
+  position: absolute;
+  right: 33%;
+  font-weight: 600;
+  
+  #signup-greeting {
+    padding-bottom: 20px;
+    font-weight: 700;
+    font-size: 25px;
+  }
+  
+  #fb-signup-button {
+    background-color: rgb(58, 88, 151);
+    border-radius: 500px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 15px 10px 15px 10px;
+    width: 105%;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    border: none;
+  }
+  
+  #signup-or {
+    padding-top: 15px;
+    font-size: 15px;
+    color: rgb(117, 117, 117);
+  }
+  
+  #signup-or::before, #signup-or::after {
+    display: inline-block;
+    content: "";
+    border-bottom: 1px solid rgb(189, 189, 189);
+    width: 8rem;
+    margin: 0 1rem;
+    transform: translateY(-0.30rem);
+  }
+  
+  #signup-email-header {
+    font-size: 18px;
+    padding-bottom: 10px;
+  }
+  
+  #signup-form {
+    font-size: 12px;
     
-    #fb-signup-button {
-      background-color: rgb(58, 88, 151);
+    #signup-label {
+      line-height: 150%;
+      font-weight: bold;
+    }
+    
+    #signup-input-box {
+      width: 100%;
+      padding: 10px;
+    }
+    
+    #signup-terms {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      font-size: 10px;
+      font-weight: normal;
+      line-height: 1.5rem;
+      text-align: center;
+    }
+    
+    #form-signup-button {
+      background-color:rgb(29, 185, 84);
+      padding: 15px 10px 15px 10px;
       border-radius: 500px;
       font-weight: 700;
       letter-spacing: 1px;
-      padding: 10px;
-      width: 30%;
-      color: rgb(255, 255, 255);
+      width: 105%;
+      color: white;
       text-transform: uppercase;
       border: none;
     }
-    
-    #signup-form {
-      
-      #signup-label {
-        line-height: 150%;
-        font-weight: bold;
-      }
-
-      #signup-input-box {
-        width: 100%;
-        padding: 10px;
-      }
-
-      #form-signup-button {
-        background-color:rgb(29, 185, 84);
-        border-radius: 500px;
-        font-weight: 700;
-        letter-spacing: 1px;
-        padding: 10px;
-        width: 100%;
-        color: white;
-        text-transform: uppercase;
-        border: none;
-      }
-    }    
-
+  } 
+  
+  #session-login-redirect {
+    display: flex;
+    justify-content: center;
+    font-weight: 100;
   }
   
+}
+
   #session-login {
     display: block;
     align-items: center;
   }
+  

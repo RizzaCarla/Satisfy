@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 class SignUpForm extends React.Component {
   constructor(props) {
@@ -38,23 +39,19 @@ class SignUpForm extends React.Component {
   render() {
     return(
       <div id="session-signup">
-        <br></br>
-        <h1>Sign up for free to start listening.</h1>
-        <br></br>
-        {/* <link href="https://en-gb.facebook.com/login/?next"> */}
+        <br>
+        </br>
+          <h1 id='signup-greeting'>Sign up for free to start listening.</h1>
           <button id='fb-signup-button'>Sign up with Facebook</button>
-        {/* </link> */}
-        <p>or</p>
-        <p>Sign up with your email address</p>
-        <br></br>
+        <p id='signup-or'>or</p>
+        <h2 id='signup-email-header'>Sign up with your email address</h2>
         {this.handleErrors()}
         <form onSubmit={this.handleSubmit}  id="signup-form">
-          <br></br>
           <label id="signup-label">What's your email?
             <input
               id='signup-input-box'
               type="text"
-              placeholder="xyx@gmail.com"
+              placeholder="Enter your email."
               value={this.state.email}
               onChange={this.handleInput('email')}/>
           </label>
@@ -63,7 +60,7 @@ class SignUpForm extends React.Component {
             <input 
               id='signup-input-box'
               type="text"
-              placeholder="UserXYZ"
+              placeholder="Enter a profile name."
               value={this.state.username}
               onChange={this.handleInput('username')}/>
           </label>
@@ -72,11 +69,22 @@ class SignUpForm extends React.Component {
             <input 
               id='signup-input-box'
               type="password"
-              placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+              placeholder="Create a password."
               value={this.state.password}
               onChange={this.handleInput('password')}/>
           </label>
+          <div id='signup-terms'>
+            <p>
+              By clicking on Sign up, you agree to Spotify's Terms and Conditions of Use.<br/>
+              To learn more about how Spotify collects, uses, shares and protects your personal data please read Spotify's Privacy Policy.
+            </p>
+          </div>
           <button type='submit' id='form-signup-button'>Sign Up</button>
+          <br></br>
+          <br></br>
+          <p id='session-login-redirect'>Have an account?
+            <Link to='/login'> Log in.</Link>
+          </p>
         </form>
       </div>
     )
