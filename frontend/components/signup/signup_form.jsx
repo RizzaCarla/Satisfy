@@ -42,35 +42,41 @@ class SignUpForm extends React.Component {
         <h1>Sign up for free to start listening.</h1>
         <br></br>
         {/* <link href="https://en-gb.facebook.com/login/?next"> */}
-          <button id='fb-signup-button'>SIGN UP WITH FACEBOOK</button>
+          <button id='fb-signup-button'>Sign up with Facebook</button>
         {/* </link> */}
         <p>or</p>
         <p>Sign up with your email address</p>
         <br></br>
         {this.handleErrors()}
-        <form onSubmit={this.handleSubmit}>
-          <label>What's your email?
-            <input 
+        <form onSubmit={this.handleSubmit}  id="signup-form">
+          <br></br>
+          <label id="signup-label">What's your email?
+            <input
+              id='signup-input-box'
               type="text"
               placeholder="xyx@gmail.com"
               value={this.state.email}
               onChange={this.handleInput('email')}/>
           </label>
-          <label>What should we call you?
+          <br></br>
+          <label id="signup-label">What should we call you?
             <input 
+              id='signup-input-box'
               type="text"
               placeholder="UserXYZ"
               value={this.state.username}
               onChange={this.handleInput('username')}/>
           </label>
-          <label>Password:
+          <br></br>
+          <label id="signup-label">Create a password
             <input 
+              id='signup-input-box'
               type="password"
               placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
               value={this.state.password}
               onChange={this.handleInput('password')}/>
           </label>
-          <button type='submit'>Complete Sign Up</button>
+          <button type='submit' id='form-signup-button'>Sign Up</button>
         </form>
       </div>
     )

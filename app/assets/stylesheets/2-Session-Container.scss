@@ -7,20 +7,47 @@
     background-color: white;
     font-size: 16px;
 
+    
     #fb-signup-button {
       background-color: rgb(58, 88, 151);
       border-radius: 500px;
       font-weight: 700;
       letter-spacing: 1px;
       padding: 10px;
-      width: 50%;
-      color: white;
-      // vertical-align: middle;
+      width: 30%;
+      color: rgb(255, 255, 255);
+      text-transform: uppercase;
+      border: none;
     }
+    
+    #signup-form {
+      
+      #signup-label {
+        line-height: 150%;
+        font-weight: bold;
+      }
 
-    #session-login {
-      display: block;
-      align-items: center;
-    }
-}
+      #signup-input-box {
+        width: 100%;
+        padding: 10px;
+      }
 
+      #form-signup-button {
+        background-color:rgb(29, 185, 84);
+        border-radius: 500px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        padding: 10px;
+        width: 100%;
+        color: white;
+        text-transform: uppercase;
+        border: none;
+      }
+    }    
+
+  }
+  
+  #session-login {
+    display: block;
+    align-items: center;
+  }
