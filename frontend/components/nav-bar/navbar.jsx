@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom'
 
 const NavBar = ({user, logout}) => {
   const loggedIn = () => (
-    <div>
+    <div className='loggedin-navbar'>
         <button onClick={logout}>Logout</button>
     </div>
   );
 
   const loggedOut = () => (
-    <nav className='navbar'>
+    <nav className='loggedout-navbar'>
       <Link to='/signup'>Sign Up</Link>
       &nbsp;&nbsp;
       <Link to='/login'>Login</Link>

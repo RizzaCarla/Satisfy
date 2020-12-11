@@ -1,4 +1,5 @@
 import React from 'react';
+// import { Link } from 'react-router-dom'
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -18,8 +19,9 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Please, Login!</h1>
+      <div className="session-login">
+        <br></br>
+        <h1>To continue, log in to Spotify.</h1>
         <h2>{this.props.error}</h2>
         <form onSubmit={this.handleSubmit}>
           <label>Email:
@@ -28,13 +30,17 @@ class LoginForm extends React.Component {
               value={this.state.email}
               onChange={this.handleInput('email')} />
           </label>
+          <br></br>
           <label>Password:
             <input
               type="password"
               value={this.state.password}
               onChange={this.handleInput('password')} />
           </label>
+          <br></br>
           <button type='submit'>Login</button>
+          <br></br>
+          <a>Forgot account?</a>
         </form>
       </div>
     )

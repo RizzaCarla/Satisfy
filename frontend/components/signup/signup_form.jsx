@@ -37,25 +37,36 @@ class SignUpForm extends React.Component {
 
   render() {
     return(
-      <div>
-        <h1>Sign Up!</h1>
+      <div id="session-signup">
+        <br></br>
+        <h1>Sign up for free to start listening.</h1>
+        <br></br>
+        {/* <link href="https://en-gb.facebook.com/login/?next"> */}
+          <button id='fb-signup-button'>SIGN UP WITH FACEBOOK</button>
+        {/* </link> */}
+        <p>or</p>
+        <p>Sign up with your email address</p>
+        <br></br>
         {this.handleErrors()}
         <form onSubmit={this.handleSubmit}>
-          <label>Username:
+          <label>What's your email?
             <input 
               type="text"
-              value={this.state.username}
-              onChange={this.handleInput('username')}/>
-          </label>
-          <label>Email:
-            <input 
-              type="text"
+              placeholder="xyx@gmail.com"
               value={this.state.email}
               onChange={this.handleInput('email')}/>
+          </label>
+          <label>What should we call you?
+            <input 
+              type="text"
+              placeholder="UserXYZ"
+              value={this.state.username}
+              onChange={this.handleInput('username')}/>
           </label>
           <label>Password:
             <input 
               type="password"
+              placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
               value={this.state.password}
               onChange={this.handleInput('password')}/>
           </label>

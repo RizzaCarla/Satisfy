@@ -11,12 +11,13 @@ import DemoLoginContainer from './login/demo_login_container'
 
 const App = () => (
   <div>
-    <header>
+    <header className="app-header">
       <Link to='/'>
         <img id="fullLogo" src={window.fullLogo} />
-        {/* <h1>Satisfy App</h1> */}
       </Link>
-      <NavBarContainer/>
+      <nav className="app-navbar-links">
+        <NavBarContainer/>
+      </nav>
     </header>
     <Switch>
       {/* <Route path='/collection/playlists/new' component={}></Route>
