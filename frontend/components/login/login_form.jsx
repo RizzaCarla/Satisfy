@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -18,34 +18,47 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div className="session-login">
+      <div id="session-login">
         <br></br>
-        <h1>To continue, log in to Spotify.</h1>
-        <button id='fb-login-button'>Continue with Facebook</button>
-        <button id='apple-login-button'>Continue with Apple</button>
-        <button id='google-login-button'>Continue with Google</button>
+        <div id='login-inner-header'>
+          <h1 id='login-greeting'>To continue, log in to Spotify.</h1>
+          <a href={'https://en-gb.facebook.com/login/?next'}>
+            <button id='fb-login-button'>Continue with Facebook</button>
+          </a>
+          <button id='apple-login-button'>Continue with Apple</button>
+          <button id='google-login-button'>Continue with Google</button>
+          <p id='login-or'>or</p>
+        </div>
         <h2>{this.props.error}</h2>
-        <form onSubmit={this.handleSubmit} className="login-form">
-          <label id='login-label'>Email:
+        <form onSubmit={this.handleSubmit} id="login-form">
+          <label id='login-label'>Email Address
             <input
               id='login-input-box'
+              placeholder='Email Address'
               type="text"
               value={this.state.email}
               onChange={this.handleInput('email')} />
           </label>
-          <br></br>
-          <label id='login-label'>Password:
+          <label id='login-label'>Password
             <input
               id='login-input-box'
+              placeholder='Password'
               type="password"
               value={this.state.password}
               onChange={this.handleInput('password')} />
           </label>
-          <br></br>
           <button type='submit' id='form-login-button'>Login</button>
           <br></br>
-          <a>Forgot account?</a>
+          <div id='signup-redirect-question'>
+            <p>Don't have an account?</p>
+          </div>
+          <Link to='/signup'>
+            <button id='signup-redirect'>Sign Up for Spotify</button>
+          </Link>
         </form>
+        <br></br>
+        <br></br>
+        <br></br>
       </div>
     )
   }

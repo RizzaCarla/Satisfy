@@ -38,12 +38,13 @@ class SignUpForm extends React.Component {
   render() {
     return(
       <div id="session-signup">
-        <br>
-        </br>
+        <br></br>
+        <div id='signup-inner-header'>
           <h1 id='signup-greeting'>Sign up for free to start listening.</h1>
           <button id='fb-signup-button'>Sign up with Facebook</button>
-        <p id='signup-or'>or</p>
-        <h2 id='signup-email-header'>Sign up with your email address</h2>
+          <p id='signup-or'>or</p>
+          <h2 id='signup-email-header'>Sign up with your email address</h2>
+        </div>
         {this.handleErrors()}
         <form onSubmit={this.handleSubmit}  id="signup-form">
           <label id="signup-label">What's your email?
@@ -80,8 +81,7 @@ class SignUpForm extends React.Component {
           </div>
           <button type='submit' id='form-signup-button'>Sign Up</button>
           <br></br>
-          <br></br>
-          <p id='session-login-redirect'>Have an account?
+          <p id='login-redirect'>Have an account?
             <Link to='/login'> Log in.</Link>
           </p>
         </form>
