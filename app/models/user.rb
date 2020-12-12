@@ -49,4 +49,6 @@ class User < ApplicationRecord
   has_many :other_playlists,
     foreign_key: :author_id,
     class_name: :OtherPlaylist
+
+  has_one_attached :photo
 end

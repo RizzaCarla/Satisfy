@@ -21,4 +21,6 @@ class OtherPlaylist < ApplicationRecord
   has_many :songs,
     through: :main_playlist_likes,
     source: :Song
+
+  has_one_attached :photo
 end
