@@ -1,33 +1,68 @@
-
 .app-header {
   display: flex;
   background-color: black;
+  padding: 5px 5px 1px 5px;
+  font-family: 'Montserrat', sans-serif;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
   flex-direction: row;
-  padding: 10px;
-  font-size: 150%;
   
   #fullLogo {
     display: flex;
-    width: 15%;
-    height: auto;
+    align-items: center;
+    flex-direction: row;
     justify-content: flex-start;
-    padding-left: 50px;
+    width: 18%;
+    height: auto;
+    padding-left: 20px;
+    padding-bottom: 8px;
+    position: relative;
   }
   
   .app-navbar-links {
+    padding-top: 15px;
     display: flex;
     color: white;
+  }
+  
+  .loggedout-navbar {
+    display: flex;
+    flex-direction: row;
     justify-content: flex-end;
+    position: relative;
+    align-items: center;
+    align-content: space-around;
+    right: 50px;
+    
+    #separator {
+      font-size: 100%;
+      padding-left: 20px;
+      padding-right: 20px;
+      color: white;
+    }
     
     a, a:link {
       text-decoration: none;
       color: white;
     }
-  }
-
-  .loggedout-navbar {
-    display: flex;
-    width: 500px;
     
   }
+  
+  .loggedout-navbar > a:hover {
+    color: #1ed760;
+  }
 }
+
+// .loggedin-navbar:hover {
+//   color: white;
+// }
+  // .loggedin-navbar {
+  //   display: flex;
+  //   position: relative;
+  //   flex-direction: column;
+  //   align-items: flex-end;
+  //   // width: 40px;
+  //   right: 40px;
+  // }
+  

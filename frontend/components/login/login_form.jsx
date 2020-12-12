@@ -5,11 +5,20 @@ class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.user;
-    this.handleSubmit = this.handleSubmit.bind(this) 
+    this.handleLoginSubmit = this.handleLoginSubmit.bind(this) 
+    this.handleDemoSubmit = this.handleDemoSubmit.bind(this) 
   }
-  handleSubmit(e) {
+  handleLoginSubmit(e) {
     e.preventDefault()
     this.props.login(this.state)
+  }
+
+  handleDemoSubmit(e) {
+    e.preventDefault()
+    this.props.login({
+      email: "LuckyDemoUser@gmail.com",
+      password: "99999999"
+    })
   }
 
   handleInput(field) {
@@ -38,7 +47,7 @@ class LoginForm extends React.Component {
           <p id='login-or'>or</p>
         </div>
         <h2>{this.props.error}</h2>
-        <form onSubmit={this.handleSubmit} id="login-form">
+        <form id="login-form">
           <label id='login-label'>Email Address
             <input
               id='login-input-box'
@@ -55,7 +64,8 @@ class LoginForm extends React.Component {
               value={this.state.password}
               onChange={this.handleInput('password')} />
           </label>
-          <button type='submit' id='form-login-button'>Login</button>
+          <button type='submit' id='form-login-button' onClick={this.handleLoginSubmit}>Login</button>
+          <button type='submit' id='form-login-button' onClick={this.handleDemoSubmit}>Demo Login</button>
           <br></br>
           <div id='signup-redirect-question'>
             <p>Don't have an account?</p>
