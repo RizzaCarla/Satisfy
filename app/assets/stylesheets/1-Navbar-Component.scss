@@ -1,0 +1,35 @@
+<<<<<<< Updated upstream
+=======
+.app-header {
+  display: flex;
+  background-color: black;
+  flex-direction: row;
+  padding: 10px;
+  font-size: 150%;
+  
+  #fullLogo {
+    display: flex;
+    width: 15%;
+    height: auto;
+    justify-content: flex-start;
+    padding-left: 50px;
+  }
+  
+  .app-navbar-links {
+    display: flex;
+    color: white;
+    justify-content: flex-end;
+    
+    a, a:link {
+      text-decoration: none;
+      color: white;
+    }
+  }
+
+  .loggedout-navbar {
+    display: flex;
+    width: 500px;
+    
+  }
+}
+>>>>>>> Stashed changes
