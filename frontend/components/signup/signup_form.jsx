@@ -77,8 +77,8 @@ class SignUpForm extends React.Component {
           </label>
           <div id='signup-terms'>
             <p>
-              By clicking on Sign up, you agree to Spotify's Terms and Conditions of Use.<br/>
-              To learn more about how Spotify collects, uses, shares and protects your personal data please read Spotify's Privacy Policy.
+              By clicking on Sign up, you agree to Satisfy's Terms and Conditions of Use.<br/>
+              To learn more about how Satisfy collects, uses, shares and protects your personal data please read Satisfy's Privacy Policy.
             </p>
           </div>
           <button type='submit' id='form-signup-button'>Sign Up</button>
