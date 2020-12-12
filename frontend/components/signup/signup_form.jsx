@@ -38,10 +38,6 @@ class SignUpForm extends React.Component {
   render() {
     return(
       <div id="session-signup">
-        {/* <Link to='/'>
-          <img id="fullLogoInverted" src={window.fullLogoInverted} />
-        <br></br>
-        </Link> */}
         <br></br>
         <div id='signup-inner-header'>
           <h1 id='signup-greeting'>Sign up for free to start listening.</h1>
