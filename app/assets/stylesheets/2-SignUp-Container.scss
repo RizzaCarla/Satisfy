@@ -1,7 +1,7 @@
 #session-signup {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   line-height: 300%;
   background-color: white;
   font-family: 'Montserrat', sans-serif;
@@ -9,9 +9,11 @@
   position: absolute;
   right: 33%;
   font-weight: 600;
+  padding-top: 50px;
 
   #signup-inner-header {
     text-align: center;
+    flex-direction: column;
     
     #signup-greeting {
       padding-bottom: 20px;

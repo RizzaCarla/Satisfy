@@ -1,5 +1,13 @@
 #splash-page {
-  // background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(138, 60, 190)), to(#000))
+  // background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(138, 60, 190)), to(#000));
+  background: rgb(147,109,134);
+  background: linear-gradient(106deg, rgba(147,109,134,1) 0%, rgba(147,113,156,1) 24%, rgba(136,124,192,1) 49%, rgba(113,126,196,1) 78%, rgba(90,125,190,1) 99%);
   // background-image: linear-gradient(purple, black);
   // background-color: black;
+  width: 100%;
+  // margin-top: 7%;
+  overflow: hidden;
+  padding-top: 100px;
+  position: absolute;
+  font-family: 'Montserrat', sans-serif;
 }

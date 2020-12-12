@@ -38,10 +38,16 @@ class SignUpForm extends React.Component {
   render() {
     return(
       <div id="session-signup">
+        {/* <Link to='/'>
+          <img id="fullLogoInverted" src={window.fullLogoInverted} />
+        <br></br>
+        </Link> */}
         <br></br>
         <div id='signup-inner-header'>
           <h1 id='signup-greeting'>Sign up for free to start listening.</h1>
-          <button id='fb-signup-button'>Sign up with Facebook</button>
+          <a href='https://en-gb.facebook.com/login/?next'>
+            <button id='fb-signup-button'>Sign up with Facebook</button>
+          </a>
           <p id='signup-or'>or</p>
           <h2 id='signup-email-header'>Sign up with your email address</h2>
         </div>
@@ -75,15 +81,13 @@ class SignUpForm extends React.Component {
           </label>
           <div id='signup-terms'>
             <p>
-              By clicking on Sign up, you agree to Spotify's Terms and Conditions of Use.<br/>
-              To learn more about how Spotify collects, uses, shares and protects your personal data please read Spotify's Privacy Policy.
+              By clicking on Sign up, you agree to Satisfy's Terms and Conditions of Use.<br/>
+              To learn more about how Satisfy collects, uses, shares and protects your personal data please read Satisfy's Privacy Policy.
             </p>
           </div>
           <button type='submit' id='form-signup-button'>Sign Up</button>
           <br></br>
-          <p id='login-redirect'>Have an account?
-            <Link to='/login'> Log in.</Link>
-          </p>
+          <p id='login-redirect'>Have an account?<Link to='/login'>Log in.</Link></p>
         </form>
       </div>
     )
