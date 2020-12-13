@@ -1,19 +1,21 @@
 .app-header {
   display: flex;
   background-color: black;
-  padding: 5px 5px 1px 5px;
+  padding: 1px 5px 1px 5px;
   font-family: 'Montserrat', sans-serif;
   position: fixed;
   width: 100%;
   z-index: 3;
   flex-direction: row;
+  font-weight: bold;
+
   
   #fullLogo {
     display: flex;
     align-items: center;
     flex-direction: row;
     justify-content: flex-start;
-    width: 18%;
+    width: 25%;
     height: auto;
     padding-left: 20px;
     padding-bottom: 8px;

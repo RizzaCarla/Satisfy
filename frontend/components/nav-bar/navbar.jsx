@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const NavBar = ({user, logout}) => {
   const loggedIn = () => (
-        <div className="app-header">
+    <div className="app-header">
       <Link to='/'>
           <img id="fullLogo" src={window.fullLogo} />
       </Link>
