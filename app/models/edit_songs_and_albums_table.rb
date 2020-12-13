@@ -1,2 +1,0 @@
-class EditSongsAndAlbumsTable < ApplicationRecord
-end
