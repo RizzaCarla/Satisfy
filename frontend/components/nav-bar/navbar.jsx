@@ -3,20 +3,25 @@ import { Link } from 'react-router-dom'
 
 const NavBar = ({user, logout}) => {
   const loggedIn = () => (
-    <div className='loggedin-navbar'>
+        <div className="app-header">
       <Link to='/'>
-        <img id="userPic" src={window.userPic} />
+          <img id="fullLogo" src={window.fullLogo} />
       </Link>
-        {/* <button >Logout</button> */}
-      <select id='loggedin-navbar-dropdown'>
-        <Link to='/'>
-          <option onClick={logout}>
-          </option>
-        </Link>
-      </select>
-      <Link to='/' onClick={logout}>
-        Logout
-      </Link>
+      <nav className='session-navbar'>
+        <li>
+          <a href='https://github.com/RizzaCarla'>Github</a>
+        </li>
+        <li>
+          <a href='https://www.linkedin.com/in/rizzamarzo/'>LinkedIn</a>
+        </li>
+        {/*<a href=''>Resume</a> */}
+        <li>
+          <p className='separator'> | </p>
+        </li>
+        <li>
+          <Link to='/' onClick={logout}>Logout</Link>
+        </li>
+      </nav>
     </div>
   );
 
@@ -25,18 +30,23 @@ const NavBar = ({user, logout}) => {
       <Link to='/'>
           <img id="fullLogo" src={window.fullLogo} />
       </Link>
-      <nav className='loggedout-navbar'>
-        <a href='https://github.com/RizzaCarla'>Github</a>
-        &nbsp;&nbsp;
-        &nbsp;&nbsp;
-        <a href='https://www.linkedin.com/in/rizzamarzo/'>LinkedIn</a>
-        {/* &nbsp;&nbsp;
-        <a href=''>Resume</a> */}
-        <p id='separator'> | </p>
-        <Link to='/signup'>Sign Up</Link>
-        &nbsp;&nbsp;
-        &nbsp;&nbsp;
-        <Link to='/login'>Login</Link>
+      <nav className='session-navbar'>
+        <li>
+          <a href='https://github.com/RizzaCarla'>Github</a>
+        </li>
+        <li>
+          <a href='https://www.linkedin.com/in/rizzamarzo/'>LinkedIn</a>
+        </li>
+        <li>
+          <p className='separator'> | </p>
+        </li>
+        <li>
+          <Link to='/signup'>Sign Up</Link>
+        </li>
+        <li>
+          <Link to='/login'>Login</Link>
+        </li>
+        {/* <a href=''>Resume</a> */}
       </nav>
     </div>
   );

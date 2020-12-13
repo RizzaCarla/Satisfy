@@ -26,20 +26,24 @@
     color: white;
   }
   
-  .loggedout-navbar {
+  .session-navbar {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     position: relative;
     align-items: center;
-    align-content: space-around;
-    right: 50px;
+    align-content: space-between;
+    right: 15px;
     
-    #separator {
-      font-size: 100%;
-      padding-left: 20px;
-      padding-right: 20px;
+    .separator {
+      padding-left: 50px;
+      padding-bottom: 20px;
       color: white;
+    }
+    
+    li {
+      width: 100px;
+      padding-bottom: 5px;
     }
     
     a, a:link {
@@ -49,20 +53,7 @@
     
   }
   
-  .loggedout-navbar > a:hover {
+  .session-navbar > a:hover {
     color: #1ed760;
   }
 }
-
-// .loggedin-navbar:hover {
-//   color: white;
-// }
-  // .loggedin-navbar {
-  //   display: flex;
-  //   position: relative;
-  //   flex-direction: column;
-  //   align-items: flex-end;
-  //   // width: 40px;
-  //   right: 40px;
-  // }
-  

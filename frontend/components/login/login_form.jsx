@@ -31,47 +31,49 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div id="session-login">
+      <div className="session-login">
         <br></br>
-        <div id='login-inner-header'>
-          <h1 id='login-greeting'>To continue, log in to Spotify.</h1>
+        <div className='login-inner-header'>
+          <h1 className='login-greeting'>To continue, log in to Spotify.</h1>
           <a href='https://en-gb.facebook.com/login/?next'>
-            <button id='fb-login-button'>Continue with Facebook</button>
+            <button className='fb-login-button'>Continue with Facebook</button>
           </a>
           <a href='https://www.apple.com/apple-music/'>
-            <button id='apple-login-button'>Continue with Apple</button>
+            <button className='apple-login-button'>Continue with Apple</button>
           </a>
           <a href='https://accounts.google.com/login'>
-            <button id='google-login-button'>Continue with Google</button>
+            <button className='google-login-button'>Continue with Google</button>
           </a>
-          <p id='login-or'>or</p>
+          <p className='login-or'>or</p>
         </div>
         <h2>{this.props.error}</h2>
-        <form id="login-form">
-          <label id='login-label'>Email Address
+        <form className="login-form">
+          <label className='login-label'>Email Address
             <input
-              id='login-input-box'
+              className='login-input-box'
               placeholder='Email Address'
               type="text"
               value={this.state.email}
               onChange={this.handleInput('email')} />
           </label>
-          <label id='login-label'>Password
+          <label className='login-label'>Password
             <input
-              id='login-input-box'
+              className='login-input-box'
               placeholder='Password'
               type="password"
               value={this.state.password}
               onChange={this.handleInput('password')} />
           </label>
-          <button type='submit' id='form-login-button' onClick={this.handleLoginSubmit}>Login</button>
-          <button type='submit' id='form-login-button' onClick={this.handleDemoSubmit}>Demo Login</button>
+          <div className='login-buttons'>
+            <button type='submit' className='form-login-button' onClick={this.handleLoginSubmit}>Login</button>
+            <button type='submit' className='demo-login-button' onClick={this.handleDemoSubmit}>Demo Login</button>
+          </div>
           <br></br>
-          <div id='signup-redirect-question'>
+          <div className='signup-redirect-question'>
             <p>Don't have an account?</p>
           </div>
           <Link to='/signup'>
-            <button id='signup-redirect'>Sign Up for Spotify</button>
+            <button className='signup-redirect'>Sign Up for Spotify</button>
           </Link>
         </form>
         <br></br>
