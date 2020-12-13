@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_11_184500) do
+ActiveRecord::Schema.define(version: 2020_12_13_040540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,13 +38,11 @@ ActiveRecord::Schema.define(version: 2020_12_11_184500) do
 
   create_table "albums", force: :cascade do |t|
     t.string "album_title", null: false
-    t.integer "total_album_time", null: false
     t.integer "artist_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["album_title"], name: "index_albums_on_album_title"
     t.index ["artist_id"], name: "index_albums_on_artist_id", unique: true
-    t.index ["total_album_time"], name: "index_albums_on_total_album_time"
   end
 
   create_table "artists", force: :cascade do |t|
@@ -52,6 +50,11 @@ ActiveRecord::Schema.define(version: 2020_12_11_184500) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_name"], name: "index_artists_on_artist_name", unique: true
+  end
+
+  create_table "edit_songs_and_albums_tables", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "main_playlist_likes", force: :cascade do |t|
@@ -97,7 +100,7 @@ ActiveRecord::Schema.define(version: 2020_12_11_184500) do
   create_table "songs", force: :cascade do |t|
     t.integer "album_id", null: false
     t.string "song_title", null: false
-    t.integer "total_song_time", null: false
+    t.string "total_song_time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["album_id"], name: "index_songs_on_album_id", unique: true
