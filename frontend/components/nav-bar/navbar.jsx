@@ -18,7 +18,7 @@ const NavBar = ({user, logout}) => {
         <li>
           <p className='separator'> | </p>
         </li>
-        <li>
+        <li className='navbar-logout'>
           <Link to='/' onClick={logout}>Logout</Link>
         </li>
       </nav>

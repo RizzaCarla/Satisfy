@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require 'open-uri'
+
+
 User.destroy_all
 Artist.destroy_all
 Album.destroy_all
@@ -83,6 +86,10 @@ iFeel = Song.create!(
   song_title: 'iFeel',
   total_song_time: '4:29'
 )
+
+file = open('https://<your_bucket>.<your_region>.amazonaws.com/<optional_folder_name>/<some_file>.jpg')
+
+demo_user.avatar.attach(io: file, filename: 'some_file.jpg')
 
 ylang = Song.create!(
   album_id: ylangalbum.id,

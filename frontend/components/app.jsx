@@ -17,7 +17,7 @@ const App = () => (
     </header>
     <Switch>
       {/* <ProtectedRoute exact path='/webplayer' component={MusicPlayerContainer}></ProtectedRoute> */}
-      <ProtectedRoute exact path='/webplayer' component={WebPlayerContainer}></ProtectedRoute>
+      <ProtectedRoute exact path='/' component={WebPlayerContainer}></ProtectedRoute>
       <AuthRoute exact path='/login' component={LoginContainer}></AuthRoute>
       <AuthRoute exact path='/signup' component={SignUpContainer}></AuthRoute>
       <AuthRoute path='/' component={SplashContainer}></AuthRoute>

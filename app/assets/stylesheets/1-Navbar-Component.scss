@@ -1,7 +1,6 @@
 .app-header {
   display: flex;
   background-color: black;
-  padding: 1px 5px 1px 5px;
   font-family: 'Montserrat', sans-serif;
   position: fixed;
   width: 100%;
@@ -9,6 +8,10 @@
   flex-direction: row;
   font-weight: bold;
 
+  .app-header > a {
+    width: 50%
+  }
+  
   
   #fullLogo {
     display: flex;
@@ -17,13 +20,11 @@
     justify-content: flex-start;
     width: 25%;
     height: auto;
-    padding-left: 20px;
-    padding-bottom: 8px;
     position: relative;
   }
   
   .app-navbar-links {
-    padding-top: 15px;
+    // padding-top: 15px;
     display: flex;
     color: white;
   }
@@ -38,20 +39,33 @@
     right: 15px;
     
     .separator {
-      padding-left: 50px;
-      padding-bottom: 20px;
+      // padding-left: 50px;
+      // padding-bottom: 20px;
       color: white;
+      text-align: center; 
     }
     
     li {
-      width: 100px;
-      padding-bottom: 5px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: auto;
+      padding: 5px 10px 5px 10px;
+    }
+    
+    li > p, li > a {
+      width: 200%;
+      
     }
     
     a, a:link {
       text-decoration: none;
       color: white;
     }
+
+    // .navbar-logout {
+
+    // }
     
   }
   
