@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Redirect, Link } from 'react-router-dom';
+import { Switch, Route} from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util'
 
 // Containers
@@ -8,6 +8,7 @@ import LoginContainer from './login/login_form_container';
 import SplashContainer from './home/splash_container';
 import NavBarContainer from './nav-bar/navbar_container'
 import MusicPlayerContainer from './music-player/music_player_container'
+import WebPlayerContainer from './web-player/webplayer_container'
 
 const App = () => (
   <div>
@@ -15,11 +16,12 @@ const App = () => (
       <NavBarContainer/>
     </header>
     <Switch>
-      {/* <AuthRoute exact path='/musicplayer' component={MusicPlayerContainer}></AuthRoute> */}
+      {/* <ProtectedRoute exact path='/webplayer' component={MusicPlayerContainer}></ProtectedRoute> */}
+      <ProtectedRoute exact path='/webplayer' component={WebPlayerContainer}></ProtectedRoute>
       <AuthRoute exact path='/login' component={LoginContainer}></AuthRoute>
       <AuthRoute exact path='/signup' component={SignUpContainer}></AuthRoute>
-      <Route path='/' component={SplashContainer}></Route>
-      <Route path='/'></Route>
+      <AuthRoute path='/' component={SplashContainer}></AuthRoute>
+      <AuthRoute path='/'></AuthRoute>
     </Switch>
   </div>
 )

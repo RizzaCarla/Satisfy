@@ -52,7 +52,6 @@ const NavBar = ({user, logout}) => {
       </nav>
     </div>
   );
-  console.log(`user: ${user}`)
   return user ? loggedIn() : loggedOut()
 }
 

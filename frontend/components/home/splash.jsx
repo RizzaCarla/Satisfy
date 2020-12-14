@@ -1,13 +1,8 @@
 import React from 'react';
 
-const Splash = ({ user }) => {
-  const loggedIn = () => (
-      <div>
-        <p>You are logged in!</p>
-      </div>
-  )
-
-  const loggedOut = () => (
+class Splash extends React.Component {
+  render() {
+    return(
       <div className='splash-page'>
         <nav className='left-navbar'>
           <p className='text1'>Looking for music?</p>
@@ -15,12 +10,8 @@ const Splash = ({ user }) => {
           <button className='redirectWebPlayer' >Open Web Player</button>
         </nav>
       </div>
-  )
-
-
-  console.log(`user: ${user}`)
-
-  return user ? loggedIn() : loggedOut()
+    )
+  }
 }
 
 export default Splash
