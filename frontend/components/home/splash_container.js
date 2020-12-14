@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
-import Splash from './navbar'
+import Splash from './splash'
 
-const msp = state => ({
-  user: state.entities.users[state.session.id]
+const msp = ({ entities, session }) => ({
+  user: entities.users[session.id]
 })
 
 export default connect(msp, null)(Splash);

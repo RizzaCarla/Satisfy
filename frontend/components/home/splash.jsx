@@ -1,26 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 
-class Splash extends React.Component {
+const Splash = ({ user }) => {
+  const loggedIn = () => (
+      <div>
+        <p>You are logged in!</p>
+      </div>
+  )
 
-  redirectWebPlayer () {
-    if (user)
-    return(
-    <Link to='/signup'></Link>
-    )
-  }
-  
-  render() {
-    return (
+  const loggedOut = () => (
       <div className='splash-page'>
         <nav className='left-navbar'>
           <p className='text1'>Looking for music?</p>
           <h1 className='text2'>Start listening to the best new releases.</h1>
-          <button className='redirectWebPlayer' onClick={this.redirectWebPlayer}>Open Web Player</button>
+          <button className='redirectWebPlayer' >Open Web Player</button>
         </nav>
       </div>
-    )
-  }
+  )
+
+
+  console.log(`user: ${user}`)
+
+  return user ? loggedIn() : loggedOut()
 }
 
 export default Splash

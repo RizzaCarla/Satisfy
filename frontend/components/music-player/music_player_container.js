@@ -1,12 +1,12 @@
-import { connect } from 'react-redux';
-import MusicPlayer from './music_player'
+// import { connect } from 'react-redux';
+// import MusicPlayer from './music_player'
 
-const msp = state => {
-  
-}
+// const msp = state => ({
+//   user: state.entities.users[state.session.id]
+// })
 
-const mdp = dispatch => {
+// // const mdp = dispatch => ({
 
-}
+// // })
 
-export default connect(msp, mdp)(MusicPlayer)
+// export default connect(msp, null)(MusicPlayer)

@@ -25,6 +25,8 @@ const NavBar = ({user, logout}) => {
     </div>
   );
 
+  //logout is larger
+
   const loggedOut = () => (
     <div className="app-header">
       <Link to='/'>
@@ -50,7 +52,7 @@ const NavBar = ({user, logout}) => {
       </nav>
     </div>
   );
-
+  console.log(`user: ${user}`)
   return user ? loggedIn() : loggedOut()
 }
 

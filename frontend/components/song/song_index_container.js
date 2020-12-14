@@ -1,14 +1,13 @@
 import { connect } from 'react-redux';
-import songIndex from './song_index'
-import { fetchSong, fetchSongs } from '../../actions/song_actions'
+import songsIndex from './song_index'
+import { fetchSongs } from '../../actions/song_actions'
 
 const msp = state => ({
   songs: state.songs 
 })
 
 const mdp = dispatch => ({
-  fetchSongs: () => dispatch(fetchSongs),
-  fetchSong: () => dispatch(fetchSong)
+  fetchSongs: (songs) => dispatch(fetchSongs(songs)),
 })
 
-export default connect(msp, mdp)(songIndex)
+export default connect(msp, mdp)(songsIndex)
