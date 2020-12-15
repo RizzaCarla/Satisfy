@@ -7,6 +7,7 @@
   z-index: 3;
   flex-direction: row;
   font-weight: bold;
+  padding: 10px 10px 10px 10px;
 
   .app-header > a {
     width: 50%
@@ -24,7 +25,6 @@
   }
   
   .app-navbar-links {
-    // padding-top: 15px;
     display: flex;
     color: white;
   }
@@ -36,11 +36,10 @@
     position: relative;
     align-items: center;
     align-content: space-between;
-    right: 15px;
+    right: 100px;
+    width: 80%;
     
     .separator {
-      // padding-left: 50px;
-      // padding-bottom: 20px;
       color: white;
       text-align: center; 
     }
@@ -48,14 +47,11 @@
     li {
       display: flex;
       align-items: center;
-      width: 100%;
-      height: auto;
-      padding: 5px 10px 5px 10px;
+      padding: 10px;
     }
     
     li > p, li > a {
       width: 200%;
-      
     }
     
     a, a:link {

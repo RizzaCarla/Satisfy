@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -11,14 +11,16 @@ class LoginForm extends React.Component {
   handleLoginSubmit(e) {
     e.preventDefault()
     this.props.login(this.state)
+    .then(() => (this.props.history.push('/webplayer')))
   }
-
+  
   handleDemoSubmit(e) {
     e.preventDefault()
     this.props.login({
       email: "LuckyDemoUser@gmail.com",
       password: "99999999"
     })
+    .then(() => (this.props.history.push('/webplayer')))
   }
 
   handleInput(field) {

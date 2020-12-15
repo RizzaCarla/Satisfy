@@ -9,6 +9,7 @@ import SplashContainer from './home/splash_container';
 import NavBarContainer from './nav-bar/navbar_container'
 import MusicPlayerContainer from './music-player/music_player_container'
 import WebPlayerContainer from './web-player/webplayer_container'
+import SidebarContainer from './side-bar/sidebar_container'
 
 const App = () => (
   <div>
@@ -17,11 +18,12 @@ const App = () => (
     </header>
     <Switch>
       {/* <ProtectedRoute exact path='/webplayer' component={MusicPlayerContainer}></ProtectedRoute> */}
-      <ProtectedRoute exact path='/' component={WebPlayerContainer}></ProtectedRoute>
+      {/* <ProtectedRoute path='/webplayer' component={WebPlayerContainer}></ProtectedRoute> */}
+      <ProtectedRoute path='/webplayer' component={SidebarContainer}></ProtectedRoute>
       <AuthRoute exact path='/login' component={LoginContainer}></AuthRoute>
       <AuthRoute exact path='/signup' component={SignUpContainer}></AuthRoute>
       <AuthRoute path='/' component={SplashContainer}></AuthRoute>
-      <AuthRoute path='/'></AuthRoute>
+      <Route path='/'></Route>
     </Switch>
   </div>
 )
