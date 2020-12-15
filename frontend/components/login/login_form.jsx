@@ -11,7 +11,7 @@ class LoginForm extends React.Component {
   handleLoginSubmit(e) {
     e.preventDefault()
     this.props.login(this.state)
-    .then(() => (this.props.history.push('/webplayer')))
+    .then(() => (this.props.history.push('/')))
   }
   
   handleDemoSubmit(e) {
@@ -20,7 +20,7 @@ class LoginForm extends React.Component {
       email: "LuckyDemoUser@gmail.com",
       password: "99999999"
     })
-    .then(() => (this.props.history.push('/webplayer')))
+    .then(() => (this.props.history.push('/')))
   }
 
   handleInput(field) {

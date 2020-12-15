@@ -3,11 +3,11 @@ import songsIndex from './song_index'
 import { fetchSongs } from '../../actions/song_actions'
 
 const msp = state => ({
-  songs: state.songs 
+  songs: Object.values(state.songs)
 })
 
 const mdp = dispatch => ({
-  fetchSongs: (songs) => dispatch(fetchSongs(songs)),
+  fetchSongs: () => dispatch(fetchSongs())
 })
 
 export default connect(msp, mdp)(songsIndex)

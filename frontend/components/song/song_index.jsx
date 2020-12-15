@@ -1,20 +1,28 @@
 import React from 'react'
+import SongIndexItem from './song_index_item'
 
-class SongsIndex extends React.Component {
+class songsIndex extends React.Component {
 
   componentDidMount() {
-    this.props.fetchSongs(this.props.songs)
+    this.props.fetchSongs();
   }
 
   render() {
-    return () {
+    return (
       <div>
-        {this.props.songs.map((song) => (
-          <SongIndexItem song={song} fetchSong={fetchSong}/>
-        ))}
+        <ul>
+          {
+            this.props.songs.map((song) => (
+              <SongIndexItem 
+                key={song.id}
+                song={song} 
+              />
+            ))
+          }
+        </ul>
       </div>
-    }
+    );
   }
 }
 
-export default SongsIndex
+export default songsIndex

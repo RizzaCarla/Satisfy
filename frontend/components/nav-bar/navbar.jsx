@@ -3,11 +3,16 @@ import { Link } from 'react-router-dom'
 
 const NavBar = ({user, logout}) => {
   const loggedIn = () => (
-    <div className="app-header">
-      <Link to='/'>
-          <img id="fullLogo" src={window.fullLogo} />
-      </Link>
-      <nav className='session-navbar'>
+    <div className="app-header-loggedin">
+      {/* <div className="loggedin-navigation">
+        <li>
+          <p className='back'>B</p>
+        </li>
+        <li>
+          <p className='forward'>F</p>
+        </li>
+      </div> */}
+      <nav className='session-navbar-loggedin'>
         <li>
           <a href='https://github.com/RizzaCarla'>Github</a>
         </li>
@@ -18,21 +23,19 @@ const NavBar = ({user, logout}) => {
         <li>
           <p className='separator'> | </p>
         </li>
-        <li className='navbar-logout'>
-          <Link to='/' onClick={logout}>Logout</Link>
+        <li>
+          <Link to='/login' onClick={logout}>Logout</Link>
         </li>
       </nav>
     </div>
   );
 
-  //logout is larger
-
   const loggedOut = () => (
-    <div className="app-header">
-      <Link to='/'>
+    <div className="app-header-loggedout">
+      <Link to='/splash'>
           <img id="fullLogo" src={window.fullLogo} />
       </Link>
-      <nav className='session-navbar'>
+      <nav className='session-navbar-loggedout'>
         <li>
           <a href='https://github.com/RizzaCarla'>Github</a>
         </li>

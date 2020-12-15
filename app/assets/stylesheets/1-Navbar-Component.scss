@@ -1,4 +1,4 @@
-.app-header {
+.app-header-loggedout {
   display: flex;
   background-color: black;
   font-family: 'Montserrat', sans-serif;
@@ -9,7 +9,7 @@
   font-weight: bold;
   padding: 10px 10px 10px 10px;
 
-  .app-header > a {
+  .app-header-loggedout > a {
     width: 50%
   }
   
@@ -24,12 +24,7 @@
     position: relative;
   }
   
-  .app-navbar-links {
-    display: flex;
-    color: white;
-  }
-  
-  .session-navbar {
+  .session-navbar-loggedout {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -58,10 +53,76 @@
       text-decoration: none;
       color: white;
     }
+    
+  }
+  
+  .session-navbar > a:hover {
+    color: #1ed760;
+  }
+}
 
-    // .navbar-logout {
+.app-header-loggedin {
+  display: flex;
+  background-color: black;
+  font-family: 'Montserrat', sans-serif;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  flex-direction: row;
+  font-weight: bold;
+  padding: 10px 10px 10px 10px;
 
-    // }
+  .app-header-loggedin > a {
+    width: 50%
+  }
+
+  // .loggedin-navation {
+  //   display: flex;
+  //   flex-direction: row;
+  //   justify-content: flex-start;
+  //   position: relative;
+  //   align-items: center;
+  //   align-content: space-between;
+  //   width: 97%;
+  //   padding-left: 50px;
+    
+  //   .back {
+  //     color: white;
+  //   }
+
+  //   .foward {
+  //     color: white;
+  //   }
+  // }
+  
+  .session-navbar-loggedin {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    position: relative;
+    align-items: center;
+    align-content: space-between;
+    width: 97%;
+    
+    .separator {
+      color: white;
+      text-align: center; 
+    }
+    
+    li {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+    }
+    
+    li > p, li > a {
+      width: 200%;
+    }
+    
+    a, a:link {
+      text-decoration: none;
+      color: white;
+    }
     
   }
   

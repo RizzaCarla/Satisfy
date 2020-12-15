@@ -1,11 +1,9 @@
 import React from 'react';
 
-class SongIndexItem extends React.Component {
-  render() {
-    return(
-      <div></div>
-    )
-  }
-}
+const SongIndexItem = props => (
+  <li>
+    <Link to={`songs/${props.song.id}`}>{props.song.song_title}</Link>
+  </li>
+)
 
 export default SongIndexItem

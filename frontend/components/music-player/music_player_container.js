@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import MusicPlayer from './music_player'
 
 const msp = state => ({
-  user: state.entities.users[state.session.id]
+  song: state.entities.songs[state.session.id]
 })
 
 // const mdp = dispatch => ({

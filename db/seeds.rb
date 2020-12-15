@@ -87,12 +87,16 @@ iFeel = Song.create!(
   total_song_time: '4:29'
 )
 
-file = open('https://<your_bucket>.<your_region>.amazonaws.com/<optional_folder_name>/<some_file>.jpg')
+file1 = open('https://satisfy-seed.us-west-1.amazonaws.com/songs/iFeel.mp3')
 
-demo_user.avatar.attach(io: file, filename: 'some_file.jpg')
+iFeel.songUrl.attach(io: file1, filename: 'iFeel.mp3')
 
 ylang = Song.create!(
   album_id: ylangalbum.id,
   song_title: 'Ylang Ylang',
   total_song_time: '3:33'
 )
+
+file2 = open('https://satisfy-seed.us-west-1.amazonaws.com/songs/Ylang_Ylang.mp3')
+
+ylang.songUrl.attach(io: file2, filename: 'Ylang_Ylang.mp3')
