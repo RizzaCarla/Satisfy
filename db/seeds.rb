@@ -87,7 +87,7 @@ iFeel = Song.create!(
   total_song_time: '4:29'
 )
 
-file1 = open('https://satisfy-seed.us-west-1.amazonaws.com/songs/iFeel.mp3')
+file1 = open('https://satisfy-seed.s3-us-west-1.amazonaws.com/songs/iFeel.mp3')
 
 iFeel.songUrl.attach(io: file1, filename: 'iFeel.mp3')
 
@@ -97,6 +97,6 @@ ylang = Song.create!(
   total_song_time: '3:33'
 )
 
-file2 = open('https://satisfy-seed.us-west-1.amazonaws.com/songs/Ylang_Ylang.mp3')
+file2 = open('https://satisfy-seed.s3-us-west-1.amazonaws.com/songs/Ylang_Ylang.mp3')
 
 ylang.songUrl.attach(io: file2, filename: 'Ylang_Ylang.mp3')
