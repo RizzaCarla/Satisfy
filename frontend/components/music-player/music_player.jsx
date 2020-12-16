@@ -16,7 +16,7 @@ class MusicPlayer extends React.Component {
     // debugger
     return(
       <div className="musicPlayer">
-        <audio src={`${this.state.songUrl}`} type="audio/mpeg" controls />
+        <audio src={`${this.props.songUrl}`} type="audio/mpeg" controls />
       </div>
     )
   }  
