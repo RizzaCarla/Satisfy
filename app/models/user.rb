@@ -50,5 +50,5 @@ class User < ApplicationRecord
     foreign_key: :author_id,
     class_name: :OtherPlaylist
 
-  has_one_attached :photo
+  has_one_attached :photoUrl
 end

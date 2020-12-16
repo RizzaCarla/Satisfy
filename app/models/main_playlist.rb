@@ -22,5 +22,5 @@ class MainPlaylist < ApplicationRecord
     through: :main_playlist_likes,
     source: :Song  
 
-  has_one_attached :photo
+  has_one_attached :photoUrl
 end

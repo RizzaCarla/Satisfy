@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require 'open-uri'
+
+
 User.destroy_all
 Artist.destroy_all
 Album.destroy_all
@@ -84,8 +87,16 @@ iFeel = Song.create!(
   total_song_time: '4:29'
 )
 
+file1 = open('https://satisfy-seed.us-west-1.amazonaws.com/songs/iFeel.mp3')
+
+iFeel.songUrl.attach(io: file1, filename: 'iFeel.mp3')
+
 ylang = Song.create!(
   album_id: ylangalbum.id,
   song_title: 'Ylang Ylang',
   total_song_time: '3:33'
 )
+
+file2 = open('https://satisfy-seed.us-west-1.amazonaws.com/songs/Ylang_Ylang.mp3')
+
+ylang.songUrl.attach(io: file2, filename: 'Ylang_Ylang.mp3')

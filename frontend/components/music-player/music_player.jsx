@@ -1,15 +1,25 @@
-// import React from 'react';
-// import iFeel from '../../../app/assets/songs/iFeel.mp3';
+import React from 'react';
 
-// class MusicPlayer extends React.Component {
-//   render() {
-//     return(
-//       <div className="musicPlayer">
-//         <audio src={"https://www.youtube.com/watch?v=VbWi4T-gy98&t=13s"} type="audio/mpeg" controls />
-//       </div>
-//     )
-//   }
-// }
+class MusicPlayer extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     id: null
+  //   };
+  // }
 
-// export default MusicPlayer
-// // {console.log(`user: ${user}`)}
+  componentDidMount() {
+    this.props.fetchSong(this.props.match.params.songId);
+  }
+
+  render() {
+    // debugger
+    return(
+      <div className="musicPlayer">
+        <audio src={`${this.state.songUrl}`} type="audio/mpeg" controls />
+      </div>
+    )
+  }  
+}
+
+export default MusicPlayer

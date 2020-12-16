@@ -1,14 +1,18 @@
-.app-header {
+.app-header-loggedout {
   display: flex;
   background-color: black;
-  padding: 1px 5px 1px 5px;
   font-family: 'Montserrat', sans-serif;
   position: fixed;
   width: 100%;
   z-index: 3;
   flex-direction: row;
   font-weight: bold;
+  padding: 10px 10px 10px 10px;
 
+  .app-header-loggedout > a {
+    width: 50%
+  }
+  
   
   #fullLogo {
     display: flex;
@@ -17,35 +21,102 @@
     justify-content: flex-start;
     width: 25%;
     height: auto;
-    padding-left: 20px;
-    padding-bottom: 8px;
     position: relative;
   }
   
-  .app-navbar-links {
-    padding-top: 15px;
-    display: flex;
-    color: white;
-  }
-  
-  .session-navbar {
+  .session-navbar-loggedout {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     position: relative;
     align-items: center;
     align-content: space-between;
-    right: 15px;
+    right: 100px;
+    width: 80%;
     
     .separator {
-      padding-left: 50px;
-      padding-bottom: 20px;
       color: white;
+      text-align: center; 
     }
     
     li {
-      width: 100px;
-      padding-bottom: 5px;
+      display: flex;
+      align-items: center;
+      padding: 10px;
+    }
+    
+    li > p, li > a {
+      width: 200%;
+    }
+    
+    a, a:link {
+      text-decoration: none;
+      color: white;
+    }
+    
+  }
+  
+  .session-navbar > a:hover {
+    color: #1ed760;
+  }
+}
+
+.app-header-loggedin {
+  display: flex;
+  background-color: black;
+  font-family: 'Montserrat', sans-serif;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  flex-direction: row;
+  font-weight: bold;
+  padding: 10px 10px 10px 10px;
+
+  .app-header-loggedin > a {
+    width: 50%
+  }
+
+  // .loggedin-navation {
+  //   display: flex;
+  //   flex-direction: row;
+  //   justify-content: flex-start;
+  //   position: relative;
+  //   align-items: center;
+  //   align-content: space-between;
+  //   width: 97%;
+  //   padding-left: 50px;
+    
+  //   .back {
+  //     color: white;
+  //   }
+
+  //   .foward {
+  //     color: white;
+  //   }
+  // }
+  
+  .session-navbar-loggedin {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    position: relative;
+    align-items: center;
+    align-content: space-between;
+    width: 97%;
+    
+    .separator {
+      color: white;
+      text-align: center; 
+    }
+    
+    li {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+    }
+    
+    li > p, li > a {
+      width: 200%;
     }
     
     a, a:link {

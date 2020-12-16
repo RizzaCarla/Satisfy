@@ -22,7 +22,5 @@ class Song < ApplicationRecord
     foreign_key: :other_liked_song_id,
     class_name: :OtherPlaylist
 
-  has_one_attached :photo
-
-  has_one_attached :song
+  has_one_attached :songUrl
 end

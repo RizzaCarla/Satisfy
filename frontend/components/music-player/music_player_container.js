@@ -1,12 +1,13 @@
-// import { connect } from 'react-redux';
-// import MusicPlayer from './music_player'
+import { connect } from 'react-redux';
+import MusicPlayer from './music_player'
+import { fetchSong } from '../../actions/song_actions'
 
-// const msp = state => ({
-//   user: state.entities.users[state.session.id]
-// })
+const msp = state => ({
+  song: state.entities.songs[state.session.songId]
+})
 
-// // const mdp = dispatch => ({
+const mdp = dispatch => ({
+  fetchSong: (songId) => dispatch(fetchSong(songId))
+})
 
-// // })
-
-// export default connect(msp, null)(MusicPlayer)
+export default connect(msp, null)(MusicPlayer)

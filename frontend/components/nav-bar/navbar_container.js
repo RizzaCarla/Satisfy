@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import { logout } from '../../actions/session_actions';
+import { logout } from '../../actions/user_actions';
 import NavBar from './navbar'
 
-const msp = ({ entities, session }) => ({
-  user: entities.users[session.id]
+const msp = ({ entities, userSession }) => ({
+  user: entities.users[userSession.id]
 })
 
 const mdp = dispatch => ({

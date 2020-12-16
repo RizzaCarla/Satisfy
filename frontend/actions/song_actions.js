@@ -13,8 +13,8 @@ export const receiveSong = song => ({
   song
 })
 
-export const fetchSongs = songs => dispatch => (
-  songAPIUtil.fetchSongs(songs)
+export const fetchSongs = () => dispatch => (
+  songAPIUtil.fetchSongs()
     .then((songs) => dispatch(receiveSong(songs)))
 )
 
