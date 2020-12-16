@@ -10,19 +10,22 @@ import NavBarContainer from './nav-bar/navbar_container';
 import SidebarContainer from './side-bar/sidebar_container';
 import MusicPlayerContainer from './music-player/music_player_container'
 import SongsIndexContainer from './song/song_index_container'
+import ShowSongContainer from './song/song_show_container'
 
 const App = () => (
   <div>
     <header>
       <NavBarContainer/>
     </header>
-      <ProtectedRoute path='/songs/:songId' component={SongsIndexContainer}></ProtectedRoute>
+      <ProtectedRoute path='/songs' component={SongsIndexContainer}></ProtectedRoute>
+      {/* <ProtectedRoute exact path='/songs/:songId' component={ShowSongContainer}></ProtectedRoute> */}
       <ProtectedRoute path='/' component={SidebarContainer}></ProtectedRoute>
       {/* <ProtectedRoute path='/' component={MusicPlayerContainer}></ProtectedRoute> */}
     <Switch>
       <AuthRoute exact path='/login' component={LoginContainer}></AuthRoute>
       <AuthRoute exact path='/signup' component={SignUpContainer}></AuthRoute>
       <AuthRoute exact path='/splash' component={SplashContainer}></AuthRoute>
+      {/* <Route path='/'></Route> */}
       {/* change / to /splash */}
     </Switch>
   </div>
