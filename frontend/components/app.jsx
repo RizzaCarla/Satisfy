@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch} from 'react-router-dom';
+import { Route, Switch} from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util'
 
 // Containers
@@ -17,12 +17,13 @@ const App = () => (
       <NavBarContainer/>
     </header>
       <ProtectedRoute path='/songs/:songId' component={SongsIndexContainer}></ProtectedRoute>
-      {/* <ProtectedRoute path='/' component={SidebarContainer}></ProtectedRoute> */}
+      <ProtectedRoute path='/' component={SidebarContainer}></ProtectedRoute>
       {/* <ProtectedRoute path='/' component={MusicPlayerContainer}></ProtectedRoute> */}
     <Switch>
       <AuthRoute exact path='/login' component={LoginContainer}></AuthRoute>
       <AuthRoute exact path='/signup' component={SignUpContainer}></AuthRoute>
       <AuthRoute exact path='/splash' component={SplashContainer}></AuthRoute>
+      <Route path='/'></Route>
       {/* change / to /splash */}
     </Switch>
   </div>
