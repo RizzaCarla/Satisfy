@@ -17,7 +17,7 @@ const App = () => (
       <NavBarContainer/>
     </header>
       <ProtectedRoute path='/songs/:songId' component={SongsIndexContainer}></ProtectedRoute>
-      <ProtectedRoute path='/' component={SidebarContainer}></ProtectedRoute>
+      {/* <ProtectedRoute path='/' component={SidebarContainer}></ProtectedRoute> */}
       {/* <ProtectedRoute path='/' component={MusicPlayerContainer}></ProtectedRoute> */}
     <Switch>
       <AuthRoute exact path='/login' component={LoginContainer}></AuthRoute>
