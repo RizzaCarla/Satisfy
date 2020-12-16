@@ -1,6 +1,6 @@
 class Api::SongsController < ApplicationController
   def show
-    @song = Song.with_attached_song.find_by(id: params[:id)
+    @song = Song.with_attached_song.find_by(id: params[:id])
     render json: "/api/users/show"
   end
 
