@@ -8,7 +8,6 @@
 
 require 'open-uri'
 
-
 User.destroy_all
 Artist.destroy_all
 Album.destroy_all
