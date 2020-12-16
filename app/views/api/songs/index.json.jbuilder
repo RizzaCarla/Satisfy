@@ -1,5 +1,5 @@
 @songs.each do |song|
   json.set! song.id do
-    json.partial! "api/songs/song" song: @song
+    json.extract! @song, :id, :song_title, :total_song_time
   end
 end

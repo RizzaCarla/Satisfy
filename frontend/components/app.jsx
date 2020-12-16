@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route} from 'react-router-dom';
+import { Switch} from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util'
 
 // Containers
@@ -18,7 +18,7 @@ const App = () => (
     </header>
       <ProtectedRoute path='/songs/:songId' component={SongsIndexContainer}></ProtectedRoute>
       <ProtectedRoute path='/' component={SidebarContainer}></ProtectedRoute>
-      <ProtectedRoute path='/' component={MusicPlayerContainer}></ProtectedRoute>
+      {/* <ProtectedRoute path='/' component={MusicPlayerContainer}></ProtectedRoute> */}
     <Switch>
       <AuthRoute exact path='/login' component={LoginContainer}></AuthRoute>
       <AuthRoute exact path='/signup' component={SignUpContainer}></AuthRoute>

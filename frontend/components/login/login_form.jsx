@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -28,7 +28,7 @@ class LoginForm extends React.Component {
   }
 
   componentWillUnmount() {
-    this.props.clearErrors()
+    this.props.clearUserErrors()
   }
 
   render() {

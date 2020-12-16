@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Sidebar from './sidebar'
 
 const msp = state => ({
-  user: state.entities.users[state.session.id]
+  user: state.entities.users[state.userSession.id]
 })
 
 // const mdp = dispatch => ({
