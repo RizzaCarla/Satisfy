@@ -5,13 +5,18 @@ const NavBar = ({user, logout}) => {
   const loggedIn = () => (
     <div className="app-header-loggedin">
       {/* <div className="loggedin-navigation">
-        <li>
-          <p className='back'>B</p>
-        </li>
-        <li>
-          <p className='forward'>F</p>
-        </li>
+        <div className="backward">
+        <i className='fas'>&#xf104;</i>
+        </div>
+        <div className="forward">
+        <i className='fas'>&#xf105;</i>
+        </div>
       </div> */}
+      <div className="loggedin-logo">
+        <Link to='/us'>
+            <img id="fullLogo" src={window.fullLogo} />
+        </Link>
+      </div>
       <nav className='session-navbar-loggedin'>
         <li>
           <a href='https://github.com/RizzaCarla'>Github</a>
@@ -32,7 +37,7 @@ const NavBar = ({user, logout}) => {
 
   const loggedOut = () => (
     <div className="app-header-loggedout">
-      <Link to='/splash'>
+      <Link to='/us'>
           <img id="fullLogo" src={window.fullLogo} />
       </Link>
       <nav className='session-navbar-loggedout'>

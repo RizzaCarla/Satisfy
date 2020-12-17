@@ -11,16 +11,18 @@ class songsIndex extends React.Component {
     return (
       <div className='show-index'>
         <ul>
-          {
-            this.props.songs.map((song) => (
-              <SongIndexItem 
-                key={song.id}
-                song={song} 
-                songId={this.props.songId}
-                changeCurrentSong={this.props.changeCurrentSong}
-              />
-            ))
-          }
+            {
+              this.props.songs.map((song) => (
+                <li>
+                  <SongIndexItem 
+                    key={song.id}
+                    song={song} 
+                    songId={this.props.songId}
+                    changeCurrentSong={this.props.changeCurrentSong}
+                  />
+                </li>
+              ))
+            }
         </ul>
       </div>
     );

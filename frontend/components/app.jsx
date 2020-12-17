@@ -9,7 +9,8 @@ import SplashContainer from './home/splash_container';
 import NavBarContainer from './nav-bar/navbar_container';
 import SidebarContainer from './side-bar/sidebar_container';
 import MusicPlayerContainer from './music-player/music_player_container'
-import SongsIndexContainer from './song/song_index_container'
+import SongsIndexContainer from './song/song_index_container';
+import SearchContainer from './search/search_container'
 
 const App = () => (
   <div>
@@ -17,12 +18,13 @@ const App = () => (
       <NavBarContainer/>
     </header>
       <ProtectedRoute path='/songs' component={SongsIndexContainer}></ProtectedRoute>
+      <ProtectedRoute path='/search' component={SearchContainer}></ProtectedRoute>
       <ProtectedRoute path='/' component={SidebarContainer}></ProtectedRoute>
       <ProtectedRoute path='/' component={MusicPlayerContainer}></ProtectedRoute>
     <Switch>
       <AuthRoute exact path='/login' component={LoginContainer}></AuthRoute>
       <AuthRoute exact path='/signup' component={SignUpContainer}></AuthRoute>
-      <AuthRoute exact path='/splash' component={SplashContainer}></AuthRoute>
+      <Route exact path='/us' component={SplashContainer}></Route>
     </Switch>
   </div>
 )
@@ -36,5 +38,4 @@ export default App
 <Route path='/collection/mainPlaylist' component={}></Route>
 <Route path='/collection/queue' component={}></Route>
 <Route path='/album/:albumId' component={}></Route>
-<Route path='/search' component={}></Route>
 <Route path='/artist/:artistId' component={}></Route> */}

@@ -16,11 +16,12 @@ class SongIndexItem extends React.Component {
   render() {
     return (
       <div className='song-index'>
+        <li>
+        </li>
         <h1>
           {this.props.song.song_title}
         </h1>
-        <button id="playButton" onClick={this.handlePlay()}></button>
-        {/* src={window.playButton} */}
+          <img id="button-logo" src={window.playButton} onClick={this.handlePlay()}/>
       </div>
     )
   }

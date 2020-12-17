@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 
 class MusicPlayer extends React.Component {
   componentDidMount() {
@@ -6,21 +7,31 @@ class MusicPlayer extends React.Component {
   }
 
   handleCheck() {
-    if (this.props.songId != null) {
-      return <audio src={`${this.props.songs[this.props.songId].songUrl}`} type="audio/mp3" controls autoPlay />
-      
-    } else {
-      return <audio src="" type="audio/mp3" controls autoPlay />
-    }
   }
-
+  
+  // checkPaused () {
+    //   if (audio.paused) {
+      
+      //   }
+      // }
+      
+  handleSplash () {
+    if (this.props.location.pathname != "/us") {         
+      if (this.props.songId != null) {
+          return <audio src={`${this.props.songs[this.props.songId].songUrl}`} type="audio/mp3" controls autoPlay/>
+      } if (this.props.songId === null) {
+        return <audio src="" type="audio/mp3" controls />
+      }       
+    }
+  } 
+    
   render() {
     return(
       <div className="musicPlayer">
-        {this.handleCheck()}
+        {this.handleSplash()}
       </div>
     )
   }  
 }
 
-export default MusicPlayer
+export default withRouter(MusicPlayer);
