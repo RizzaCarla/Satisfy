@@ -13,24 +13,33 @@ class Sidebar extends React.Component {
             <img id="fullLogo" src={window.fullLogo} />
           </Link>
           <ul className='sidebar-list'>
-            <Link to='/us'>
-              <i className="fa">&#xf015;</i><li>Home</li>
-            </Link>
-            <Link to='/search'>
-              <i className="fa">&#xf002;</i>
-              <li>Search</li>
-            </Link>
-            <Link to='/songs'>
-              <i className='fas'>&#xf7a5;&#xf715;</i>
-              <li>Your Library</li>
-            </Link>
+            <div>
+              <Link to='/us'>
+                <i className="fa">&#xf015;</i><li>Home</li>
+              </Link>
+            </div>
+            <div>
+              <Link to='/search'>
+                <i className="fa">&#xf002;</i>
+                <li>Search</li>
+              </Link>
+            </div>
+            <div>
+              <Link to='/songs'>
+                <i className='fas'>&#xf7a5;&#xf715;</i>
+                <li>Your Library</li>
+              </Link>
+            </div>
             <br></br>
             <h1 className='sidebar-header'>Playlists</h1>
-            <button>
-      
+            <div>
+              <i class="material-icons">&#xe146;</i> 
               <li>Create Playlist</li>
-            </button>
-            <li>Liked Songs</li>
+            </div>
+            <div>
+              <i className='fas'>&#xf004;</i>
+              <li>Liked Songs</li>
+            </div>
             <hr></hr>
             <li>Install App</li>
           </ul>
