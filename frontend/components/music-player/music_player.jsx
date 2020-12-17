@@ -1,22 +1,23 @@
 import React from 'react';
 
 class MusicPlayer extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     id: null
-  //   };
-  // }
-
   componentDidMount() {
-    this.props.fetchSong(this.props.match.params.songId);
+    this.props.fetchSong(this.props.songId);
+  }
+
+  handleCheck() {
+    if (this.props.songId != null) {
+      return <audio src={`${this.props.songs[this.props.songId].songUrl}`} type="audio/mp3" controls autoPlay />
+      
+    } else {
+      return <audio src="" type="audio/mp3" controls autoPlay />
+    }
   }
 
   render() {
-    // debugger
     return(
       <div className="musicPlayer">
-        <audio src={`${this.props.songUrl}`} type="audio/mpeg" controls />
+        {this.handleCheck()}
       </div>
     )
   }  

@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import MusicPlayer from './music_player'
 import { fetchSong } from '../../actions/song_actions';
-import { withRouter } from 'react-router-dom';
 
-const msp = (state, ownProps) => ({
-  song: state.entities.songs[ownProps.match.params.songId]
+const msp = (state) => ({
+  songId: state.songSession.songId,
+  songs: state.entities.songs
 })
 
 const mdp = dispatch => ({

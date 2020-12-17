@@ -1,0 +1,18 @@
+.song-index {
+  background-color: rgb(18, 18, 18);
+  color: white;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding-top: 100px;
+  position: absolute;
+  font-family: 'Montserrat', sans-serif;
+  padding-left: 3%;
+  font-size: 100%;
+  margin-left: 18%;
+
+  #playButton {
+    height: 10%;
+    width: 10%;
+  }
+}

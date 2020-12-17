@@ -3,7 +3,7 @@ import { logout } from '../../actions/user_actions';
 import NavBar from './navbar'
 
 const msp = ({ entities, userSession }) => ({
-  user: entities.users[userSession.id]
+  user: entities.users[userSession.userId]
 })
 
 const mdp = dispatch => ({

@@ -15,7 +15,9 @@ class Sidebar extends React.Component {
           <br></br>
           <h1 className='sidebar-header'>Playlists</h1>
           <li>Create Playlist</li>
-          <li>Liked Songs</li>
+          <Link to='/songs'>
+            <li>Liked Songs</li>
+          </Link>
           <hr></hr>
           <li>Install App</li>
         </ul>
