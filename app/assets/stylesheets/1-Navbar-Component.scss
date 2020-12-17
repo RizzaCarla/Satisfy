@@ -8,7 +8,7 @@
   flex-direction: row;
   font-weight: bold;
   padding: 10px 10px 10px 10px;
-
+  
   .app-header-loggedout > a {
     width: 50%
   }
@@ -22,6 +22,7 @@
     width: 25%;
     height: auto;
     position: relative;
+    padding-left: 45px;
   }
   
   .session-navbar-loggedout {
@@ -76,24 +77,37 @@
     width: 50%
   }
 
-  // .loggedin-navation {
-  //   display: flex;
-  //   flex-direction: row;
-  //   justify-content: flex-start;
-  //   position: relative;
-  //   align-items: center;
-  //   align-content: space-between;
-  //   width: 97%;
-  //   padding-left: 50px;
-    
-  //   .back {
-  //     color: white;
-  //   }
+  img#fullLogo {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 25%;
+    height: auto;
+    position: relative;
+    padding-left: 45px;
+  }
 
-  //   .foward {
-  //     color: white;
-  //   }
-  // }
+  .loggedin-navigation {
+    display: flex;
+    margin-left: 15%;
+    align-content: center;
+    
+    .backward, .forward {
+      flex-direction: column;
+      display: flex;
+      justify-content: center;
+      padding-left: 70px;
+    }
+
+    i.fas {
+      display: flex;
+      padding-top: 5px 10px 5px 10px;
+      color: white;
+      font-size: 150%;
+    }
+
+  }
   
   .session-navbar-loggedin {
     display: flex;
@@ -102,8 +116,9 @@
     position: relative;
     align-items: center;
     align-content: space-between;
-    width: 97%;
-    
+    right: 100px;
+    width: 80%;
+
     .separator {
       color: white;
       text-align: center; 
