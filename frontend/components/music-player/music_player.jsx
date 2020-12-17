@@ -5,10 +5,19 @@ class MusicPlayer extends React.Component {
     this.props.fetchSong(this.props.songId);
   }
 
+  handleCheck() {
+    if (this.props.songId != null) {
+      return <audio src={`${this.props.songs[this.props.songId].songUrl}`} type="audio/mp3" controls autoPlay />
+      
+    } else {
+      return <audio src="" type="audio/mp3" controls autoPlay />
+    }
+  }
+
   render() {
     return(
       <div className="musicPlayer">
-        <audio src={this.props.songs[this.props.songId]} type="audio/mp3" controls autoplay/>
+        {this.handleCheck()}
       </div>
     )
   }  

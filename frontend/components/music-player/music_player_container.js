@@ -11,4 +11,4 @@ const mdp = dispatch => ({
   fetchSong: (songId) => dispatch(fetchSong(songId))
 })
 
-export default connect(msp, null)(MusicPlayer)
+export default connect(msp, mdp)(MusicPlayer)
