@@ -15,7 +15,6 @@ class Sidebar extends React.Component {
           <ul className='sidebar-list'>
             <Link to='/us'>
               <div className='navigate-button'>
-                  &nbsp; 
                   <i className="fa">&#xf015;</i>
                   &nbsp; 
                   &nbsp; 

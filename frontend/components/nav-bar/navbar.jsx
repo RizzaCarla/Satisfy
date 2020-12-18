@@ -12,11 +12,11 @@ const NavBar = ({user, logout}) => {
         <i className='fas'>&#xf105;</i>
         </div>
       </div> */}
-      <div className="loggedin-logo">
-        <Link to='/us'>
-            <img id="fullLogo" src={window.fullLogo} />
-        </Link>
-      </div>
+      <Link to='/us'>
+        <div className="loggedin-logo">
+              <img id="fullLogo" src={window.fullLogo} />
+        </div>
+      </Link>
       <nav className='session-navbar-loggedin'>
         <li>
           <a href='https://github.com/RizzaCarla'>Github</a>
