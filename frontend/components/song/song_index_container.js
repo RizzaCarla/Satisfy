@@ -2,10 +2,9 @@ import { connect } from 'react-redux';
 import songsIndex from './song_index'
 import { fetchSongs, changeCurrentSong } from '../../actions/song_actions'
 
-const msp = (state, ownProps) => ({
+const msp = (state) => ({
   songs: Object.values(state.entities.songs),
-  songSession: state.songSession,
-  songId: ownProps.match.params.songId
+  songId: state.songSession.song.songId
 })
 
 const mdp = dispatch => ({

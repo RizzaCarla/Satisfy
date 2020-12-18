@@ -14,7 +14,7 @@ class songsIndex extends React.Component {
             {
               this.props.songs.map((song) => (
                 <li>
-                  <SongIndexItem 
+                  <SongIndexItem
                     key={song.id}
                     song={song} 
                     songId={this.props.songId}

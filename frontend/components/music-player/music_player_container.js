@@ -3,8 +3,9 @@ import MusicPlayer from './music_player'
 import { fetchSong, onPlay, onPause } from '../../actions/song_actions';
 
 const msp = (state) => ({
-  songId: state.songSession.song.songId,
   songs: state.entities.songs,
+  songId: state.songSession.song.songId,
+  song: state.entities.songs[state.songSession.song.songId],
   playStatus: state.songSession.playStatus.status,
   pauseStatus: state.songSession.pauseStatus.status
 })
