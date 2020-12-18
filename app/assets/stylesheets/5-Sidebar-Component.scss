@@ -1,9 +1,8 @@
 .sidebar {
   background-color: black;
   color: #b3b3b3;
-  width: 50%;
+  width: 222px;
   z-index: 4;
-  width: 16%;
   height: 100%;
   overflow: hidden;
   padding-top: 10px;
@@ -28,10 +27,85 @@
     line-height: 2rem;
     padding-right: 20px;
 
+    .line{
+      margin: 8px var(--left-sidebar-padding-right) 8px var(--left-sidebar-padding-left);
+      background-color: #282828;
+      border: none;
+      height: 1px;
+      min-height: 1px;
+      margin: 5px;
+    }
 
     .sidebar-header {
       text-transform: uppercase;
-      letter-spacing: 0.2rem;
+      letter-spacing: 0.1rem;
+    }
+    
+    .navigate-button {
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+      line-height: 0.9rem;
+      padding: 10px;
+      color: #b3b3b3;
+
+      .material-icons {
+        font-size: 40px;
+      }
+      
+      .heart-bg {
+        width: 30px;
+        height: 30px;
+        background-image: linear-gradient(to bottom right, blue, lightblue,);
+      }
+
+      #heart {
+        position: relative;
+        top: 8px;
+        left: 8px;
+        font-size: 14px;
+      }
+    }
+
+    .playlist {
+      height:200px;
+      overflow:hidden; 
+      overflow-y:scroll;
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1; 
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #888; 
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #999; 
+    }
+
+    a:link{
+      text-decoration: none;
+    }
+    
+    li:hover, i:hover{
+      cursor: pointer;
+      color: white;
+    }
+    
+    .navigate-button > li {
+      display: flex;
+    }
+    
+    div:hover {
+      color: white;
+      border-radius: 3px;
+      // filter: invert(0%) sepia(0%) saturate(100%) hue-rotate(0deg) brightness(90%) contrast(90%);
     }
   }
 }
