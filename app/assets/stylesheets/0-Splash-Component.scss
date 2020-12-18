@@ -1,0 +1,98 @@
+.splash-page {
+  background: rgb(147,109,134);
+  background: linear-gradient(106deg, rgba(147,109,134,1) 0%, rgba(147,113,156,1) 24%, rgba(136,124,192,1) 49%, rgba(113,126,196,1) 78%, rgba(90,125,190,1) 99%);
+  width: 95%;
+  height: 100%;
+  overflow: hidden;
+  padding-top: 100px;
+  position: absolute;
+  font-family: 'Montserrat', sans-serif;
+  padding-left: 5%;
+  font-size: 300%;
+  display: flex;
+
+  .left-navbar {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding-top: 100px;
+    width: 60%;
+    font-weight: bold;
+    color: white;
+    
+    .text1 {
+      font-size: 90%;
+      width: 90%;
+      line-height: 3rem;
+    }
+    
+    .text2 {
+      font-size: 45%;
+      line-height: 2rem;
+      width: 90%;
+    }
+    
+    .redirectWebPlayer {
+      display: flex;
+      background-color:rgb(29, 185, 84);
+      justify-content: flex-end;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 10px 20px 10px;
+      border-radius: 100px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      width: 75%;
+      color: white;
+      text-transform: uppercase;
+      border: none;
+      margin-top: 20px;
+      margin-right: 15px;
+    }
+    
+    .redirectLink {
+      text-decoration: none;
+    }
+
+    .june:hover{
+      background-color: rgb(18, 18, 18)
+    }
+  }
+
+  .photos-list {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    .flex-item:nth-of-type(1) { order: 1; }
+    .flex-item:nth-of-type(2) { order: 6; }
+    .flex-item:nth-of-type(3) { order: 5; }
+    .flex-item:nth-of-type(4) { order: 4; }
+    .flex-item:nth-of-type(5) { order: 2; }
+    .flex-item:nth-of-type(6) { order: 3; }
+
+    .flex-item > img {
+      padding: 10px;
+      height: 225px;
+      width: 230px;
+    }
+
+    img:hover {
+      filter: invert(0%) sepia(0%) saturate(100%) hue-rotate(0deg) brightness(40%) contrast(100%);
+    }
+
+    // i {
+    //   position: relative;
+    //   right: 135px;
+    //   bottom: 110px;
+    //   visibility: hidden;
+    // }
+
+    // i:hover{
+    //   visibility: visible;
+    //   color: white;
+    //   // opacity: 100%;
+    //   // filter: invert(100%) sepia(0%) saturate(100%) hue-rotate(0deg) brightness(100%) contrast(0%);
+    // }
+  }
+}
