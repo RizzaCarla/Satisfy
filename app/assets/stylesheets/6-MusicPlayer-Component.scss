@@ -10,4 +10,11 @@
   font-size: 300%;
   bottom: 0%;
   z-index: 4;
+  display: flex;
+  justify-content: center;
+
+  #audio {
+    height: 300px;
+    width: 300px;
+  }
 }

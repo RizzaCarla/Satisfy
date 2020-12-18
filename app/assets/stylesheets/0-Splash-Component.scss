@@ -1,6 +1,6 @@
 .splash-page {
-  background: rgb(147,109,134);
-  background: linear-gradient(106deg, rgba(147,109,134,1) 0%, rgba(147,113,156,1) 24%, rgba(136,124,192,1) 49%, rgba(113,126,196,1) 78%, rgba(90,125,190,1) 99%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#000));
+  background-image: linear-gradient(to top, rgb(0, 0, 0), rgba(255, 255, 255, 0)), linear-gradient(to right, rgb(161, 102, 155), rgb(120, 152, 197));
   width: 95%;
   height: 100%;
   overflow: hidden;

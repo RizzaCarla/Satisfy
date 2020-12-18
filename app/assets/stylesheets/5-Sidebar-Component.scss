@@ -9,7 +9,7 @@
   position: fixed;
   font-family: 'Montserrat', sans-serif;
   padding-left: 2%;
-  font-size: 90%;
+  font-size: 85%;
   font-weight: bold;
 
   #fullLogo {
@@ -23,7 +23,7 @@
   }
 
   .sidebar-list {
-    padding-top: 20px;
+    padding-top: 10px;
     line-height: 2rem;
     padding-right: 20px;
 
@@ -37,8 +37,9 @@
     }
 
     .sidebar-header {
+      padding-top: 10px;
       text-transform: uppercase;
-      letter-spacing: 0.1rem;
+      letter-spacing: 0rem;
     }
     
     .navigate-button {
@@ -65,12 +66,16 @@
         left: 8px;
         font-size: 14px;
       }
+
+      .far, .fa {
+        font-size: 20px;
+      }
     }
 
     .playlist {
-      height:200px;
-      overflow:hidden; 
-      overflow-y:scroll;
+      height: 111px;
+      overflow: hidden; 
+      overflow-y: scroll;
     }
 
     ::-webkit-scrollbar {
@@ -92,10 +97,18 @@
     a:link{
       text-decoration: none;
     }
+
+    li {
+      padding-top: 4px;
+    }
     
     li:hover, i:hover{
       cursor: pointer;
       color: white;
+    }
+
+    .createplaylist {
+      padding-top: 13px;
     }
     
     .navigate-button > li {

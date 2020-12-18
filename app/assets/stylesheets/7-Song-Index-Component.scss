@@ -1,17 +1,24 @@
-.song-index {
+.show-index{
+  position: absolute;
   background-color: rgb(18, 18, 18);
   color: white;
-  width: 100%;
+  width: 79.4%;
   height: 100%;
   overflow: hidden;
-  padding-top: 100px;
-  position: absolute;
+  margin-top: 80px;
+  margin-left: 19%;
+  padding: 10px;
   font-family: 'Montserrat', sans-serif;
-  padding-left: 3%;
-  font-size: 100%;
-  margin-left: 18%;
 
-  #button-logo {
-    height: 15%;
+  .song-index {
+    position: relative;
+    font-size: 100%;
+    padding: 4%;
+    width: 40px;
+  
+    .button-logo {
+      height: 100px;
+      width: 100px;
+    }
   }
 }
