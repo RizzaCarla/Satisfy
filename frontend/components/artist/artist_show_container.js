@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ArtistIndex from './artist_index'
+import ArtistShow from './artist_show'
 
 const msp = state => {
 
@@ -9,4 +9,4 @@ const mdp = dispatch => {
 
 }
 
-export default connect(msp, mdp)(ArtistIndex)
+export default connect(msp, mdp)(ArtistShow)

@@ -1,6 +1,6 @@
 import React from 'react';
 
-class ArtistIndex extends React.Component {
+class ArtistShow extends React.Component {
   render() {
     return (
       <div>
@@ -10,4 +10,4 @@ class ArtistIndex extends React.Component {
   }
 }
 
-export default ArtistIndex
+export default ArtistShow
