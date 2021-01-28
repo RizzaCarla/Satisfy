@@ -13,7 +13,7 @@ class Sidebar extends React.Component {
             <img id="fullLogo" src={window.fullLogo} />
           </Link>
           <ul className='sidebar-list'>
-            <Link to='/us'>
+            <Link to='/home'>
               <div className='navigate-button'>
                   <i className="fa">&#xf015;</i>
                   &nbsp; 
