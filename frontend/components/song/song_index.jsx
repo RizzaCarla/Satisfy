@@ -4,18 +4,23 @@ import SongIndexItem from './song_index_item'
 class songsIndex extends React.Component {
 
   componentDidMount() {
-    return this.props.fetchSongs();
+    this.props.fetchSongs();
   }
 
   render() {
+
+    if (!this.props.songs) {
+      return null
+    }
+    
     return (
       <div className='show-index'>
         <ul>
             {
-              this.props.songs.map((song) => (
-                <li>
+              this.props.songs.map((song, index) => (
+                <li key={index}>
                   <SongIndexItem
-                    key={song.id}
+                    
                     song={song} 
                     songId={this.props.songId}
                     changeCurrentSong={this.props.changeCurrentSong}

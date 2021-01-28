@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class SongIndexItem extends React.Component {
   constructor(props) {
@@ -33,13 +34,15 @@ class SongIndexItem extends React.Component {
   render() {
     return (
       <div className='song-index'>
-        {/* <img src={this.props.song.songUrl} onLoad={this.handlePreview}/> */}
-        <h1>
-          {this.props.song.song_title}
-        </h1>
-        <div >
-          <img className="button-logo" src={window.playButton} onClick={this.handlePlay()}/>
-        </div>
+        <Link to='/'>
+          <img src={this.props.song.songUrl} onLoad={this.handlePreview}/>
+          <h1>
+            {this.props.song.song_title}
+          </h1>
+          <div >
+            <img className="button-logo" src={window.playButton} onClick={this.handlePlay()}/>
+          </div>
+        </Link>
       </div>
     )
   }

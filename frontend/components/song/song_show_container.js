@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import showSong from './song_show';
+import SongShow from './song_show';
 
 const msp = (state, ownProps) => {
   debugger
@@ -13,4 +13,4 @@ const mdp = dispatch => ({
   fetchSong: (songId) => dispatch(fetchSong(songId))
 })
 
-export default connect(msp, mdp)(showSong)
+export default connect(msp, mdp)(SongShow)
