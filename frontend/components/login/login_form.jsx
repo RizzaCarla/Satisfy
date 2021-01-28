@@ -75,7 +75,7 @@ class LoginForm extends React.Component {
             <p>Don't have an account?</p>
           </div>
           <Link to='/signup'>
-            <button className='signup-redirect'>Sign Up for Spotify</button>
+            <button className='signup-redirect'>Sign Up for Satisfy</button>
           </Link>
         </form>
         <br></br>
