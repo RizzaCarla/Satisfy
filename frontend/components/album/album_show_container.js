@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import AlbumIndex from './album_index'
+import AlbumShow from './album_show';
 
 const msp = state => {
 
@@ -9,4 +9,4 @@ const mdp = dispatch => {
 
 }
 
-export default connect(msp, mdp)(AlbumIndex)
+export default connect(msp, mdp)(AlbumShow)

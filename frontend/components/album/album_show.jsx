@@ -1,6 +1,6 @@
 import React from 'react';
 
-class AlbumIndex extends React.Component {
+class AlbumShow extends React.Component {
   render() {
     return (
       <div>
@@ -10,4 +10,4 @@ class AlbumIndex extends React.Component {
   }
 }
 
-export default AlbumIndex
+export default AlbumShow
