@@ -1,13 +1,16 @@
+// Navbar for loggedout
+
 .app-header-loggedout {
   display: flex;
   background-color: black;
   font-family: 'Montserrat', sans-serif;
-  position: absolute;
+  position: fixed;
   width: 98.4%;
   z-index: 3;
   flex-direction: row;
   font-weight: bold;
   padding: 10px 10px 10px 10px;
+  justify-content: space-between;
   
   .app-header-loggedout > a {
     width: 50%
@@ -19,21 +22,23 @@
     align-items: center;
     flex-direction: row;
     justify-content: flex-start;
-    width: 170px;
+    width: 150px;
     height: auto;
     position: relative;
-    padding-left: 45px;
+    margin-left: 50px;
   }
   
   .session-navbar-loggedout {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    position: relative;
     align-items: center;
     align-content: space-between;
-    right: 45px;
-    width: 80%;
+      position: relative;
+
+    right: 50px;
+    margin-left: 10px;
+    padding: 10px;
     
     .separator {
       color: white;
@@ -43,7 +48,16 @@
     li {
       display: flex;
       align-items: center;
-      padding: 10px;
+      padding: 2px 15px;
+    }
+    
+    li:nth-child(2) {
+      border-right: 2px solid white;
+      padding-right: 25px;
+    }
+    
+    li:nth-child(3) {
+      margin-left: 10px;
     }
     
     li > p, li > a {
@@ -62,7 +76,246 @@
   }
 }
 
-.app-header-loggedin {
+// ----------------------------------------------------------------
+// Navbar for loggedin
+
+// Navbar for home
+.app-header-loggedin-home {
+  display: flex;
+  background-color: transparent;
+  font-family: 'Montserrat', sans-serif;
+  position: fixed;
+  width: 1000px;
+  z-index: 3;
+  flex-direction: row;
+  justify-content: space-around;
+  font-weight: bold;
+  padding: 10px 10px 10px 10px;
+  right: 0px;
+
+  .app-header-loggedin-home > a {
+    width: 50%
+  }
+
+  .loggedin-navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    .backward, .forward {
+      flex-direction: column;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 15px;
+      margin-left: 20px;
+      border-radius: 75%;
+
+      cursor: pointer;
+      background-color: rgba(0,0,0,.7)
+    }
+
+    i.fas {
+      display: flex;
+      padding-top: 5px 10px 5px 10px;
+      color: white;
+      font-size: 100%;
+    }
+
+  }
+  
+  .session-navbar-loggedin-home {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    position: relative;
+    align-items: center;
+    align-content: space-between;
+
+    right: 50px;
+    margin-left: 10px;
+    padding: 10px;
+    
+    li {
+      display: flex;
+      align-items: center;
+      padding: 2px 10px;
+    }
+    
+    li:nth-child(2) {
+      border-right: 2px solid white;
+      padding-right: 20px;
+    }
+
+    li:nth-child(3) {
+      margin-left: 10px;
+    }
+    
+    
+    li > p, li > a {
+      width: 200%;
+    }
+    
+    a, a:link {
+      text-decoration: none;
+      color: white;
+    }
+    
+  }
+  
+  .session-navbar-home > a:hover {
+    color: #1ed760;
+  }
+}
+
+// Navbar for search
+.app-header-loggedin-search {
+  display: flex;
+  background-color: transparent;
+  font-family: 'Montserrat', sans-serif;
+  position: fixed;
+  width: 1000px;
+  z-index: 3;
+  flex-direction: row;
+  justify-content: space-between;
+  font-weight: bold;
+  padding: 10px 10px 10px 10px;
+  right: 0px;
+
+  .app-header-loggedin-search > a {
+    width: 50%
+  }
+
+  .loggedin-navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    .backward, .forward {
+      flex-direction: column;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 15px;
+      margin-left: 20px;
+      border-radius: 75%;
+
+      cursor: pointer;
+      background-color: rgba(0,0,0,.7)
+    }
+
+    i.fas {
+      display: flex;
+      padding-top: 5px 10px 5px 10px;
+      color: white;
+      font-size: 100%;
+    }
+  }
+  
+  
+  .session-navbar-loggedin-search {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    position: relative;
+    align-items: center;
+    
+    right: 50px;
+    margin-left: 10px;
+    padding: 0px 10px 0px 0px;
+    width: 800px;
+
+    .search-navbar {
+      background-color: white;
+      // color: white;
+      // overflow: hidden;
+      // font-family: 'Montserrat', sans-serif;
+      
+      width: 333px;
+      // height: 100%;
+      
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      border-radius: 50px;
+      padding: 3px 0px 3px 10px;
+      cursor: text;
+      
+      .search-input {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+        width: 280px;
+        height: 30px;
+        letter-spacing: .015em;
+
+        color: black;
+        border: none;
+        cursor: text;
+        z-index: 1;
+      }
+      
+      #magnifying-glass-search {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        color: black;
+        cursor: text;
+        font-size: 30px;
+      }
+    }
+
+    .search-navbar-right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      
+      li {
+        display: flex;
+        align-items: center;
+        padding: 2px 10px;
+      }
+      
+      li:nth-child(2) {
+        border-right: 2px solid white;
+        padding-right: 20px;
+      }
+      
+      li:nth-child(3) {
+        margin-left: 10px;
+      }
+      
+      
+      li > p, li > a {
+        width: 200%;
+      }
+      
+      a, a:link {
+        text-decoration: none;
+        color: white;
+      }
+    }
+    
+    
+  }
+  
+  .session-navbar-search > a:hover {
+    color: #1ed760;
+  }
+  
+}
+
+// ------------------------------------------
+// Splash Page
+
+.app-header-loggedin-splash {
   display: flex;
   background-color: black;
   font-family: 'Montserrat', sans-serif;
@@ -70,64 +323,52 @@
   width: 100%;
   z-index: 3;
   flex-direction: row;
+  justify-content: space-between;
   font-weight: bold;
   padding: 10px 10px 10px 10px;
+  right: 0px;
 
-  .app-header-loggedin > a {
+  .app-header-loggedin-splash > a {
     width: 50%
   }
 
-  img#fullLogo {
+  #fullLogo-splash {
     display: flex;
-    align-items: center;
     flex-direction: row;
-    justify-content: flex-start;
-    width: 170.5px;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: 60px;
+    width: 150px;
     height: auto;
-    position: relative;
-    padding-left: 45px;
-  }
-
-  .loggedin-navigation {
-    display: flex;
-    margin-left: 15%;
-    align-content: center;
-    
-    .backward, .forward {
-      flex-direction: column;
-      display: flex;
-      justify-content: center;
-      padding-left: 70px;
-    }
-
-    i.fas {
-      display: flex;
-      padding-top: 5px 10px 5px 10px;
-      color: white;
-      font-size: 150%;
-    }
-
   }
   
   .session-navbar-loggedin {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+
     position: relative;
     align-items: center;
     align-content: space-between;
-    right: 45px;
-    width: 80%;
 
-    .separator {
-      color: white;
-      text-align: center; 
-    }
+    right: 50px;
+    margin-left: 10px;
+    padding: 10px;
     
     li {
       display: flex;
       align-items: center;
-      padding: 10px;
+      padding: 2px 10px;
+    }
+    
+    li:nth-child(2) {
+      border-right: 2px solid white;
+      padding-right: 20px;
+    }
+
+    li:nth-child(3) {
+      margin-left: 10px;
     }
     
     li > p, li > a {
@@ -141,7 +382,7 @@
     
   }
   
-  .session-navbar > a:hover {
+  .session-navbar-splash > a:hover {
     color: #1ed760;
   }
 }
