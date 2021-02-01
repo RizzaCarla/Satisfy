@@ -6,7 +6,7 @@ class Splash extends React.Component {
   handleRedirect() {
     if (this.props.userId != null) {
       return(
-        <Link to='/songs' className='redirectLink'>
+        <Link to='/home' className='redirectLink'>
           <button className='redirectWebPlayer'>Open Web Player</button>
          </Link>
       )
