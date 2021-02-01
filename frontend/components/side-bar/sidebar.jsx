@@ -32,7 +32,7 @@ class Sidebar extends React.Component {
                   <li>Search</li>
               </div>
             </Link>
-            <Link to='/songs'>
+            <Link to='/library'>
               <div className='navigate-button'>
                   <i className='fas'>&#xf7a5;&#xf715;</i>
                   &nbsp; 
