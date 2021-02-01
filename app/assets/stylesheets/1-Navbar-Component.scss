@@ -11,6 +11,7 @@
   font-weight: bold;
   padding: 10px 10px 10px 10px;
   justify-content: space-between;
+  isolation: isolate;
   
   .app-header-loggedout > a {
     width: 50%
@@ -82,16 +83,17 @@
 // Navbar for home
 .app-header-loggedin-home {
   display: flex;
-  background-color: transparent;
+  background-color: #121212;
   font-family: 'Montserrat', sans-serif;
   position: fixed;
-  width: 1000px;
+  width: 997px;
   z-index: 3;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   font-weight: bold;
   padding: 10px 10px 10px 10px;
   right: 0px;
+  isolation: isolate;
 
   .app-header-loggedin-home > a {
     width: 50%
@@ -137,6 +139,7 @@
     right: 50px;
     margin-left: 10px;
     padding: 10px;
+    isolation: isolate;
     
     li {
       display: flex;
@@ -170,19 +173,141 @@
   }
 }
 
-// Navbar for search
-.app-header-loggedin-search {
+// -------------------------------------------------
+
+// Navbar for library
+.app-header-loggedin-library {
   display: flex;
-  background-color: transparent;
+  background-color: #121212;
   font-family: 'Montserrat', sans-serif;
   position: fixed;
-  width: 1000px;
+  width: 1014px;
   z-index: 3;
   flex-direction: row;
   justify-content: space-between;
   font-weight: bold;
   padding: 10px 10px 10px 10px;
   right: 0px;
+  isolation: isolate;
+
+  .app-header-loggedin-library > a {
+    width: 50%
+  }
+
+  .loggedin-navigation-library {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    .backward, .forward {
+      flex-direction: column;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 10px 15px;
+      margin-left: 20px;
+      border-radius: 75%;
+
+      cursor: pointer;
+      background-color: rgba(0,0,0,.7)
+    }
+
+    i.fas {
+      display: flex;
+      padding-top: 5px 10px 5px 10px;
+      color: white;
+      font-size: 100%;
+    }
+
+  }
+
+  
+  .session-navbar-loggedin-library {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    
+    position: relative;
+    align-items: center;
+    align-content: space-between;
+    
+    right: 50px;
+    margin-left: 10px;
+    padding: 10px;
+    
+    li {
+      display: flex;
+      align-items: center;
+      padding: 2px 10px;
+    }
+    
+    li:nth-child(2) {
+      border-right: 2px solid white;
+      padding-right: 20px;
+    }
+    
+    li:nth-child(3) {
+      margin-left: 10px;
+    }
+    
+    
+    li > p, li > a {
+      width: 200%;
+    }
+    
+    a, a:link {
+      text-decoration: none;
+      color: white;
+    }
+    
+  }
+  
+  .library-navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    list-style-type: none;
+    color: white;
+    cursor: pointer;
+    width: 555px;
+  
+    li {
+      padding: 9px 15px;
+      margin-left: 10px;
+    }
+    
+    li:hover, 
+    li:focus, 
+    li:active {
+      background-color: #282828;
+      padding: 9px 15px;
+      margin-left: 10px;
+      border-radius: 5px;
+    }
+  }
+  .session-navbar-library > a:hover {
+    color: #1ed760;
+  }
+}
+
+// -----------------------------------------------------
+
+// Navbar for search
+.app-header-loggedin-search {
+  display: flex;
+  background-color: #121212;
+  font-family: 'Montserrat', sans-serif;
+  position: fixed;
+  width: 997px;
+  z-index: 3;
+  flex-direction: row;
+  justify-content: space-between;
+  font-weight: bold;
+  padding: 10px 10px 10px 10px;
+  right: 0px;
+  isolation: isolate;
 
   .app-header-loggedin-search > a {
     width: 50%
@@ -231,19 +356,16 @@
 
     .search-navbar {
       background-color: white;
-      // color: white;
-      // overflow: hidden;
-      // font-family: 'Montserrat', sans-serif;
-      
-      width: 333px;
-      // height: 100%;
+      font-family: 'Montserrat', sans-serif;
       
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
       align-items: center;
+
+      width: 333px;
       border-radius: 50px;
-      padding: 3px 0px 3px 10px;
+      padding: 4px 0px 4px 10px;
       cursor: text;
       
       .search-input {
@@ -260,6 +382,12 @@
         border: none;
         cursor: text;
         z-index: 1;
+      }
+
+      .search-input:focus {
+        border-width: 0px;
+        outline: none;
+        cursor: text;
       }
       
       #magnifying-glass-search {
@@ -327,6 +455,7 @@
   font-weight: bold;
   padding: 10px 10px 10px 10px;
   right: 0px;
+  isolation: isolate;
 
   .app-header-loggedin-splash > a {
     width: 50%

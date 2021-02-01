@@ -1,4 +1,4 @@
-.song-index-list {
+.artist-index-list {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -11,7 +11,7 @@
   }
 }
 
-.song-item {
+.artist-item {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,12 +31,12 @@
     display: none;
   }
 
-  .song-photo {
+  .artist-photo {
     height: 95%;
     width: 95%;
   }
   
-  .song-title {
+  .artist-title {
     font-size: 15px;
     // margin-top: 25px;
     
