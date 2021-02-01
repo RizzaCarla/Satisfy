@@ -13,6 +13,8 @@ Artist.destroy_all
 Album.destroy_all
 Song.destroy_all
 
+# ------------------------------------------------------------------------------------
+
 # Satisfy Users
 
 demo = User.create!(
@@ -56,27 +58,53 @@ san = User.create!(
   password: 'ImAnAngelInDisguise'
 )
 
+# ------------------------------------------------------------------------------------
+
 # Satisfy Artists
 
 fkj = Artist.create!(
   artist_name: 'FKJ'
 )
 
+artistphotofile1 = open('https://satisfy-seed.s3-us-west-1.amazonaws.com/images/fkjartist.jpg')
+
+fkj.photoUrl.attach(io: artistphotofile1, filename: 'fkjartist.jpg')
+
+# ===
+
 junemarieezy = Artist.create!(
   artist_name: '(((O)))'
 )
 
-# Satisfy Albums
+artistphotofile2 = open('https://satisfy-seed.s3-us-west-1.amazonaws.com/images/junemarieezyartist.jpg')
 
+junemarieezy.photoUrl.attach(io: artistphotofile2, filename: 'junemarieezyartist.jpg')
+
+# ===
+# ------------------------------------------------------------------------------------
+
+# Satisfy Albums
 ylangalbum = Album.create!(
   album_title: 'Ylang Ylang EP',
   artist_id: fkj.id
 )
 
+albumphotofile1 = open('https://satisfy-seed.s3-us-west-1.amazonaws.com/images/ylang_photo.JPG')
+
+ylangalbum.photoUrl.attach(io: albumphotofile1, filename: 'ylang_photo.JPG')
+
+# ===
+
 junemarieezyalbum2 = Album.create!(
   album_title: '(((2)))',
   artist_id: junemarieezy.id
 )
+
+albumphotofile2 = open('https://satisfy-seed.s3-us-west-1.amazonaws.com/images/junemarieezy2_photo.JPG')
+
+junemarieezyalbum2.photoUrl.attach(io: albumphotofile2, filename: 'junemarieezy2_photo.JPG')
+
+# ------------------------------------------------------------------------------------
 
 # Satisfy Songs
 
@@ -86,9 +114,11 @@ iFeel = Song.create!(
   total_song_time: '4:29'
 )
 
-file1 = open('https://satisfy-seed.s3-us-west-1.amazonaws.com/songs/iFeel.mp3')
+songfile1 = open('https://satisfy-seed.s3-us-west-1.amazonaws.com/songs/iFeel.mp3')
 
-iFeel.songUrl.attach(io: file1, filename: 'iFeel.mp3')
+iFeel.songUrl.attach(io: songfile1, filename: 'iFeel.mp3')
+
+# ===
 
 ylang = Song.create!(
   album_id: ylangalbum.id,
@@ -96,6 +126,6 @@ ylang = Song.create!(
   total_song_time: '3:33'
 )
 
-file2 = open('https://satisfy-seed.s3-us-west-1.amazonaws.com/songs/Ylang_Ylang.mp3')
+songfile2 = open('https://satisfy-seed.s3-us-west-1.amazonaws.com/songs/Ylang_Ylang.mp3')
 
-ylang.songUrl.attach(io: file2, filename: 'Ylang_Ylang.mp3')
+ylang.songUrl.attach(io: songfile2, filename: 'Ylang_Ylang.mp3')
