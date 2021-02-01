@@ -7,6 +7,7 @@ import SignUpContainer from './signup/signup_form_container';
 import LoginContainer from './login/login_form_container';
 import SplashContainer from './splash/splash_container';
 import HomePageContainer from './home/home_page_container';
+import LibraryContainer from './library/library_container';
 
 import NavBarContainer from './nav-bar/navbar_container';
 import SidebarContainer from './side-bar/sidebar_container';
@@ -23,8 +24,8 @@ import AlbumShowContainer from './album/album_show_container';
 
 
 const App = () => (
-  <div>
-    <header>
+  <div className='outermost-div'>
+    <header className='inner-header'>
       <NavBarContainer/>
     </header>
       <ProtectedRoute path='/albums/:id' component={AlbumShowContainer}></ProtectedRoute>
@@ -34,6 +35,7 @@ const App = () => (
       <ProtectedRoute path='/songs/:id' component={SongShowContainer}></ProtectedRoute>
       <ProtectedRoute path='/songs' component={SongsIndexContainer}></ProtectedRoute>
       <ProtectedRoute path='/search' component={SearchContainer}></ProtectedRoute>
+      <ProtectedRoute path='/library' component={LibraryContainer}></ProtectedRoute>
       <ProtectedRoute path='/home' component={HomePageContainer}></ProtectedRoute>
       <ProtectedRoute path='/' component={SidebarContainer}></ProtectedRoute>
       <ProtectedRoute path='/' component={MusicPlayerContainer}></ProtectedRoute>
