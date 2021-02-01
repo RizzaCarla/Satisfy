@@ -92,8 +92,8 @@ class NavBar extends React.Component {
       )
     } else if (this.props.location.pathname === "/library") {
       return (
-        <div className="app-header-loggedin">
-          <div className="loggedin-navigation">
+        <div className="app-header-loggedin-library">
+          <div className="loggedin-navigation-library">
             <div className="backward">
               <i className='fas'>&#xf104;</i>
             </div>
@@ -102,11 +102,11 @@ class NavBar extends React.Component {
             </div>
           </div>
           <nav className="library-navbar">
-            <li>Artists</li>
-            <li>Albums</li>
-            <li>Playlists</li>
+            <li className="library-artists-tab">Artists</li>
+            <li className="library-albums-tab">Albums</li>
+            <li className="library-playlists-tab">Playlists</li>
           </nav>
-          <nav className='session-navbar-loggedin'>
+          <nav className='session-navbar-loggedin-library'>
             <li>
               <a href='https://github.com/RizzaCarla' target="_blank" >Github</a>
             </li>
