@@ -9,7 +9,7 @@ class Search extends React.Component {
     return(
       <div className="search-results">
 
-        <SongIndexContainer />
+        {/* <SongIndexContainer /> */}
         {/* <ArtistIndexContainer /> */}
         {/* <AlbumIndexContainer /> */}
       </div>
