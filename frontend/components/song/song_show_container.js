@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import SongShow from './song_show';
 
 const msp = (state, ownProps) => {
-  debugger
   return(
 
     {song: state.songs[ownProps.match.params.songId]}
