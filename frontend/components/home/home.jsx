@@ -7,18 +7,26 @@ class HomePage extends React.Component {
   render() {
     return (
       <div className='home-page-container'>
-        <div className='disover-song-container'>
-          {/* <h1>Discover New Songs</h1> */}
-          <SongIndexContainer />
+        <div className='inner-home-page-container'>
+          <div className='discover-container'>
+            <h1>Discover New Songs</h1>
+            <div className='discover-index'>
+              <SongIndexContainer />
+            </div>
+          </div>
+          <div className='discover-container'>
+            <h1>Discover New Artists</h1>
+            <div className='discover-index'>
+              <ArtistIndexContainer />
+            </div>
+          </div>
+          <div className='discover-container'>
+            <h1>Discover New Albums</h1>
+            <div className='discover-index'>
+              <AlbumIndexContainer />
+            </div>
+          </div>
         </div>
-        {/* <div className='disover-artist-container'>
-          <h1>Discover New Artists</h1>
-          <ArtistIndexContainer />
-        </div>
-        <div className='disover-album-container'>
-          <h1>Discover New Albums</h1>
-          <AlbumIndexContainer />
-        </div> */}
       </div>
     )
   }
