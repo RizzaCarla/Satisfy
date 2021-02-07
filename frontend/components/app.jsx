@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { Redirect } from 'react-router'
 import { AuthRoute, ProtectedRoute } from '../util/route_util'
 
 // Containers
@@ -25,35 +26,22 @@ import AlbumShowContainer from './album/album_show_container';
 
 const App = () => (
   <div className='outermost-div'>
-    <header className='inner-header'>
-      <NavBarContainer/>
-    </header>
-      <ProtectedRoute path='/albums/:id' component={AlbumShowContainer}></ProtectedRoute>
-      <ProtectedRoute path='/albums' component={AlbumsIndexContainer}></ProtectedRoute>
-      <ProtectedRoute path='/artists/:id' component={ArtistShowContainer}></ProtectedRoute>
-      <ProtectedRoute path='/artists' component={ArtistsIndexContainer}></ProtectedRoute>
-      <ProtectedRoute path='/songs/:id' component={SongShowContainer}></ProtectedRoute>
-      <ProtectedRoute path='/songs' component={SongsIndexContainer}></ProtectedRoute>
-      <ProtectedRoute path='/search' component={SearchContainer}></ProtectedRoute>
-      <ProtectedRoute path='/library' component={LibraryContainer}></ProtectedRoute>
-      <ProtectedRoute path='/home' component={HomePageContainer}></ProtectedRoute>
-      <ProtectedRoute path='/' component={SidebarContainer}></ProtectedRoute>
-      <ProtectedRoute path='/' component={MusicPlayerContainer}></ProtectedRoute>
     <Switch>
+      <ProtectedRoute exact path='/albums/:id' component={AlbumShowContainer}></ProtectedRoute>
+      <ProtectedRoute exact path='/albums' component={AlbumsIndexContainer}></ProtectedRoute>
+      <ProtectedRoute exact path='/artists/:id' component={ArtistShowContainer}></ProtectedRoute>
+      <ProtectedRoute exact path='/artists' component={ArtistsIndexContainer}></ProtectedRoute>
+      <ProtectedRoute exact path='/songs/:id' component={SongShowContainer}></ProtectedRoute>
+      <ProtectedRoute exact path='/songs' component={SongsIndexContainer}></ProtectedRoute>
+      <ProtectedRoute exact path='/search' component={SearchContainer}></ProtectedRoute>
+      <ProtectedRoute exact path='/library' component={LibraryContainer}></ProtectedRoute>
+      <ProtectedRoute exact path='/home' component={HomePageContainer}></ProtectedRoute>
       <AuthRoute exact path='/login' component={LoginContainer}></AuthRoute>
       <AuthRoute exact path='/signup' component={SignUpContainer}></AuthRoute>
       <Route exact path='/us' component={SplashContainer}></Route>
+      <Redirect to='/us'/>
     </Switch>
   </div>
 )
 
 export default App
-
-// import ShowSongContainer from './song/song_show_container'
-{/* <Route path='/collection/playlists/new' component={}></Route>
-<ProtectedRoute exact path='/songs/:songId' component={ShowSongContainer}></ProtectedRoute>
-<Route path='/collection/playlists/:playlistId' component={}></Route>
-<Route path='/collection/mainPlaylist' component={}></Route>
-<Route path='/collection/queue' component={}></Route>
-<Route path='/album/:albumId' component={}></Route>
-<Route path='/artist/:artistId' component={}></Route> */}
