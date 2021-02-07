@@ -19,18 +19,6 @@ class AlbumIndexItem extends React.Component {
 
   render() {
 
-    if (!this.props.album) {
-      return null
-    }
-
-    if (!this.props.artist) {
-      return null
-    }
-
-    if (!this.props.artist.photoUrl) {
-      return null
-    }
-
     if (Object.values(this.props.artists).length === 0) {
       return <div></div>
     } else {
