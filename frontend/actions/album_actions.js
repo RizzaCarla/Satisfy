@@ -22,3 +22,8 @@ export const fetchAlbum = (id) => dispatch => (
   albumAPIUtil.fetchAlbum(id)
     .then((album) => dispatch(receiveAlbum(album)))
 )
+
+export const searchAlbums = searchQuery => dispatch => (
+  albumAPIUtil.searchAlbums(searchQuery)
+    .then((albums) => dispatch(receiveAlbums(albums)))
+)

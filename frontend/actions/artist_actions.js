@@ -22,3 +22,8 @@ export const fetchArtist = id => dispatch => (
   artistAPIUtil.fetchArtist(id)
     .then((artist) => dispatch(receiveArtist(artist)))
 )
+
+export const searchArtists = searchQuery => dispatch => (
+  artistAPIUtil.searchArtists(searchQuery)
+    .then((artists) => dispatch(receiveArtists(artists)))
+)
