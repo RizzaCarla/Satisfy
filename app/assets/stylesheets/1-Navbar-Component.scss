@@ -26,7 +26,7 @@
     width: 150px;
     height: auto;
     position: relative;
-    margin-left: 50px;
+    margin-left: 45px;
   }
   
   .session-navbar-loggedout {
@@ -367,6 +367,14 @@
       border-radius: 50px;
       padding: 4px 0px 4px 10px;
       cursor: text;
+
+      
+      #search-close-button {
+        cursor: pointer;
+        position: relative;
+        right:0px;
+        visibility: hidden
+      }
       
       .search-input {
         display: flex;
@@ -374,7 +382,7 @@
         align-items: center;
         font-family: 'Montserrat', sans-serif;
         font-size: 14px;
-        width: 280px;
+        width: 260px;
         height: 30px;
         letter-spacing: .015em;
 
@@ -467,7 +475,7 @@
     justify-content: center;
     align-items: center;
 
-    margin-left: 60px;
+    margin-left: 65px;
     width: 150px;
     height: auto;
   }
