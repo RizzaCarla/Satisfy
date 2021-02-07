@@ -3,9 +3,9 @@ import AlbumIndexItem from './album_index_item'
 
 class AlbumIndex extends React.Component {
   
-  componentDidMount() {
-    this.props.fetchArtists()
-      .then(() => this.props.fetchAlbums() )
+  componentWillMount() {
+    this.props.fetchAlbums()
+      .then(() => this.props.fetchArtists() )
   }
 
   render() {

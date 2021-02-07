@@ -11,13 +11,25 @@ class AlbumIndexItem extends React.Component {
   handlePlay() {
     return (
       (e) => {
-        this.props.changeCurrentSong(this.props.song.id)
+        // this.props.changeCurrentSong(this.props.song.id)
         pButton.innerHTML = '&#xe035;'
       }
     )
   }
 
   render() {
+
+    if (!this.props.album) {
+      return null
+    }
+
+    if (!this.props.artist) {
+      return null
+    }
+
+    if (!this.props.artist.photoUrl) {
+      return null
+    }
 
     if (Object.values(this.props.artists).length === 0) {
       return <div></div>
