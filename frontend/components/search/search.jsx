@@ -2,10 +2,9 @@ import React from 'react';
 import SideBarContainer from '../side-bar/sidebar_container';
 import MusicPlayerContainer from '../music-player/music_player_container';
 import NavBarContainer from '../nav-bar/navbar_container';
-import SearchSongIndexItem from '../search/search-song-result/search_song_index_item';
-import AlbumIndexItem from '../album/album_index_item';
-import ArtistIndexItem from '../artist/artist_index_item';
-import SearchSongIndexContainer from './search-song-result/search_song_index_container';
+import SearchSongIndexItem from './search-result/search_song_index_item';
+import SearchAlbumIndexItem from './search-result/search_album_index_item';
+import SearchArtistIndexItem from './search-result/search_artist_index_item';
 
 class Search extends React.Component {
   constructor(props) {
@@ -50,52 +49,89 @@ class Search extends React.Component {
           })
         })
         
-        // CHECK IF SEARCH TERM EXISTS AND IF IT MATCHES ALBUM TITLE
-        this.props.searchAlbums(this.props.searchQuery)
-        
-        // CHECK IF SEARCH TERM EXISTS AND IF IT MATCHES ARTIST NAME
-        this.props.searchArtists(this.props.searchQuery)
-        
+      // CHECK IF SEARCH TERM EXISTS AND IF IT MATCHES ALBUM TITLE
+      this.props.searchAlbums(this.props.searchQuery)
+        .then((result) => {
+          Object.values(result.albums).forEach((album) => {
+            this.props.fetchArtist(album.artist_id)
+              .then((result2) => {
+                let artistName = {
+                  artistName: result2.artist.artist_name
+                }
+                this.setState({
+                  filteredAlbums: { [album.id]: Object.assign(album, artistName) }
+                })
+              })
+          })
+        })
+
+      // CHECK IF SEARCH TERM EXISTS AND IF IT MATCHES ARTIST NAME
+      this.props.searchArtists(this.props.searchQuery)
+        .then((result) => {
+          Object.values(result.artists).forEach((artist) => {
+            this.setState({
+              filteredArtists: { [artist.id]: artist }
+            })
+          })
+        })
       }
     }  
     
-    componentDidUpdate(prevProps) {
-      // CHECKS IF PROPS CHANGED
-      if (this.props.searchQuery && this.props.searchQuery !== prevProps.searchQuery) {
-        
-        // CHECK IF SEARCH TERM EXISTS AND IF IT MATCHES SONG TITLE
-        this.props.searchSongs(this.props.searchQuery)
-        .then((result) => {
-          Object.values(result.songs).forEach((song) => {
-            this.props.fetchAlbum(song.album_id)
-            .then((result2) => {
-              this.props.fetchArtist(result2.album.artist_id)
-              .then((result3) => {
-                let photoUrl = {
-                  photoUrl: result2.album.photoUrl
-                }
-                let artistName = {
-                  artistName: result3.artist.artist_name
-                }
-                this.setState({
-                  filteredSongs: { [song.id]: Object.assign(song, photoUrl, artistName) }
-                })
+  componentDidUpdate(prevProps) {
+    // CHECKS IF PROPS CHANGED
+    if (this.props.searchQuery && this.props.searchQuery !== prevProps.searchQuery) {
+      
+      // CHECK IF SEARCH TERM EXISTS AND IF IT MATCHES SONG TITLE
+      this.props.searchSongs(this.props.searchQuery)
+      .then((result) => {
+        Object.values(result.songs).forEach((song) => {
+          this.props.fetchAlbum(song.album_id)
+          .then((result2) => {
+            this.props.fetchArtist(result2.album.artist_id)
+            .then((result3) => {
+              let photoUrl = {
+                photoUrl: result2.album.photoUrl
+              }
+              let artistName = {
+                artistName: result3.artist.artist_name
+              }
+              this.setState({
+                filteredSongs: { [song.id]: Object.assign(song, photoUrl, artistName) }
               })
             })
           })
         })
-        
-        // CHECK IF SEARCH TERM EXISTS AND IF IT MATCHES ALBUM TITLE
-        this.props.searchAlbums(this.props.searchQuery)
-        
-        // CHECK IF SEARCH TERM EXISTS AND IF IT MATCHES ARTIST NAME
-        this.props.searchArtists(this.props.searchQuery)
-        
-      }
+      })
+      
+      // CHECK IF SEARCH TERM EXISTS AND IF IT MATCHES ALBUM TITLE
+      this.props.searchAlbums(this.props.searchQuery)
+        .then((result) => {
+          Object.values(result.albums).forEach((album) => {
+            this.props.fetchArtist(album.artist_id)
+              .then((result2) => {
+                let artistName = {
+                  artistName: result2.artist.artist_name
+                }
+                this.setState({
+                  filteredAlbums: { [album.id]: Object.assign(album, artistName) }
+                })
+              })
+          })
+        })
+
+      // CHECK IF SEARCH TERM EXISTS AND IF IT MATCHES ARTIST NAME
+      this.props.searchArtists(this.props.searchQuery)
+        .then((result) => {
+          Object.values(result.artists).forEach((artist) => {
+            this.setState({
+              filteredArtists: { [artist.id]: artist }
+            })
+          })
+        })
     }
+  }
     
     handleSongs () {
-      console.log(this.state.filteredSongs)
       if (Object.values(this.state.filteredSongs).length) {
         return (
           <div className="search-categories">
@@ -103,11 +139,8 @@ class Search extends React.Component {
           {
             Object.values(this.state.filteredSongs).map((song) => (
               <SearchSongIndexItem 
-              key={song.id} song={song} songId={song.id} photoUrl={song.photoUrl} artistName={song.artistName} songTitle={song.song_title}
-              // key={song.id} song={song} songId={song.id}
-              // artists={this.props.artists} albums={this.props.albums}
-              // fetchSong={this.props.fetchSong} fetchAlbum={this.props.fetchAlbum}
-              // fetchArtist={this.props.fetchArtist}
+              key={song.id} song={song} songId={song.id} photoUrl={song.photoUrl} 
+              artistName={song.artistName} songTitle={song.song_title}
                />
               ))
             }
@@ -123,14 +156,17 @@ class Search extends React.Component {
   }
   
   handleAlbums() {
-    if (this.props.albums.length) {
+    if (Object.values(this.state.filteredAlbums).length) {
       return (
         <div className="search-categories">
           <h1>Albums</h1>
-          {this.props.albums.map((album) => (
-            <AlbumIndexItem key={album.id} album={album} albumId={album.id}
-            albums={this.props.albums} artists={this.props.artists}
-            fetchAlbum={this.props.fetchAlbum} fetchArtist={this.props.fetchArtist} />
+          {
+          Object.values(this.state.filteredAlbums).map((album) => (
+            <SearchAlbumIndexItem 
+              key={album.id} album={album} albumId={album.id}
+              artistName={album.artistName} photoUrl={album.photoUrl}
+              albumTitle={album.album_title}
+            />
             ))}
         </div>
       )
@@ -144,14 +180,18 @@ class Search extends React.Component {
   }
   
   handleArtists() {
-    if (this.props.artists.length) {
+    if (Object.values(this.state.filteredArtists).length)  {
       return (
         <div className="search-categories">
           <h1>Artists</h1>
-          {this.props.artists.map((artist) => (
-            <ArtistIndexItem key={artist.id} artist={artist} artistId={artist.id}
-            fetchArtist={this.props.fetchArtist} />
-            ))}
+          {
+          Object.values(this.state.filteredArtists).map((artist) => (
+            <SearchArtistIndexItem key={artist.id} artist={artist} 
+            artistId={artist.id} artistName={artist.artist_name}
+            photoUrl={artist.photoUrl}
+            />
+            ))
+          }
         </div>
       )
     } else {      
@@ -173,10 +213,9 @@ class Search extends React.Component {
           <MusicPlayerContainer />
           <div className="search-results-container">
             <div className='inner-search-results-container'>
-              {/* <SearchSongIndexContainer /> */}
               {this.handleSongs()}
-              {/* {this.handleAlbums()}
-              {this.handleArtists()} */}
+              {this.handleAlbums()}
+              {this.handleArtists()}
             </div>
           </div>
         </div>
