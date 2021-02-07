@@ -5,7 +5,15 @@ class Api::AlbumsController < ApplicationController
   end
 
   def index
-    @albums = Album.all
+    if params[:albumTitle]
+      args = params[:albumTitle].split(" ")
+      @albums = []
+      args.each do |arg|
+        @albums.concat(Album.where("lower(album_title) LIKE ?", "%#{arg.downcase}%"))
+      end
+    else
+      @albums = Album.all
+    end
     render :index
   end
 end

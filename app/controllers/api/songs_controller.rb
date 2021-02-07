@@ -1,13 +1,5 @@
 class Api::SongsController < ApplicationController
-  # def show
-  #   begin
-  #     @song = Song.find_by(id: params[:id])
-  #     render :show
-  #   rescue
-  #     puts 'you messed up'
-  #   end
-  # end
-  
+
   def show
     @song = Song.find_by(id: params[:id])
     if @song
@@ -18,7 +10,15 @@ class Api::SongsController < ApplicationController
   end
 
   def index
-    @songs = Song.all
+    if (params[:songTitle])
+      args = params[:songTitle].split(" ")
+      @songs = []
+      args.each do |arg|
+        @songs.concat(Song.where("lower(song_title) LIKE ?", "%#{arg.downcase}%"))
+      end
+    else
+      @songs = Song.all
+    end
     render :index
   end
 end
