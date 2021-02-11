@@ -27,11 +27,11 @@ import AlbumShowContainer from './album/album_show_container';
 const App = () => (
   <div className='outermost-div'>
     <Switch>
-      <ProtectedRoute exact path='/albums/:id' component={AlbumShowContainer}></ProtectedRoute>
+      <ProtectedRoute exact path='/albums/:albumId' component={AlbumShowContainer}></ProtectedRoute>
       <ProtectedRoute exact path='/albums' component={AlbumsIndexContainer}></ProtectedRoute>
-      <ProtectedRoute exact path='/artists/:id' component={ArtistShowContainer}></ProtectedRoute>
+      <ProtectedRoute exact path='/artists/:artistId' component={ArtistShowContainer}></ProtectedRoute>
       <ProtectedRoute exact path='/artists' component={ArtistsIndexContainer}></ProtectedRoute>
-      <ProtectedRoute exact path='/songs/:id' component={SongShowContainer}></ProtectedRoute>
+      <ProtectedRoute exact path='/songs/:songId' component={SongShowContainer}></ProtectedRoute>
       <ProtectedRoute exact path='/songs' component={SongsIndexContainer}></ProtectedRoute>
       <ProtectedRoute exact path='/search' component={SearchContainer}></ProtectedRoute>
       <ProtectedRoute exact path='/library' component={LibraryContainer}></ProtectedRoute>
