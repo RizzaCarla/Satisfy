@@ -13,6 +13,18 @@ class Song < ApplicationRecord
   belongs_to :album, 
     foreign_key: :album_id,
     class_name: :Album
+
+  has_one :artist,
+    through: :album,
+    source: :artist
+
+  has_one :albumPhotoUrl,
+    through: :album,
+    source: :albumPhotoUrl_attachment
+
+  has_one :artistPhotoUrl,
+    through: :artist,
+    source: :artistPhotoUrl_attachment
     
   has_many :main_likes,
     foreign_key: :main_liked_song_id,
