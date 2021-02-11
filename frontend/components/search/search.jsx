@@ -35,14 +35,14 @@ class Search extends React.Component {
               .then((result2) => {
                 this.props.fetchArtist(result2.album.artist_id)
                   .then((result3) => {
-                    let photoUrl = {
-                      photoUrl: result2.album.photoUrl
+                    let albumPhotoUrl = {
+                      albumPhotoUrl: result2.album.albumPhotoUrl
                     }
                     let artistName = {
                       artistName: result3.artist.artist_name
                     }
                     this.setState({
-                      filteredSongs: { [song.id]: Object.assign(song, photoUrl, artistName ) }
+                      filteredSongs: { [song.id]: Object.assign(song, albumPhotoUrl, artistName ) }
                     })
                   })
               })
@@ -89,14 +89,14 @@ class Search extends React.Component {
           .then((result2) => {
             this.props.fetchArtist(result2.album.artist_id)
             .then((result3) => {
-              let photoUrl = {
-                photoUrl: result2.album.photoUrl
+              let albumPhotoUrl = {
+                albumPhotoUrl: result2.album.albumPhotoUrl
               }
               let artistName = {
                 artistName: result3.artist.artist_name
               }
               this.setState({
-                filteredSongs: { [song.id]: Object.assign(song, photoUrl, artistName) }
+                filteredSongs: { [song.id]: Object.assign(song, albumPhotoUrl, artistName) }
               })
             })
           })
@@ -131,19 +131,23 @@ class Search extends React.Component {
     }
   }
     
-    handleSongs () {
-      if (Object.values(this.state.filteredSongs).length) {
-        return (
-          <div className="search-categories">
+  handleSongs () {
+    if (Object.values(this.state.filteredSongs).length) {
+      return (
+        <div className="search-categories">
           <h1>Songs</h1>
-          {
-            Object.values(this.state.filteredSongs).map((song) => (
-              <SearchSongIndexItem 
-              key={song.id} song={song} songId={song.id} photoUrl={song.photoUrl} 
-              artistName={song.artistName} songTitle={song.song_title}
-               />
-              ))
-            }
+          <ul>
+            {
+              Object.values(this.state.filteredSongs).map((song) => (
+                <li key={song.id}>
+                  <SearchSongIndexItem 
+                    song={song} songId={song.id} albumPhotoUrl={song.albumPhotoUrl} 
+                    artistName={song.artistName} songTitle={song.song_title}
+                    />
+                </li>
+                ))
+              }
+          </ul>
         </div>
       )
     } else {
@@ -160,14 +164,18 @@ class Search extends React.Component {
       return (
         <div className="search-categories">
           <h1>Albums</h1>
-          {
-          Object.values(this.state.filteredAlbums).map((album) => (
-            <SearchAlbumIndexItem 
-              key={album.id} album={album} albumId={album.id}
-              artistName={album.artistName} photoUrl={album.photoUrl}
-              albumTitle={album.album_title}
-            />
+          <ul>
+            {
+              Object.values(this.state.filteredAlbums).map((album) => (
+                <li key={album.id} >
+                <SearchAlbumIndexItem 
+                  album={album} albumId={album.id}
+                    artistName={album.artistName} albumPhotoUrl={album.albumPhotoUrl}
+                  albumTitle={album.album_title}
+                  />
+              </li>
             ))}
+          </ul>
         </div>
       )
     } else {
@@ -184,14 +192,18 @@ class Search extends React.Component {
       return (
         <div className="search-categories">
           <h1>Artists</h1>
-          {
-          Object.values(this.state.filteredArtists).map((artist) => (
-            <SearchArtistIndexItem key={artist.id} artist={artist} 
-            artistId={artist.id} artistName={artist.artist_name}
-            photoUrl={artist.photoUrl}
-            />
-            ))
-          }
+          <ul>
+            {
+              Object.values(this.state.filteredArtists).map((artist) => (
+                <li key={artist.id}>
+                <SearchArtistIndexItem  artist={artist} 
+                artistId={artist.id} artistName={artist.artist_name}
+                artistPhotoUrl={artist.artistPhotoUrl}
+                />
+              </li>
+              ))
+            }
+          </ul>
         </div>
       )
     } else {      
@@ -213,9 +225,15 @@ class Search extends React.Component {
           <MusicPlayerContainer />
           <div className="search-results-container">
             <div className='inner-search-results-container'>
-              {this.handleSongs()}
-              {this.handleAlbums()}
-              {this.handleArtists()}
+              <div className='filtered-container'>
+                {this.handleSongs()}
+              </div>
+              <div className='filtered-container'>
+                {this.handleArtists()}
+              </div>
+              <div className='filtered-container'>
+                {this.handleAlbums()}
+              </div>
             </div>
           </div>
         </div>
@@ -228,7 +246,7 @@ class Search extends React.Component {
           <MusicPlayerContainer />
           <div className="search-results-container">
             <div className='inner-search-results-container'>
-              <h1>Enter keyworks on the searchbar above to search for your favorite songs, artists, and albums.</h1>
+              <h1 className='default-message'></h1>
             </div>
           </div>
         </div>
