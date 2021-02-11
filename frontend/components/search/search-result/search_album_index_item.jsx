@@ -22,14 +22,18 @@ class AlbumIndexItem extends React.Component {
         <div className='album-index-item-container'>
           <Link to={`/albums/${this.props.albumId}`}>
             <div className='album-item'>
-              <img className='album-photo' src={this.props.photoUrl} />
-              <img className="button-logo" src={window.playButton} onClick={this.handlePlay()} />
-              <h1 className="album-title">
-                {this.props.albumTitle}
-              </h1>
-              <p>
-                {this.props.artistName}
-              </p>
+              <div className='album-item-images'>
+                <img className='album-photo' src={this.props.albumPhotoUrl} />
+              </div>
+              {/* <img className="button-logo" src={window.playButton} onClick={this.handlePlay()} /> */}
+              <div className='album-item-details'>
+                <h1 className="album-title">
+                  {this.props.albumTitle}
+                </h1>
+                <p>
+                  {this.props.artistName}
+                </p>
+              </div>
             </div>
           </Link>
         </div>

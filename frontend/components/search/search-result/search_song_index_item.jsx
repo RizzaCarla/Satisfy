@@ -21,14 +21,18 @@ class SearchSongIndexItem extends React.Component {
       <div className='song-index-item-container'>
         <Link to={`/songs/${this.props.songId}`}>
           <div className='song-item'>
-            <img className='song-photo' src={this.props.photoUrl} />
-            <img className="button-logo" src={window.playButton} onClick={this.handlePlay()} />
-            <h1 className="song-title">
-              {this.props.songTitle}
-            </h1>
-            <p>
-              {this.props.artistName}
-            </p>
+            <div className='song-item-images'>
+              <img className='song-photo' src={this.props.albumPhotoUrl} />
+            </div>
+            {/* <img className="button-logo" src={window.playButton} onClick={this.handlePlay()} /> */}
+            <div className='song-item-details'>
+              <h1 className="song-title">
+                {this.props.songTitle}
+              </h1>
+              <p>
+                {this.props.artistName}
+              </p>
+            </div>
           </div>
         </Link>
       </div>
