@@ -68,7 +68,7 @@ fkj = Artist.create!(
 
 artistphotofile1 = open('https://satisfy-seed.s3-us-west-1.amazonaws.com/images/fkjartist.jpg')
 
-fkj.photoUrl.attach(io: artistphotofile1, filename: 'fkjartist.jpg')
+fkj.artistPhotoUrl.attach(io: artistphotofile1, filename: 'fkjartist.jpg')
 
 # ===
 
@@ -78,7 +78,7 @@ junemarieezy = Artist.create!(
 
 artistphotofile2 = open('https://satisfy-seed.s3-us-west-1.amazonaws.com/images/junemarieezyartist.jpg')
 
-junemarieezy.photoUrl.attach(io: artistphotofile2, filename: 'junemarieezyartist.jpg')
+junemarieezy.artistPhotoUrl.attach(io: artistphotofile2, filename: 'junemarieezyartist.jpg')
 
 # ===
 # ------------------------------------------------------------------------------------
@@ -91,7 +91,7 @@ ylangalbum = Album.create!(
 
 albumphotofile1 = open('https://satisfy-seed.s3-us-west-1.amazonaws.com/images/ylang_photo.JPG')
 
-ylangalbum.photoUrl.attach(io: albumphotofile1, filename: 'ylang_photo.JPG')
+ylangalbum.albumPhotoUrl.attach(io: albumphotofile1, filename: 'ylang_photo.JPG')
 
 # ===
 
@@ -102,7 +102,7 @@ junemarieezyalbum2 = Album.create!(
 
 albumphotofile2 = open('https://satisfy-seed.s3-us-west-1.amazonaws.com/images/junemarieezy2_photo.JPG')
 
-junemarieezyalbum2.photoUrl.attach(io: albumphotofile2, filename: 'junemarieezy2_photo.JPG')
+junemarieezyalbum2.albumPhotoUrl.attach(io: albumphotofile2, filename: 'junemarieezy2_photo.JPG')
 
 # ------------------------------------------------------------------------------------
 
