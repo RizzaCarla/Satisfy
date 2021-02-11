@@ -47,10 +47,12 @@
     .navigate-button {
       display: flex;
       flex-direction: row;
-      align-content: center;
+      align-content: flex-end;
+      align-items: flex-end;
       line-height: 0.9rem;
       padding: 10px;
       color: #b3b3b3;
+      font-size: 1rem;
 
       .material-icons {
         font-size: 40px;
@@ -61,18 +63,18 @@
         height: 30px;
         background-image: linear-gradient(to bottom right, blue, lightblue,);
       }
-
-      #heart {
-        position: relative;
-        top: 8px;
-        left: 8px;
-        font-size: 14px;
-      }
-
-      .far, .fa {
+      
+      #topside-buttons {
         font-size: 20px;
       }
     }
+    
+          #heart {
+            position: relative;
+            top: 8px;
+            left: 8px;
+            font-size: 14px;
+          }
 
     .playlist {
       height: 111px;
@@ -110,11 +112,19 @@
     }
 
     .createplaylist {
-      padding-top: 13px;
+      position: relative;
+      bottom: 12px;
+    }
+
+    .likedsongs {
+      position: relative;
+      bottom: 8px;
     }
     
     .navigate-button > li {
       display: flex;
+      justify-content: center;
+      align-items: center;
     }
     
     div:hover {

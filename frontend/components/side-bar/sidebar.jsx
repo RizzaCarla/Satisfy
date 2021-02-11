@@ -15,36 +15,27 @@ class Sidebar extends React.Component {
           <ul className='sidebar-list'>
             <Link to='/home'>
               <div className='navigate-button'>
-                  <i className="fa">&#xf015;</i>
-                  &nbsp; 
-                  &nbsp; 
-                  &nbsp; 
-                  <li>Home</li>
+                <i id='topside-buttons' className="fa">&#xf015;</i>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;Home</li>
               </div>
             </Link>
             <Link to='/search'>
               <div className='navigate-button'>
-                  &nbsp; 
-                  <i className="fa">&#xf002;</i>
-                  &nbsp; 
-                  &nbsp; 
-                  &nbsp; 
-                  <li>Search</li>
+                <i id='topside-buttons' className="fa">&#xf002;</i>
+                <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Search</li>
               </div>
             </Link>
             <Link to='/library'>
               <div className='navigate-button'>
-                  <i className='fas'>&#xf7a5;&#xf715;</i>
+                <p id='topside-buttons'><i  className='fas'>&#xf7a5;</i>\</p>
                   &nbsp; 
-                  &nbsp; 
-                  &nbsp; 
-                  <li> Your Library</li>
+
+                  <li>&nbsp;&nbsp;&nbsp; Your Library</li>
               </div>
             </Link>
             <h1 className='sidebar-header'>Playlists</h1>
             <div className='navigate-button'>
               <i className="material-icons">&#xe146;</i> 
-              &nbsp; 
               &nbsp; 
               &nbsp; 
               <li className='createplaylist'>Create Playlist</li>
@@ -54,7 +45,6 @@ class Sidebar extends React.Component {
               <div className='heart-bg'>
                 <i id='heart' className='fas'>&#xf004;</i>
               </div>
-              &nbsp; 
               &nbsp; 
               &nbsp; 
               &nbsp; 
@@ -82,7 +72,7 @@ class Sidebar extends React.Component {
               <li>Classical Music</li>
             </ul>
             <div className='navigate-button'>
-                <i className='far'>&#xf358;</i>
+              <i id='topside-buttons' className='far'>&#xf358;</i>
               &nbsp; 
               &nbsp; 
               <li className=''>Install App</li>
