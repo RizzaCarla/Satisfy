@@ -3,13 +3,15 @@ import ArtistIndexItem from './artist_index_item';
 
 class ArtistIndex extends React.Component {
 
-  componentDidMount() {
-    this.props.fetchArtists()
-  }
-
   render() {
 
+    if (!this.props.albums) {
+      return null
+    }
     if (!this.props.artists) {
+      return null
+    }
+    if (!this.props.songs) {
       return null
     }
 
@@ -21,7 +23,7 @@ class ArtistIndex extends React.Component {
               <ArtistIndexItem
                 artist={artist}
                 artistId={artist.id}
-                fetchArtist={this.props.fetchArtist}
+                changeCurrentSong={this.props.changeCurrentSong}
               />
             </li>
           ))}

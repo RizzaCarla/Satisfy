@@ -9,11 +9,15 @@ class ArtistIndexItem extends React.Component {
       <div className='artist-index-item-container'>
         <Link to={`/artists/${this.props.artist.id}`}>
           <div className='artist-item'>
-            <img className='artist-photo' src={this.props.artist.photoUrl} />
-            <h1 className="artist-title">
-              {this.props.artist.artist_name}
-            </h1>
-            <p>Artist</p>
+            <div className='artist-item-images'>
+              <img className='artist-photo' src={this.props.artist.artistPhotoUrl} />
+            </div>
+            <div className='artist-item-details'>
+              <h1 className="artist-title">
+                {this.props.artist.artist_name}
+              </h1>
+              <p>Artist</p>
+            </div>
           </div>
         </Link>
       </div>
