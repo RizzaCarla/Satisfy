@@ -20,4 +20,4 @@ const mdp = dispatch => ({
   changeCurrentSong: (songId) => dispatch(changeCurrentSong(songId))
 })
 
-export default connect(msp, mdp)(songsIndex)
+export default connect(null)(songsIndex)

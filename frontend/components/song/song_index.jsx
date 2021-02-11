@@ -2,12 +2,6 @@ import React from 'react'
 import SongIndexItem from './song_index_item'
 
 class songsIndex extends React.Component {
-
-  componentDidMount() {
-    this.props.fetchAlbums()
-    .then(() => this.props.fetchSongs())
-    this.props.fetchArtists()
-  }
   
   render() {
 
@@ -29,12 +23,9 @@ class songsIndex extends React.Component {
                 <SongIndexItem
                   song={song}
                   songId={song.id}
-                  albums={this.props.albums}
-                  artists={this.props.artists}
+                  songArtist={song.artist}
+                  albumPhotoUrl={song.albumPhotoUrl}
                   changeCurrentSong={this.props.changeCurrentSong}
-                  fetchSong={this.props.fetchSong}
-                  fetchAlbum={this.props.fetchAlbum}
-                  fetchArtist={this.props.fetchArtist}
                 />
               </li>
             ))}
