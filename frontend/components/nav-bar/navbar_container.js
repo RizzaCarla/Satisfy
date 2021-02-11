@@ -1,7 +1,7 @@
 import NavBar from './navbar';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/user_actions';
-import { setSearchQuery } from '../../actions/search_actions'
+import { setSearchQuery, clearSearchQuery } from '../../actions/search_actions'
 import { fetchSongs, fetchSong, searchSongs } from '../../actions/song_actions';
 import { fetchArtists, fetchArtist, searchArtists } from '../../actions/artist_actions';
 import { fetchAlbums, fetchAlbum, searchAlbums } from '../../actions/album_actions';
@@ -16,6 +16,7 @@ const msp = state => ({
 
 const mdp = dispatch => ({
   logout: () => dispatch(logout()),
+  clearSearchQuery: () => dispatch(clearSearchQuery()),
   setSearchQuery: (searchQuery) => dispatch(setSearchQuery(searchQuery)),
   fetchSongs: () => dispatch(fetchSongs()),
   fetchArtists: () => dispatch(fetchArtists()),

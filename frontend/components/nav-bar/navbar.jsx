@@ -14,12 +14,11 @@ class NavBar extends React.Component {
   }
 
   handleClearSearchQuery() {
+    document.getElementById('search-close-button').style.visibility = 'hidden';
     this.setState({
       query: ""
     })
-    if (this.state.query === '') {
-      document.getElementById('search-close-button').style.visibility = 'hidden';
-    }
+    this.props.clearSearchQuery()
   }
 
   handleSearchQuery(e) {
