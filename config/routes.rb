@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   namespace :api do
+    get 'albums/show'
+    get 'albums/index'
+  end
+  namespace :api do
     get 'songs/show'
   end
   get 'songs/Show'
@@ -14,6 +18,8 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :update, :destroy, :index, :show]
     resource :session, only: [:create, :destroy]
     resources :songs, only: [:show, :index]
+    resources :albums, only: [:show, :index]
+    resources :artists, only: [:show, :index]
   end
 
   root to: 'static_pages#root';

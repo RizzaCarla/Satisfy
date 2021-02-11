@@ -11,6 +11,8 @@
   padding-left: 2%;
   font-size: 85%;
   font-weight: bold;
+  isolation: isolate;
+  margin-bottom: 50px;
 
   #fullLogo {
     display: flex;

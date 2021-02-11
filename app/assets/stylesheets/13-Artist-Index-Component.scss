@@ -1,0 +1,83 @@
+.artist-index-item-container a {
+  text-decoration: none;
+  color: white;
+}
+
+.artist-index-list {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  margin-top: 20px;
+  
+  li {
+    width: 23%;
+    height: 65%;
+    margin-right: 40px;
+  }
+}
+
+.artist-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #2a2a2a;
+  text-decoration: none;
+
+  padding: 8px;
+  border-radius: 2%;
+  height: 100%;
+  width: 50%;
+
+  .artist-item-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    margin-top: 10px;
+    
+      .artist-photo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 90%;
+        object-fit: cover;
+        border-radius: 100%;
+      }
+  }
+
+  .artist-item-details {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+
+    position: relative;
+    top: 15px;
+      
+    h1.artist-title {
+      font-size: 15px;
+      color: white;
+      padding-bottom: 10px;
+      margin-left: 7px;
+
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+    
+    p {
+      color: lightgray;
+      font-weight: 600;
+      font-size: 13px;
+      padding-bottom: 10px;
+      margin-left: 7px;
+      
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+  }
+}

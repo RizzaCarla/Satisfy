@@ -13,7 +13,7 @@ class Sidebar extends React.Component {
             <img id="fullLogo" src={window.fullLogo} />
           </Link>
           <ul className='sidebar-list'>
-            <Link to='/us'>
+            <Link to='/home'>
               <div className='navigate-button'>
                   <i className="fa">&#xf015;</i>
                   &nbsp; 
@@ -32,7 +32,7 @@ class Sidebar extends React.Component {
                   <li>Search</li>
               </div>
             </Link>
-            <Link to='/songs'>
+            <Link to='/library'>
               <div className='navigate-button'>
                   <i className='fas'>&#xf7a5;&#xf715;</i>
                   &nbsp; 

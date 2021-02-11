@@ -17,5 +17,9 @@ class Album < ApplicationRecord
     foreign_key: :album_id,
     class_name: :Song
 
-  has_one_attached :photoUrl
+  has_one :artistPhotoUrl,
+    through: :artist,
+    source: :artistPhotoUrl_attachment
+
+  has_one_attached :albumPhotoUrl
 end

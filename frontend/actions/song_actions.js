@@ -38,3 +38,8 @@ export const fetchSong = id => dispatch => (
   songAPIUtil.fetchSong(id)
     .then((song) => dispatch(receiveSong(song)))
 )
+
+export const searchSongs = searchQuery => dispatch => (
+  songAPIUtil.searchSongs(searchQuery)
+    .then((songs) => dispatch(receiveSongs(songs)))
+)
