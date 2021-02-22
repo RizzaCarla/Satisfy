@@ -8,9 +8,28 @@ import NavBarContainer from '../nav-bar/navbar_container';
 
 class AlbumShow extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      allLikes: [],
+      albumLikeInfo: null,
+      liked: false,
+      albumSongs: [],
+    }
+  }
+
   componentDidMount(){
     this.props.fetchAlbum(this.props.match.params.albumId)
       .then(() => this.props.fetchArtists())
+      .then(() => {
+        this.props.fetchLikes()
+        .then(() => this.setState({
+          allLikes: Object.values(this.props.likes)
+        }))
+        .then(() => {
+          
+        })
+      })
       
   }
 

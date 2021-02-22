@@ -5,37 +5,51 @@ class AlbumShowPlaylist extends React.Component {
   constructor(props) {
     super(props);
     this.handlePlay = this.handlePlay.bind(this);
+    this.handleLike = this.handleLike.bind(this);
   }
-
+  
   handlePlay() {
-    console.log(this.props.albumSongs[0].id)
     return (
       (e) => {
-        this.props.changeCurrentSong(this.props.albumSongs[0].id)
-        pButton.innerHTML = '&#xe035;'
+        this.props.changeCurrentSong(this.props.songId)
+        if (audio.paused) {
+          audio.play()
+          pButton.innerHTML = '&#xe035;'
+          greenButton.innerHTML = '&#xe035;'
+        } else {
+          audio.pause()
+          pButton.innerHTML = '&#xe038;'
+          greenButton.innerHTML = '&#xe038;'
+        }
+      }
+    )
+  }
+
+  handleLike() {
+    return (
+      (e) => {
+        likeButton.innerHTML = '&#xf08a;'
       }
     )
   }
 
   render() {
-    console.log()
     return (
       <div>
         <div className='album-item-play-like'>
-          <img className="button-logo" src={window.playButton} onClick={this.handlePlay()} />
-          <i className="fa">&#xf004;</i>
+          <i className="material-icons" id='greenButton' onClick={this.handlePlay()}>&#xe038;</i>
+          <i className="fa" id='likeButton' onClick={this.handleLike()}>&#xf004;</i>
         </div>
         <div>
           <p>#</p>
           <p>TITLE</p>
-          <i className='far'>&#xf017;</i>
+          <i id='clock' className='far'>&#xf017;</i>
           <hr></hr>
         </div>
         <ul>
           {this.props.albumSongs.map((song, count) => {
             return(
               <li key={song.id}>
-                {console.log(song)}
                 <p>{count}</p>
                 <h1>{song.song_title}</h1>
                 <h1>{this.props.artistName}</h1>
