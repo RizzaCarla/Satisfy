@@ -32,7 +32,7 @@ class MusicPlayer extends React.Component {
             <div className='pButton-container'>
               <i id='pButton' onClick={this.handlePlay} className="material-icons">&#xe038;</i>
             </div>
-            <audio id='audio' src={`${this.props.songs[this.props.songId].songUrl}`} type="audio/mp3" autoPlay/>
+            <audio id='audio' src={`${this.props.songs[this.props.songId].songUrl}`} type="audio/mp3" />
           </div>
         )
       } if (this.props.songId === null) {
@@ -41,7 +41,7 @@ class MusicPlayer extends React.Component {
             <div className='pButton-container'>
               <i id='pButton' onClick={this.handlePlay} className="material-icons">&#xe038;</i>
             </div>
-            <audio id='audio'src="" type="audio/mp3" autoPlay/>
+            <audio id='audio'src="" type="audio/mp3" />
           </div>
         )
       }
