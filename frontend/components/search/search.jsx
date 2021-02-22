@@ -153,6 +153,7 @@ class Search extends React.Component {
     } else {
       return (
         <div className="search-categories">
+          <h1>Songs</h1>
           <h1>No Songs Matched</h1>
         </div>
       )
@@ -170,7 +171,7 @@ class Search extends React.Component {
                 <li key={album.id} >
                 <SearchAlbumIndexItem 
                   album={album} albumId={album.id}
-                    artistName={album.artistName} albumPhotoUrl={album.albumPhotoUrl}
+                  artistName={album.artistName} albumPhotoUrl={album.albumPhotoUrl}
                   albumTitle={album.album_title}
                   />
               </li>
@@ -181,6 +182,7 @@ class Search extends React.Component {
     } else {
       return (
         <div className="search-categories">
+          <h1>Albums</h1>
           <h1>No Albums Matched</h1>
         </div>
       )
@@ -209,6 +211,7 @@ class Search extends React.Component {
     } else {      
       return (
         <div className="search-categories">
+          <h1>Artists</h1>
           <h1>No Artists Matched</h1>
         </div>
       )
