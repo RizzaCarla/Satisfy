@@ -7,11 +7,16 @@ class NavBar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      query: ""
+      query: "",
+      currentTab: ""
     }
-    this.handleClearSearchQuery = this.handleClearSearchQuery.bind(this);
     this.handleSearchQuery = this.handleSearchQuery.bind(this);
+    this.handleLikedSongsTab = this.handleLikedSongsTab.bind(this);
+    this.handleLikedAlbumsTab = this.handleLikedAlbumsTab.bind(this);
+    this.handleLikedArtistsTab = this.handleLikedArtistsTab.bind(this);
+    this.handleClearSearchQuery = this.handleClearSearchQuery.bind(this);
   }
+
 
   handleClearSearchQuery() {
     document.getElementById('search-close-button').style.visibility = 'hidden';
@@ -28,12 +33,44 @@ class NavBar extends React.Component {
     })
     this.props.setSearchQuery(e.target.value)
     this.props.history.push("/search");
-
+    
     if (e.target.value !== '') {
       document.getElementById('search-close-button').style.visibility = 'visible';
     } else {
       document.getElementById('search-close-button').style.visibility = 'hidden';
     }
+  }
+  
+  handleLikedSongsTab(e) {
+    e.preventDefault();
+    // this.props.clearCurrentTab()
+    this.props.setCurrentTab(e.target.id)
+    this.setState({
+      currentTab: e.target.id
+    })
+    this.props.history.push("/library")
+    // console.log(this.props.currentTab)
+  }
+  
+  handleLikedAlbumsTab(e) {
+    e.preventDefault();
+    // this.props.clearCurrentTab()
+    this.props.setCurrentTab(e.target.id)
+    this.setState({
+      currentTab: e.target.id
+    })
+    this.props.history.push("/library");
+    // console.log(this.props.currentTab)
+  }
+  
+  handleLikedArtistsTab(e) {
+    e.preventDefault();
+    this.props.setCurrentTab(e.target.id)
+    this.setState({
+      currentTab: e.target.id
+    })
+    this.props.history.push("/library");
+    // console.log(this.props.currentTab)
   }
   
   render() {
@@ -136,9 +173,24 @@ class NavBar extends React.Component {
               </div>
             </div>
             <nav className="library-navbar">
-              <li className="library-artists-tab">Artists</li>
-              <li className="library-albums-tab">Albums</li>
-              <li className="library-playlists-tab">Playlists</li>
+              <li 
+                className="library-songs-tab" 
+                onClick={this.handleLikedSongsTab}
+                id="Songs">
+                Songs
+              </li>
+              <li 
+                className="library-albums-tab" 
+                onClick={this.handleLikedAlbumsTab}
+                id="Albums">
+                Albums
+              </li>
+              <li 
+                className="library-artists-tab" 
+                onClick={this.handleLikedArtistsTab}
+                id="Artists">
+                Artists
+              </li>
             </nav>
             <nav className='session-navbar-loggedin-library'>
               <li>

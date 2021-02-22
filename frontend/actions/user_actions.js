@@ -1,9 +1,12 @@
 import * as SessionAPIUtil from '../util/api_session_util'
 
-export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_USER_ERRORS = 'RECEIVE_USER_ERRORS';
+export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const CLEAR_USER_SESSION_ERRORS = 'CLEAR_USER_SESSION_ERRORS';
+
+// NORMAL ACTION CREATORS TO GET THE STATE NEEDED 
+
 
 export const receiveCurrentUser = (user) => ({
   type: RECEIVE_CURRENT_USER,
@@ -22,6 +25,8 @@ export const receiveUserErrors = (errors) => ({
 export const clearUserErrors = () => ({
   type: CLEAR_USER_SESSION_ERRORS
 })
+
+// THUNK ACTION CREATORS THAT TALKS TO BACKEND TO CHANGE DATABASE
 
 export const login = (user) => dispatch => (
   SessionAPIUtil.login(user) 

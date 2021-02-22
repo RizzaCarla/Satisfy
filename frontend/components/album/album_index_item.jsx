@@ -3,20 +3,6 @@ import { Link } from 'react-router-dom';
 
 class AlbumIndexItem extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.handlePlay = this.handlePlay.bind(this);
-  }
-
-  handlePlay() {
-    return (
-      (e) => {
-        // this.props.changeCurrentSong(this.props.song.id)
-        pButton.innerHTML = '&#xe035;'
-      }
-    )
-  }
-
   render() {
 
     if (this.props.album !== undefined && this.props.artists !== undefined && this.props.albumPhotoUrl !== undefined) {
@@ -27,7 +13,6 @@ class AlbumIndexItem extends React.Component {
               <div className='album-item-images'>
                 <img className='album-photo' src={this.props.albumPhotoUrl} />
               </div>
-                {/* <img className="button-logo" src={window.playButton} onClick={this.handlePlay()} /> */}
               <div className='album-item-details'>
                 <h1 className="album-title">
                   {this.props.albumTitle}

@@ -1,18 +1,24 @@
 import { connect } from 'react-redux';
 import SongShow from './song_show';
-import { fetchSong } from '../../actions/song_actions';
 import { fetchAlbum, fetchAlbums } from '../../actions/album_actions';
-
+import { fetchSong, changeCurrentSong } from '../../actions/song_actions';
+import { fetchLikes, destroyLike, createLike } from '../../actions/like_actions';
 const msp = (state, ownProps) => ({
+  likes: state.entities.likes,
+  likeId: state.entities.likes,
+  albums: state.entities.albums,
+  userId: state.userSession.userId,
   song: state.entities.songs[ownProps.match.params.songId],
-  albums: state.entities.albums
 })
 
 const mdp = dispatch => ({
+  fetchLikes: () => dispatch(fetchLikes()),
   fetchSong: (id) => dispatch(fetchSong(id)),
   fetchAlbum: (id) => dispatch(fetchAlbum(id)),
   fetchAlbums: () => dispatch(fetchAlbums()),
-  changeCurrentSong: (songId) => dispatch(changeCurrentSong(songId))
+  createLike: (like) => dispatch(createLike(like)),
+  destroyLike: (like) => dispatch(destroyLike(like)),
+  changeCurrentSong: (songId) => dispatch(changeCurrentSong(songId)),
 })
 
 export default connect(msp, mdp)(SongShow)

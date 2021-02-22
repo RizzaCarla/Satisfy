@@ -5,7 +5,7 @@ class Api::SongsController < ApplicationController
     if @song
         render :show
     else
-        render {'you messed up'}
+        render {'Song was not found'}
     end
   end
 

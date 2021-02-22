@@ -6,13 +6,27 @@ class ArtistShowPlaylist extends React.Component {
     super(props);
     this.handlePlay = this.handlePlay.bind(this);
   }
-
   handlePlay() {
-    // console.log(this.props.artistSongs[0].id)
     return (
       (e) => {
-        // this.props.changeCurrentSong(this.props.artistSongs[0].id)
-        pButton.innerHTML = '&#xe035;'
+        this.props.changeCurrentSong(this.props.songId)
+        if (audio.paused) {
+          audio.play()
+          pButton.innerHTML = '&#xe035;'
+          greenButton.innerHTML = '&#xe035;'
+        } else {
+          audio.pause()
+          pButton.innerHTML = '&#xe038;'
+          greenButton.innerHTML = '&#xe038;'
+        }
+      }
+    )
+  }
+
+  handleLike() {
+    return (
+      (e) => {
+        likeButton.innerHTML = 'UNFOLLOW'
       }
     )
   }
@@ -23,14 +37,14 @@ class ArtistShowPlaylist extends React.Component {
       return (
         <div>
           <div className='artist-item-play-like'>
-            <img className="button-logo" src={window.playButton} onClick={this.handlePlay()} />
-            <p>FOLLOWING</p>
+            <i className="material-icons" id='greenButton' onClick={this.handlePlay()}>&#xe038;</i>
+            <i className="fa">&#xf004;</i>
+            <p id='likeButton' onClick={this.handleLike()}>FOLLOWING</p>
           </div>
           <p>SONGS</p>
           <ul>
             {
               this.props.artistSongs.map((song, count3) => {
-                  console.log(song)
                 return(
                     <li key={song.id}>
                     <p>{count3}</p>

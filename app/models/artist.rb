@@ -15,6 +15,10 @@ class Artist < ApplicationRecord
   has_many :songs,
     through: :albums,
     source: :songs
+    
+  has_many :likes, 
+    as: :likeable,
+    dependent: :destroy
 
   has_one_attached :artistPhotoUrl
 end

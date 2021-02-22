@@ -1,5 +1,5 @@
-import { connect } from 'react-redux';
 import Search from './search';
+import { connect } from 'react-redux';
 import { fetchSongs, fetchSong, searchSongs } from '../../actions/song_actions';
 import { fetchArtists, fetchArtist, searchArtists } from '../../actions/artist_actions';
 import { fetchAlbums, fetchAlbum, searchAlbums } from '../../actions/album_actions';

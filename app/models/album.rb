@@ -20,6 +20,10 @@ class Album < ApplicationRecord
   has_one :artistPhotoUrl,
     through: :artist,
     source: :artistPhotoUrl_attachment
+    
+  has_many :albumLikes,
+    as: :likeable,
+    dependent: :destroy
 
   has_one_attached :albumPhotoUrl
 end
