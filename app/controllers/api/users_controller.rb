@@ -1,9 +1,13 @@
 class Api::UsersController < ApplicationController
   before_action :require_logged_in, only: [:update, :destroy, :show]
-  
+
   def show
     @user = User.find_by(id: params[:id])
-    render "/api/users/show"
+    if @user
+      render "/api/users/show"
+    else
+      render {'User was not found'}
+    end
   end
 
   def create 

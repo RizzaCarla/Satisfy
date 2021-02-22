@@ -1,7 +1,11 @@
 class Api::ArtistsController < ApplicationController
   def show
     @artist = Artist.find_by(id: params[:id])
-    render :show
+    if @artist
+      render :show
+    else
+        render {'Artist was not found'}
+    end
   end
 
   def index
