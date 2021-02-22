@@ -33,6 +33,10 @@ class Song < ApplicationRecord
   has_many :other_likes,
     foreign_key: :other_liked_song_id,
     class_name: :OtherPlaylist
+    
+  has_many :likes, 
+    as: :likeable,
+    dependent: :destroy
 
   has_one_attached :songUrl
 end

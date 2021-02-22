@@ -50,5 +50,24 @@ class User < ApplicationRecord
     foreign_key: :author_id,
     class_name: :OtherPlaylist
 
+  has_many :likes,
+    foreign_key: :liker_id,
+    class_name: :Like
+
+  has_many :liked_songs,
+    through: :likes,
+    source: :likeable,
+    source_type: 'Song'
+
+  has_many :liked_albums,
+    through: :likes,
+    source: :likeable,
+    source_type: 'Album'
+
+  has_many :liked_artists,
+    through: :likes,
+    source: :likeable,
+    source_type: 'Artist'
+
   has_one_attached :userPhotoUrl
 end
