@@ -12,7 +12,8 @@
 class Song < ApplicationRecord
   belongs_to :album, 
     foreign_key: :album_id,
-    class_name: :Album
+    class_name: :Album,
+    inverse_of: :songs
 
   has_one :artist,
     through: :album,

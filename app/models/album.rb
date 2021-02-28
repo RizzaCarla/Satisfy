@@ -11,11 +11,13 @@
 class Album < ApplicationRecord
   belongs_to :artist, 
     foreign_key: :artist_id,
-    class_name: :Artist
+    class_name: :Artist,
+    inverse_of: :albums
 
   has_many :songs,
     foreign_key: :album_id,
-    class_name: :Song
+    class_name: :Song,
+    inverse_of: :album
 
   has_one :artistPhotoUrl,
     through: :artist,
