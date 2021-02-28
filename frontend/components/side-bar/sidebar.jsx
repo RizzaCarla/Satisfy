@@ -34,12 +34,12 @@ class Sidebar extends React.Component {
               </div>
             </Link>
             <h1 className='sidebar-header'>Playlists</h1>
-            <div className='navigate-button'>
+            {/* <div className='navigate-button'>
               <i className="material-icons">&#xe146;</i> 
               &nbsp; 
               &nbsp; 
               <li className='createplaylist'>Create Playlist</li>
-            </div>
+            </div> */}
             <div className='navigate-button'>
               &nbsp; 
               <div className='heart-bg'>
@@ -51,7 +51,7 @@ class Sidebar extends React.Component {
               <li className='likedsongs'>Liked Songs</li>
             </div>
             <hr className='line'/>
-            <ul className='playlist'>
+            {/* <ul className='playlist'>
               <li>Anime Music</li>
               <li>Lo-Fi</li>
               <li>Chill-hop</li>
@@ -70,13 +70,13 @@ class Sidebar extends React.Component {
               <li>Theme Songs</li>
               <li>OST</li>
               <li>Classical Music</li>
-            </ul>
-            <div className='navigate-button'>
+            </ul> */}
+            {/* <div className='navigate-button'>
               <i id='topside-buttons' className='far'>&#xf358;</i>
               &nbsp; 
               &nbsp; 
               <li className=''>Install App</li>
-            </div>
+            </div> */}
           </ul>
         </div>
       )
