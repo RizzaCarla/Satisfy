@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 class AlbumIndexItem extends React.Component {
 
   render() {
-
-    if (this.props.album !== undefined && this.props.artists !== undefined && this.props.albumPhotoUrl !== undefined) {
+    if (this.props.album !== undefined) {
       return (
         <div className='album-index-item-container'>
           <Link to={`/albums/${this.props.albumId}`}>
@@ -18,7 +17,7 @@ class AlbumIndexItem extends React.Component {
                   {this.props.albumTitle}
                 </h1>
                 <p>
-                  {(this.props.artists[this.props.albumArtistId]).artist_name}
+                  {this.props.album.artist.artist_name}
                 </p>
               </div>
             </div>
