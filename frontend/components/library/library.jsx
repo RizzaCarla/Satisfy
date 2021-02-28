@@ -42,7 +42,6 @@ class Library extends React.Component {
   }
                       
   render() {
-    console.log(this.state)
     if (this.state.currentTab === "Albums") {
       return (
         <div className='main-library-container'>
@@ -58,12 +57,13 @@ class Library extends React.Component {
                     <LikedAlbums 
                       album={album}
                       albumId={album.id}
-                      artists={this.props.artists}
                       albumTitle={album.album_title}
                       albumArtistId={album.artist_id}
+                      artistName={album.artist.artist_name}
                       albumPhotoUrl={album.albumPhotoUrl}
                       changeCurrentSong={this.props.changeCurrentSong}
-                    />
+                      songs={album.songs}
+                      />
                   </li>
                 ))
               }
@@ -78,6 +78,7 @@ class Library extends React.Component {
           <SideBarContainer />
           <MusicPlayerContainer />
           <div className='library-container'>
+            <h1>Liked Artists</h1>
             <ul className='artist-index-list'>
               {
                 this.state.likedArtists.map((artist, index) => (
@@ -86,7 +87,7 @@ class Library extends React.Component {
                       artist={artist}
                       artistId={artist.id}
                       changeCurrentSong={this.props.changeCurrentSong}
-                    />
+                      />
                   </li>
                 ))
               }
@@ -101,6 +102,7 @@ class Library extends React.Component {
           <SideBarContainer />
           <MusicPlayerContainer />
           <div className='library-container'>
+            <h1>Liked Songs</h1>
             <ul className='song-index-list'>
               {
                 this.state.likedSongs.map((song, index) => (

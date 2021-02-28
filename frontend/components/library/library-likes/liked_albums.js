@@ -15,7 +15,7 @@ class LikedAlbums extends React.Component {
                 {this.props.albumTitle}
               </h1>
               <p>
-                {this.props.artistName}
+                {/* {this.props.artistName} */}
               </p>
             </div>
           </div>
