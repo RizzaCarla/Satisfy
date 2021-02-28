@@ -32,11 +32,11 @@ class SongShow extends React.Component {
                 })
               }
             }) 
-          })
-        })
-    }
+         })
+      })
+  }
 
-  componentWillUpdate(prevProps) {
+  componentDidUpdate(prevProps) {
     if (this.props.allLikes && this.props.allLikes !== prevProps.allLikes) {
     this.props.fetchSong(this.props.match.params.songId)
       .then(() => this.props.fetchAlbums())
@@ -71,10 +71,10 @@ class SongShow extends React.Component {
                 key={this.props.songId}
                 song={this.props.song}
                 songArtist={this.props.song.artist}
-                songAlbum={this.props.albums[this.props.song.album_id]}
+                songAlbum={this.props.song.album}
                 songTitle={this.props.song.song_title}
                 totalSongTime={this.props.song.total_song_time}
-                />
+              />
             </div>
             <div>
               <SongShowPlaylist
@@ -84,10 +84,10 @@ class SongShow extends React.Component {
                 songArtist={this.props.song.artist}
                 allLikes={this.state.allLikes}
                 songLikeInfo={this.state.songLikeInfo}
+                fetchLikes={this.props.fetchLikes}
                 createLike={this.props.createLike}
                 destroyLike={this.props.destroyLike}
                 changeCurrentSong={this.props.changeCurrentSong}
-                fetchLikes={this.props.fetchLikes}
               />
             </div>
           </div>

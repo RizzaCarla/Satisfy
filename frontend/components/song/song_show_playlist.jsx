@@ -60,7 +60,7 @@ class SongShowPlaylist extends React.Component {
           }))
     } else {
       this.props.createLike({likeable_id: this.props.song.id, likeable_type: "Song"})
-        .then((result) => {
+        .then(() => {
           this.props.fetchLikes()
           .then((result) => {
             Object.values(result.likes).map((like) => {
@@ -86,7 +86,7 @@ class SongShowPlaylist extends React.Component {
     
     return (
       <div className='playlist-container'>
-        <div className='album-item-play-like'>
+        <div className='item-play-like'>
           <i className="material-icons" id='greenButton' onClick={this.handlePlay()}>&#xe038;</i>
           <div className="likeButton" onClick={this.handleLike}>{label}</div>
         </div>
