@@ -40,15 +40,9 @@ class LoginForm extends React.Component {
           <br></br>
           <div className='login-inner-header'>
             <h1 className='login-greeting'>To continue, log in to Spotify.</h1>
-            <a href='https://en-gb.facebook.com/login/?next'>
-              <button className='fb-login-button'>Continue with Facebook</button>
-            </a>
-            <a href='https://www.apple.com/apple-music/'>
-              <button className='apple-login-button'>Continue with Apple</button>
-            </a>
-            <a href='https://accounts.google.com/login'>
-              <button className='google-login-button'>Continue with Google</button>
-            </a>
+            <div className='login-buttons-demo'>
+              <button type='submit' className='demo-login-button' onClick={this.handleDemoSubmit}>Demo Login</button>
+            </div>
             <p className='login-or'>or</p>
           </div>
           <h2>{this.props.error}</h2>
@@ -71,7 +65,6 @@ class LoginForm extends React.Component {
             </label>
             <div className='login-buttons'>
               <button type='submit' className='form-login-button' onClick={this.handleLoginSubmit}>Login</button>
-              <button type='submit' className='demo-login-button' onClick={this.handleDemoSubmit}>Demo Login</button>
             </div>
             <br></br>
             <div className='signup-redirect-question'>
