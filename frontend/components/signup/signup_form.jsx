@@ -11,12 +11,23 @@ class SignUpForm extends React.Component {
       password: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemoSubmit = this.handleDemoSubmit.bind(this) 
   }
 
   handleInput(type) {
     return (e) => {
       this.setState({[type]: e.currentTarget.value})
     }
+  }
+
+
+  handleDemoSubmit(e) {
+    e.preventDefault()
+    this.props.login({
+      email: "LuckyDemoUser@gmail.com",
+      password: "99999999"
+    })
+      .then(() => (this.props.history.push('/us')))
   }
 
   handleSubmit(e) {
@@ -48,9 +59,9 @@ class SignUpForm extends React.Component {
           <br></br>
           <div className='signup-inner-header'>
             <h1 className='signup-greeting'>Sign up for free to start listening.</h1>
-            <a href='https://en-gb.facebook.com/login/?next'>
-              <button className='fb-signup-button'>Sign up with Facebook</button>
-            </a>
+            <div className='login-buttons-demo'>
+              <button type='submit' className='demo-login-button' onClick={this.handleDemoSubmit}>Demo Login</button>
+            </div>
             <p className='signup-or'>or</p>
             <h2 className='signup-email-header'>Sign up with your email address</h2>
           </div>
