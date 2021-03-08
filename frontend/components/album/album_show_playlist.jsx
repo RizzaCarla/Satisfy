@@ -1,7 +1,8 @@
 import React from 'react';
-import Queue from '../queue/queue'
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
+import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 
 class AlbumShowPlaylist extends React.Component {
 
@@ -9,9 +10,10 @@ class AlbumShowPlaylist extends React.Component {
     super(props);
     this.state = {
       liked: false,
+      shuffling: false,
+      playing: this.props.playing,
+      albumSongs: this.props.albumSongs,
       albumLikeInfo: this.props.albumLikeInfo,
-      // playing: 
-
     }
     this.handlePlay = this.handlePlay.bind(this);
     this.handleLike = this.handleLike.bind(this);
@@ -23,13 +25,13 @@ class AlbumShowPlaylist extends React.Component {
       this.setState({
         liked: true,
         albumLikeInfo: this.props.albumLikeInfo,
-        // currentPlaylist
       });
     }
+
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.albumLikeInfo && this.props.albumLikeInfo != prevProps.albumLikeInfo) {
+    if (this.props.albumLikeInfo && this.props.albumLikeInfo !== prevProps.albumLikeInfo) {
       if (this.props.albumLikeInfo !== null) {
         this.setState({
           liked: true,
@@ -37,23 +39,54 @@ class AlbumShowPlaylist extends React.Component {
         });
       }
     }
+    
+    if (this.props.shuffling && this.props.shuffling !== prevProps.shuffling) {
+      let randomPlaylist = this.props.albumSongs
+      if (this.props.shuffling === true) {
+        for(let i = this.props.albumSongs.length - 1; i > 0; i--) {
+          let orig = randomPlaylist[i]
+          let j = Math.floor(Math.random() * i)
+          randomPlaylist[i] = randomPlaylist[j]
+          randomPlaylist[j] = orig
+        }
+        this.setState({
+          albumSongs: randomPlaylist
+        })
+      } else {
+        this.setState({
+          albumSongs: this.props.albumSongs
+        })
+      }
+    }
+
+    if (this.props.playing && this.props.playing !== prevProps.playing) {
+      if (this.props.playing === true) {
+        this.setState({
+          playing: true
+        })
+      } else {
+        this.setState({
+          playing: false
+        })
+      }
+    }
   }
 
   handlePlay() {
-    return (
-      (e) => {
-        this.props.changeCurrentSong(this.props.songId)
-        if (audio.paused) {
-          audio.play()
-          pButton.innerHTML = '&#xe035;'
-          greenButton.innerHTML = '&#xe035;'
-        } else {
-          audio.pause()
-          pButton.innerHTML = '&#xe038;'
-          greenButton.innerHTML = '&#xe038;'
-        }
-      }
-    )
+    const audio = document.getElementById('audio')
+    if (this.state.playing && audio.played) {
+      this.props.pauseSong()
+      this.setState({
+        playing: false
+      })
+      audio.pause()
+    } else {
+      this.props.playSong()
+      this.setState({
+        playing: true
+      })
+      audio.play()
+    }
   }
 
   handleLike() {
@@ -81,58 +114,83 @@ class AlbumShowPlaylist extends React.Component {
     }
 
   }
-
+  
   handleQueue(songId, allSongs) {
-    // INITIALLY CREATE A PARTIAL QUEUE
-    let partialQueue = []
-    if (allSongs !== null && songId !== null) {
-      let prevIndex
-      if (index === 0) {
-        this.props.setPrevSong(null)
-      } else if (index > 0) {
-        prevIndex = (index - 1)
-        // console.log(allSongs[prevIndex].id)
-        // this.props.setPrevSong(allSongs[prevIndex].id)
-      }
-      // this.props.setPrevSong(allSongs[index-1].id)
-      for(let i = index; i < allSongs.length; i++) {
-        partialQueue.push(allSongs[i])
-      }
-      this.props.setCurrentPlaylist(partialQueue)
-      // this.props.setCurrentSong(partialQueue[0].id)
-      this.props.currentPlaylist(this.props.currentSongId)
-    }
-  }
 
+    if (allSongs && songId) {
+      // SETS PREV & NEXT SONG IDS
+      for (let i = 0; i < allSongs.length; i++) {
+        if (allSongs[i].id === songId) {
+          if (allSongs[i - 1] === undefined || allSongs[i - 1] === null) {
+            this.props.setPrevSong(null)
+          } else {
+            this.props.setPrevSong(allSongs[i - 1].id)
+          }
+          if (allSongs[i + 1] === undefined || allSongs[i + 1] === null) {
+            this.props.setNextSong(null)
+          } else {
+            this.props.setNextSong(allSongs[i + 1].id)
+          }
+        }
+      }
+      // SETS CURRENT PLAYLIST
+      this.props.setCurrentPlaylist(allSongs)
+    }
+
+    // SETS CURRENT SONG
+    this.props.playSong();
+    this.props.setCurrentSong(songId);
+    this.props.changeCurrentSong(songId);
+    this.setState({
+      playing: true
+    })
+  }
+  
   render() {
-    // CHECK IF ALBUM EXISTS AND IT HAS SONGS
-    if (this.props.album === undefined || this.props.albumSongs === undefined) {
+    if (!this.props.album || !this.props.albumSongs) {
       return null
     }
 
-    // IF THE ALBUM LIKE OBJECT EXISTS, SHOW LIKE ICON, OTHER WISE UNLIKE ICON
+    const greenButton = this.props.playing === true ? <PauseCircleFilledIcon id='greenButton' /> : <PlayCircleFilledIcon id='greenButton' />
     const label = this.state.albumLikeInfo ? <FavoriteIcon style={{ fontSize: 40 }} /> : <FavoriteBorderIcon style={{ fontSize: 40 }} />
 
     return (
       <div className='playlist-container'>
         <div className='item-play-like'>
-          <i className="material-icons" id='greenButton' onClick={this.handlePlay()}>&#xe038;</i>
+          <div className="greenButton-container" onClick={() => {
+            // if (this.props.currentPlaylist.length > 0) {
+            //   this.handleQueue(this.props.currentSongId, this.props.currentPlaylist)
+            // } else {
+              this.handleQueue(this.state.albumSongs[0].id, this.state.albumSongs);
+            // }
+            this.handlePlay();
+          }}>
+            {greenButton}
+          </div>
           <div className="likeButton" onClick={this.handleLike}>{label}</div>
         </div>
         <div className='playlist-header'>
-          <p>#</p>
-          <p>TITLE</p>
-          <i id='clock' className='far'>&#xf017;</i>
+          <div className="playlist-left">
+            <h1 className='playlist-item-count'>#</h1>
+            <div className='playlist-left-title-name'>
+              <h1>TITLE</h1>
+            </div>
+          </div>
+          <i id='playlist-item-time-icon' className='far'>&#xf017;</i>
         </div>
         <hr className='line-separator'></hr>
         <ul className='playlist'>
           {this.props.albumSongs.map((song, count) => {
-            return(
-              <li className='playlist-item' key={song.id} onClick={() => this.handleQueue(song.id, this.props.albumSongs)}>
-                <p>{count}</p>
-                <h1>{song.song_title}</h1>
-                <h1>{this.props.artistName}</h1>
-                <h1>{song.total_song_time}</h1>
+            return (
+              <li className='playlist-item' key={song.id} onClick={() => this.handleQueue(song.id, this.state.albumSongs)}>
+                <div className='playlist-left'>
+                  <p className='playlist-item-count'>{count}</p>
+                  <div className='playlist-left-title-name'>
+                    <h1>{song.song_title}</h1>
+                    <h1>{this.props.artistName}</h1>
+                  </div>
+                </div>
+                <h1 className='playlist-item-time'>{song.total_song_time}</h1>
               </li>
             )
           })}

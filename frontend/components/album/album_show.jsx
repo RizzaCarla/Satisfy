@@ -11,10 +11,11 @@ class AlbumShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      allLikes: [],
-      albumLikeInfo: null,
       liked: false,
+      shuffling: false,
+      allLikes: [],
       albumSongs: [],
+      albumLikeInfo: null,
     }
   }
 
@@ -54,64 +55,64 @@ class AlbumShow extends React.Component {
   }
   
   render() {
-    
-    if (this.props.album === undefined) {
+    if (!this.props.album) {
       return null
     }
-        return (
-          <div className='show-container'>
-            <NavBarContainer />
-            <SideBarContainer />
-            <MusicPlayerContainer />
-            <div className='inner-show-container'>
-                <div>
-                  <AlbumShowHeader
-                    key={this.props.albumId}
-                    albumSongs={this.props.album.songs}
-                    albumTitle={this.props.album.album_title}
-                    albumPhotoUrl={this.props.album.albumPhotoUrl} 
-                    artistPhotoUrl={this.props.album.artistPhotoUrl}
-                    artistName={this.props.album.artist.artist_name}
-                  />
-                </div>
-                <div>
-                  <AlbumShowPlaylist 
-                    album={this.props.album}
-                    userId={this.props.userId}
-                    albumId={this.props.album.id} 
-                    allLikes={this.state.allLikes}
-                    fetchLikes={this.props.fetchLikes}
-                    createLike={this.props.createLike}
-                    albumSongs={this.props.album.songs}
-                    destroyLike={this.props.destroyLike}
-                    albumLikeInfo={this.state.albumLikeInfo}
-                    artistName={this.props.album.artist.artist_name}
-                    changeCurrentSong={this.props.changeCurrentSong}
 
-                    muted={this.props.muted}
-                    playing={this.props.playing}
-                    repeating={this.props.repeating}
-                    shuffling={this.props.shuffling}
-                    prevSongId={this.props.prevSongId}
-                    nextSongId={this.props.nextSongId}
-                    currentSongId={this.props.currentSongId}
-                    currentPlaylist={this.props.currentPlaylist}
+    return (
+      <div className='show-container'>
+        <NavBarContainer />
+        <SideBarContainer />
+        <MusicPlayerContainer />
+        <div className='inner-show-container'>
+            <div>
+              <AlbumShowHeader
+                key={this.props.albumId}
+                albumSongs={this.props.album.songs}
+                albumTitle={this.props.album.album_title}
+                albumPhotoUrl={this.props.album.albumPhotoUrl} 
+                artistPhotoUrl={this.props.album.artistPhotoUrl}
+                artistName={this.props.album.artist.artist_name}
+              />
+            </div>
+            <div>
+              <AlbumShowPlaylist 
+                album={this.props.album}
+                userId={this.props.userId}
+                albumId={this.props.album.id} 
+                allLikes={this.state.allLikes}
+                fetchLikes={this.props.fetchLikes}
+                createLike={this.props.createLike}
+                albumSongs={this.props.album.songs}
+                destroyLike={this.props.destroyLike}
+                albumLikeInfo={this.state.albumLikeInfo}
+                artistName={this.props.album.artist.artist_name}
+                changeCurrentSong={this.props.changeCurrentSong}
+                songId={this.props.songId}
+                
+                muted={this.props.muted}
+                playing={this.props.playing}
+                repeating={this.props.repeating}
+                shuffling={this.props.shuffling}
+                prevSongId={this.props.prevSongId}
+                nextSongId={this.props.nextSongId}
+                currentSongId={this.props.currentSongId}
+                currentPlaylist={this.props.currentPlaylist}
 
-                    playSong={this.props.playSong}
-                    pauseSong={this.props.pauseSong}
-                    dequeueSong={this.props.dequeueSong}
-                    enqueueSong={this.props.enqueueSong}
-                    repeatSong={this.props.repeatSong}
-                    shuffleSongs={this.props.shuffleSongs}
-                    setPrevSong={this.props.setPrevSong}
-                    setNextSong={this.props.setNextSong}
-                    setCurrentSong={this.props.setCurrentSong}
-                    setCurrentPlaylist={this.props.setCurrentPlaylist}
-                  />
-                </div>
-              </div>
+                playSong={this.props.playSong}
+                pauseSong={this.props.pauseSong}
+                clearQueue={this.props.clearQueue}
+                repeatSong={this.props.repeatSong}
+                shuffleSongs={this.props.shuffleSongs}
+                setPrevSong={this.props.setPrevSong}
+                setNextSong={this.props.setNextSong}
+                setCurrentSong={this.props.setCurrentSong}
+                setCurrentPlaylist={this.props.setCurrentPlaylist}
+              />
+            </div>
           </div>
-        )
+      </div>
+    )
   }
 }
 

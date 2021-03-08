@@ -7,11 +7,10 @@ import {
   playSong,
   pauseSong,
   repeatSong,
-  shuffleSongs,
-  enqueueSong,
-  dequeueSong,
+  clearQueue,
   setPrevSong,
   setNextSong,
+  shuffleSongs,
   setCurrentSong,
   setCurrentPlaylist,
 } from '../../actions/queue_actions';
@@ -22,6 +21,7 @@ const msp = (state, ownProps) => ({
   likeId: state.entities.likes,
   artists: state.entities.artists,
   userId: state.userSession.userId,
+  songId: state.songSession.song.songId,
   album: state.entities.albums[ownProps.match.params.albumId], 
   
   muted: state.queue.muted,
@@ -49,8 +49,7 @@ const mdp = dispatch => ({
   // QUEUE
   playSong: () => dispatch(playSong()),
   pauseSong: () => dispatch(pauseSong()),
-  dequeueSong: () => dispatch(dequeueSong()),
-  enqueueSong: (song) => dispatch(enqueueSong(song)),
+  clearQueue: () => dispatch(clearQueue()),
   repeatSong: (value) => dispatch(repeatSong(value)),
   shuffleSongs: (value) => dispatch(shuffleSongs(value)),
   setPrevSong: (songId) => dispatch(setPrevSong(songId)),
