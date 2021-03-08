@@ -1,16 +1,28 @@
-// .outermost-div {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
+.outermost-div {
+  height: 100%;
+  width: 100%;
 
-//   .inner-header {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//   }
+}
 
-//   .inner-body {
-//     display: flex;
-//     flex-direction: row;
-//   }
-// }
+
+body {
+  overflow-x: hidden;
+}
+
+
+::-webkit-scrollbar {
+  background-color: transparent;
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  display: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #999; 
+}

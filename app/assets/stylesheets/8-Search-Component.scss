@@ -2,26 +2,33 @@
   position: absolute;
   background-color: #121212;
   width: 100%;
-  height: 250%;
+  height: 100%;
   color: white;
   font-family: 'Montserrat', sans-serif;
-  padding-bottom: 125px;
+  overflow: hidden;
+  margin-bottom: 100px;
+  
   .inner-search-results-container {
     display: flex;
     flex-direction: column;
-    margin: 60px 20px 20px 247px;
-    width: auto;
-    height: 100%;
-    overflow: hidden;
-    
+    background-color: transparent;
+    margin: 60px 0px 100px 260px;
+    height: 70%;
+    width: 78.5%;
+    overflow: auto;
+    overflow-x: hidden;
+    margin-bottom: 250px;
+    padding-bottom: 100px;
+
     .filtered-container {
       color: white;
       font-family: 'Montserrat', sans-serif;
       
-      padding: 10px 0px 10px 20px;
-      width: 90%;
-      height: 100%;
+      padding: 20px 0px 20px 0px;
+      width: 100%;
+      height: auto;
       margin: 10px;
+      margin-bottom: 20px;
       
       display: flex;
       flex-direction: column; 
@@ -38,7 +45,7 @@
         height: 100%;
         
         div {
-          height: 100%;
+          height: 105%;
           width: 100%;
         }
 
@@ -47,13 +54,20 @@
           margin-top: 10px;
           height: 100%;
           width: 100%;
-        }
-        
-        li {
-          width: 23%;
-          height: 68%;
-          margin-right: 40px;
-          text-decoration: none;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          align-content: flex-start;
+          gap: 40px;
+
+
+          li {
+            width: 200px;
+            height: 250px;
+            text-decoration: none;
+            margin: 10px 0px;
+            object-fit: cover;
+          }
         }
       }
     }

@@ -33,17 +33,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    width: 100%;
-    margin-top: 10px;
+    padding-top: 10px;
     
       .artist-photo {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100%;
-        width: 90%;
         object-fit: cover;
+        height: 180px;
+        width: 190px;
+        padding-top: 5px;
         border-radius: 100%;
       }
   }

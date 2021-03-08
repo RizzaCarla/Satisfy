@@ -29,38 +29,20 @@
   border-radius: 2%;
   height: 100%;
   width: 50%;
-  
-  // .greenButton {
-  //   visibility: visible;
-  //   height: 60px;
-  //   width: 60px;
-    
-  //   position: relative;
-  //   left: 65px;
-  //   bottom:  90px;
-  //   box-shadow: 15px black;
-  // }
-
-  // .greenButton:hover {
-  //   cursor: pointer;
-  //   visibility: visible;
-  //   z-index: 2;
-  // }
 
   .song-item-images {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    width: 100%;
     
     .song-photo {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 95%;
-      width: 95%;
       object-fit: cover;
+      height: 180px;
+      width: 190px;
+      padding-top: 5px;
     }
   }
 
