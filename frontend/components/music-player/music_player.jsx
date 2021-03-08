@@ -1,26 +1,39 @@
 import React from 'react';
 import { withRouter } from 'react-router';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 import VolumeOffIcon from '@material-ui/icons/VolumeOff';
 import VolumeDownIcon from '@material-ui/icons/VolumeDown';
+import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
+import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
+
+// import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+// import FavoriteIcon from '@material-ui/icons/Favorite';
 
 class MusicPlayer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       liked: false,
+      muted: this.props.muted,
+      playing: this.props.playing,
+      repeating: this.props.repeating,
+      shuffling: this.props.shuffling,
+      prevSongId: this.props.prevSongId,
+      nextSongId: this.props.nextSongId,
       songLikeInfo: this.props.songLikeInfo,
-      repeating: false,
-      muted: false
+      currentSongId: this.props.currentSongId,
+      currentPlaylist: this.props.currentPlaylist,
     }
     this.handlePlay = this.handlePlay.bind(this);
     this.handleLike = this.handleLike.bind(this);
     this.handleTime = this.handleTime.bind(this);
     this.handleLoop = this.handleLoop.bind(this);
     this.handleSeek = this.handleSeek.bind(this);
+    this.handleNext = this.handleNext.bind(this);
+    this.handlePrev = this.handlePrev.bind(this);
     this.handleVolume = this.handleVolume.bind(this);
+    this.handleShuffle = this.handleShuffle.bind(this);
+    this.handleQueueChange = this.handleQueueChange.bind(this);
   }
 
   componentDidMount() {
@@ -80,23 +93,76 @@ class MusicPlayer extends React.Component {
         })
       }
     }
+
+    if (this.props.shuffling && this.props.shuffling !== prevProps.shuffling) {
+      if (this.props.shuffling === true) {
+        this.setState({
+          shuffling: true
+        })
+      } else {
+        this.setState({
+          shuffling: false
+        })
+      }
+    }
+
+    if (this.props.playing && this.props.playing !== prevProps.playing) {
+      if (this.props.playing === true) {
+        audio.play()
+        this.setState({
+          playing: true
+        })
+        this.props.playSong()
+      } else {
+        audio.pause()
+        this.setState({
+          playing: false
+        })
+        this.props.pauseSong()
+      }
+    }
+
+    if (this.props.prevSongId && this.props.prevSongId !== prevProps.prevSongId) {
+      this.setState({
+        prevSongId: this.props.prevSongId,
+      })
+    } 
+
+    if (this.props.currentSongId && this.props.currentSongId !== prevProps.currentSongId) {
+      this.setState({
+        currentSongId: this.props.currentSongId,
+      })
+      audio.play()
+    }
+
+    if (this.props.nextSongId && this.props.nextSongId !== prevProps.nextSongId) {
+      this.setState({
+        nextSongId: this.props.nextSongId,
+      })
+    } 
+
+    if (this.props.currentPlaylist && this.props.currentPlaylist !== prevProps.currentPlaylist) {
+      this.setState({
+        currentPlaylist: this.props.currentPlaylist,
+      })
+    } 
+
   }
 
   handlePlay() {
     const audio = document.getElementById('audio')
-    const pButton = document.getElementById('pButton')
-     if (audio.paused) {
-      audio.play()
-      pButton.innerHTML = '&#xe035;';
-      if (this.props.currentSongId === this.props.songId) {
-        greenButton.innerHTML = '&#xe035;';
-      }
-    } else {
+    if (this.state.playing && audio.played) {
+      this.props.pauseSong()
+      this.setState({
+        playing: false
+      })
       audio.pause()
-      pButton.innerHTML = '&#xe038;';
-      if (this.props.currentSongId === this.props.songId) {
-        greenButton.innerHTML = '&#xe038;';
-      }
+    } else {
+      this.props.playSong()
+      this.setState({
+        playing: true
+      })
+      audio.play()
     }
   }
 
@@ -139,6 +205,9 @@ class MusicPlayer extends React.Component {
       myRange.max = audio.duration
       durationMinutes = parseInt(audio.duration / 60)
       durationSeconds = parseInt(audio.duration) - (durationMinutes * 60) 
+      if ((durationSeconds < 10) && (durationSeconds >= 0)) {
+        durationSeconds = "0" + durationSeconds.toString()
+      }
       audioEndTime.innerHTML = `${durationMinutes + ":" + durationSeconds}`
     })
     
@@ -184,6 +253,15 @@ class MusicPlayer extends React.Component {
     audio.currentTime = clickTime;
     myRange.value = audio.currentTime
   }
+
+  handleShuffle() {
+    const shuffleDot = document.getElementById("shuffleDot")
+    if (this.props.shuffling === false) {
+      this.props.shuffleSongs(true)
+    } else {
+      this.props.shuffleSongs(false)
+    }
+  }
   
   handleVolume(e) {
     const audio = document.getElementById('audio')
@@ -201,7 +279,7 @@ class MusicPlayer extends React.Component {
       
     } else if ((clickPosition >= 1) || (audio.muted === true)) {
       audio.muted = false
-      audio.volume = 0;
+      audio.volume = 1;
       myVolume.value = 100
       this.props.muteSong(false)
       this.setState({
@@ -209,7 +287,7 @@ class MusicPlayer extends React.Component {
       })
     } else if ((clickPosition <= 0) || (audio.muted === false)) {
       audio.muted = true
-      audio.volume = 1;
+      audio.volume = 0;
       myVolume.value = 0
       this.props.muteSong(true)
       this.setState({
@@ -217,8 +295,128 @@ class MusicPlayer extends React.Component {
       })
     }
   }
+
+  handleQueueChange() {
+    if (!this.props.currentSongId) {
+      this.props.setPrevSong(null)
+    } else {
+      this.props.setPrevSong(this.props.currentSongId)
+    }
+
+    if (!this.props.nextSongId) {
+      this.props.setCurrentSong(null)
+      this.props.pauseSong()
+      this.setState({
+        playing: false
+      })
+    } else {
+      this.props.setCurrentSong(this.props.nextSongId)
+      this.props.changeCurrentSong(this.props.nextSongId)
+      this.props.playSong()
+      this.setState({
+        playing: true
+      })
+    }
+
+    for(let i = 0; i < this.props.currentPlaylist.length; i++) {
+      if (this.props.currentPlaylist[i].id === this.props.nextSongId) {
+        if (this.props.currentPlaylist[i + 1]) {
+          this.props.setNextSong(this.props.currentPlaylist[i+1].id)
+        } else {
+        }
+      }
+    }
+
+    if (this.props.currentPlaylist[this.props.currentPlaylist.length - 1].id === this.props.currentSongId) {
+      this.props.clearQueue()
+    }
+  }
+
+  handleNext() {
+    // PREV
+    if (!this.props.currentSongId) {
+    } else {
+      if (this.props.nextSongId) {
+        this.props.setPrevSong(this.props.currentSongId)
+        this.props.playSong()
+      } else {
+      }
+    }
+
+    // CURRENT
+    if (!this.props.nextSongId) {
+    } else {
+      this.props.setCurrentSong(this.props.nextSongId)
+      this.props.playSong()
+    }
+
+    // NEXT
+    if (this.props.currentPlaylist.length) {
+      for (let i = 0; i < this.props.currentPlaylist.length; i++) {
+        if (this.props.currentPlaylist[i].id === this.props.nextSongId) {
+          if (this.props.currentPlaylist[i + 1]) {
+            if ((this.props.currentPlaylist[i + 1] === this.props.currentPlaylist[this.props.currentPlaylist.length])) {
+            } else {
+              this.props.setNextSong(this.props.currentPlaylist[i + 1].id)
+              this.props.playSong()
+            }
+          } else {
+            this.props.setNextSong(null)
+          }
+        }
+      }
+    }
+  }
   
+  handlePrev() {
+    // PREV
+    for (let i = 0; i < this.props.currentPlaylist.length; i++) {
+      if (this.props.currentPlaylist[i].id === this.props.prevSongId) {
+        if (this.props.currentPlaylist[i - 1]) {
+          if ((this.props.currentPlaylist[i - 1] === this.props.currentPlaylist[0])) {
+          } else {
+            this.props.setPrevSong(this.props.currentPlaylist[i - 1].id)
+            this.props.playSong()
+          }
+        } else {
+          this.props.setPrevSong(null)
+        }
+      }
+    }
+
+    // CURRENT
+    if (!this.props.prevSongId) {
+    } else {
+      this.props.setCurrentSong(this.props.prevSongId)
+      this.props.playSong()
+    }
+
+    // NEXT
+    if (!this.props.currentSongId) {
+    } else {
+      if (this.props.prevSongId) {
+        this.props.setNextSong(this.props.currentSongId)
+        this.props.playSong()
+      } else {
+      }
+    }
+  }
+
   render() {
+    
+    // let dot
+    // if (this.props.shuffling === true) {
+    //   dot = <i className='fas' id='shuffleDot'>&#xf111;</i>
+    // } else {
+    //   dot = <div></div>
+    // }
+    // if (this.props.repeating === true) {
+    //   dot = <i className='fas' id='loopDot'>&#xf111;</i>
+    // } else {
+    //   dot = <div></div>
+    // }
+
+    const pButton = this.props.playing === true ? <PauseCircleFilledIcon id='pButton' /> : <PlayCircleFilledIcon id='pButton' />
 
     let volumeLabel
     if (this.state.muted === true) {
@@ -229,36 +427,50 @@ class MusicPlayer extends React.Component {
       volumeLabel = <VolumeDownIcon id='volumeButton' style={{ fontSize: 25 }} />
     }
 
+    let info
+    if (this.props.currentSongId) {
+      info = <div className="left-container">
+                  <img className='music-player-photo' src={this.props.songs[this.props.currentSongId].albumPhotoUrl} />
+                  <div>
+                    <h1>{this.props.songs[this.props.currentSongId].song_title}</h1>
+                    <p>{this.props.songs[this.props.currentSongId].artist.artist_name}</p>
+                  </div>
+                  {/* <div className="likeButton" onClick={this.handleLike}>{likeLabel}</div> */}
+                </div>
+    } else {
+      info = <div className="left-container"></div>
+    }
+
+    let src
+    if (this.props.songs[this.props.currentSongId]) {
+      src = this.props.songs[this.props.currentSongId].songUrl
+    } else {
+      src = ''
+    }
+
     // const likeLabel = this.state.songLikeInfo ? <FavoriteIcon style={{ fontSize: 40 }} /> : <FavoriteBorderIcon style={{ fontSize: 40 }} />
 
     if (this.props.location.pathname !== "/us") {
-      if (this.props.songId !== null && this.props.song !== null) {
+      if (this.props.songId && this.props.song) {
         const audio = document.getElementById('audio')
-        if (audio !== null) {
+        if (audio) {
           {this.handleTime()}
         }
         return (
           <div className="musicPlayer">
-            <div className="left-container">
-              <img className='music-player-photo' src={this.props.song.artistPhotoUrl} />
-              <div>
-                <h1>{this.props.song.song_title}</h1>
-                <p>{this.props.song.artist.artist_name}</p>
-              </div>
-               {/* <div className="likeButton" onClick={this.handleLike}>{likeLabel}</div> */}
-             </div>
+            {info}
             <div className="middle-container">
               <div className="middle-top-container">
-                <div className="shuffleButton-container">
+                <div className="shuffleButton-container" onClick={this.handleShuffle}>
                   <i id='shuffleButton' className="material-icons">&#xe043;</i>
                 </div>
-                <div className='prevButton-container'>
+                <div className='prevButton-container' onClick={this.handlePrev}>
                   <i id='prevButton' className="material-icons">&#xe045;</i>
                 </div>
-                <div className='pButton-container'>
-                  <i id='pButton' onClick={this.handlePlay} className="material-icons">&#xe038;</i>
+                <div className='pButton-container' onClick={this.handlePlay}>
+                  {pButton}
                 </div>
-                <div className='nextButton-container'>
+                <div className='nextButton-container' onClick={this.handleNext}>
                   <i id='nextButton' className="material-icons">&#xe044;</i>
                 </div>
                 <div className='loopButton-container' onClick={this.handleLoop}>
@@ -281,31 +493,31 @@ class MusicPlayer extends React.Component {
                   <input type="range" min="0" max="100" defaultValue="100" className="slider" id="myVolume" onClick={this.handleVolume}></input>
                 </div>
              </div>
-            <audio id='audio' src={`${this.props.songs[this.props.songId].songUrl}`} type="audio/mp3" preload='metadata' />
+            <audio id='audio' src={`${src}`} type="audio/mp3" preload='metadata' onEnded={this.handleQueueChange} />
           </div>
         )
-      } if (this.props.songId === null) {
-               return (
+      } else if (!this.props.currentSongId) {
+        return (
           <div className="musicPlayer">
             <div className="left-container">
               {/* <div className="likeButton" onClick={this.handleLike}>{label}</div> */}
             </div>
             <div className="middle-container">              
               <div className="middle-top-container">
-                <div className="shuffleButton-container">
+                <div className="shuffleButton-container" onClick={this.handleShuffle}>
                   <i id='shuffleButton' className="material-icons">&#xe043;</i>
                 </div>
                 <div className='prevButton-container'>
                   <i id='prevButton' className="material-icons">&#xe045;</i>
                 </div>
-                <div className='pButton-container'>
-                  <i id='pButton' onClick={this.handlePlay} className="material-icons">&#xe038;</i>
+                <div className='pButton-container' onClick={this.handlePlay}>
+                  {pButton}
                 </div>
                 <div className='nextButton-container'>
                   <i id='nextButton' className="material-icons">&#xe044;</i>
                 </div>
-                <div className='loopButton-container'>
-                    <i id='loopButton' className="material-icons" onClick={this.handleLoop}>&#xe040;</i>
+                <div className='loopButton-container' onClick={this.handleLoop}>
+                  <i id='loopButton' className="material-icons">&#xe040;</i>
                 </div>
               </div>
               <div className='middle-bottom-container'>
