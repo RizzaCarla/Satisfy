@@ -1,6 +1,7 @@
-json.extract! @user, :id, :username, :email, :likes
+@users.each do |user|
+  json.extract! user, :id, :username, :email, :likes
 
-json.liked_songs @user.liked_songs do |song|
+json.liked_songs user.liked_songs do |song|
   if song.songUrl.attached?    
     json.set! song.id do
       json.id song.id
@@ -17,7 +18,7 @@ json.liked_songs @user.liked_songs do |song|
   end
 end
 
-json.liked_albums @user.liked_albums do |album|
+json.liked_albums user.liked_albums do |album|
   if album.albumPhotoUrl.attached?    
     json.set! album.id do
       json.id album.id
@@ -38,7 +39,7 @@ json.liked_albums @user.liked_albums do |album|
   end
 end
 
-json.liked_artists @user.liked_artists do |artist|
+json.liked_artists user.liked_artists do |artist|
   if artist.artistPhotoUrl.attached?
     json.set! artist.id do
       json.id artist.id
@@ -46,4 +47,5 @@ json.liked_artists @user.liked_artists do |artist|
       json.artistPhotoUrl url_for(artist.artistPhotoUrl)
     end
   end
+end
 end
