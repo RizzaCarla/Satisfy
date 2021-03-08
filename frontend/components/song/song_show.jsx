@@ -12,7 +12,8 @@ class SongShow extends React.Component {
     this.state = {
       allLikes: [],
       songLikeInfo: null,
-      liked: false
+      liked: false,
+      songs: [],
     }
   }
 
@@ -59,43 +60,62 @@ class SongShow extends React.Component {
     }
 
     render() {
-    if (this.props.song !== undefined) {
-      return (
-        <div className='show-container'>
-          <NavBarContainer />
-          <SideBarContainer />
-          <MusicPlayerContainer />
-          <div className='inner-show-container'>
-            <div>
-              <SongShowHeader
-                key={this.props.songId}
-                song={this.props.song}
-                songArtist={this.props.song.artist}
-                songAlbum={this.props.song.album}
-                songTitle={this.props.song.song_title}
-                totalSongTime={this.props.song.total_song_time}
-              />
-            </div>
-            <div>
-              <SongShowPlaylist
-                song={this.props.song} 
-                songId={this.props.song.id} 
-                userId={this.props.userId} 
-                songArtist={this.props.song.artist}
-                allLikes={this.state.allLikes}
-                songLikeInfo={this.state.songLikeInfo}
-                fetchLikes={this.props.fetchLikes}
-                createLike={this.props.createLike}
-                destroyLike={this.props.destroyLike}
-                changeCurrentSong={this.props.changeCurrentSong}
-              />
-            </div>
-          </div>
-        </div>
-      )
-    } else {
+    if (this.props.song === undefined) {
       return null
     }
+    return (
+      <div className='show-container'>
+        <NavBarContainer />
+        <SideBarContainer />
+        <MusicPlayerContainer />
+        <div className='inner-show-container'>
+          <div>
+            <SongShowHeader
+              key={this.props.songId}
+              song={this.props.song}
+              songArtist={this.props.song.artist}
+              songAlbum={this.props.song.album}
+              songTitle={this.props.song.song_title}
+              totalSongTime={this.props.song.total_song_time}
+            />
+          </div>
+          <div>
+            <SongShowPlaylist
+              song={this.props.song} 
+              songs={[this.props.song]} 
+              songId={this.props.song.id} 
+              userId={this.props.userId} 
+              songArtist={this.props.song.artist}
+              allLikes={this.state.allLikes}
+              songLikeInfo={this.state.songLikeInfo}
+              fetchLikes={this.props.fetchLikes}
+              createLike={this.props.createLike}
+              destroyLike={this.props.destroyLike}
+              changeCurrentSong={this.props.changeCurrentSong}
+
+              muted={this.props.muted}
+              playing={this.props.playing}
+              repeating={this.props.repeating}
+              shuffling={this.props.shuffling}
+              prevSongId={this.props.prevSongId}
+              nextSongId={this.props.nextSongId}
+              currentSongId={this.props.currentSongId}
+              currentPlaylist={this.props.currentPlaylist}
+
+              playSong={this.props.playSong}
+              pauseSong={this.props.pauseSong}
+              clearQueue={this.props.clearQueue}
+              repeatSong={this.props.repeatSong}
+              shuffleSongs={this.props.shuffleSongs}
+              setPrevSong={this.props.setPrevSong}
+              setNextSong={this.props.setNextSong}
+              setCurrentSong={this.props.setCurrentSong}
+              setCurrentPlaylist={this.props.setCurrentPlaylist}
+            />
+          </div>
+        </div>
+      </div>
+    )
   }
 }
 

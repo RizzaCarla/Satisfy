@@ -1,4 +1,5 @@
 import React from 'react';
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 
 class SongShowHeader extends React.Component {
 
@@ -19,7 +20,9 @@ class SongShowHeader extends React.Component {
             <p>
               {this.props.songArtist.artist_name}
             </p>
-            <i className="fa" id='circle-separator'>&#xf111;</i>
+            <div className='circle-separator'>
+              <FiberManualRecordIcon style={{ fontSize: 8 }} />
+            </div>
             <p>1 song, {this.props.totalSongTime}</p>
           </div>
         </div>
