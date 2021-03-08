@@ -14,6 +14,10 @@ class SignUpForm extends React.Component {
     this.handleDemoSubmit = this.handleDemoSubmit.bind(this) 
   }
 
+  componentDidMount() {
+    this.props.receive
+  }
+
   handleInput(type) {
     return (e) => {
       this.setState({[type]: e.currentTarget.value})
@@ -35,18 +39,6 @@ class SignUpForm extends React.Component {
     this.props.signup(this.state)
   }
 
-  handleErrors() {
-    return(
-      <ul>
-        {this.props.errors.map((error, index) =>
-            <li key={`error-${index}`}>
-              {error}
-            </li>
-        )}
-      </ul>
-    )
-  }
-
   componentWillUnmount() {
     this.props.clearUserErrors()
   }
@@ -65,7 +57,15 @@ class SignUpForm extends React.Component {
             <p className='signup-or'>or</p>
             <h2 className='signup-email-header'>Sign up with your email address</h2>
           </div>
-          {this.handleErrors()}
+          <div className='errors' >
+            {this.props.errors.map((error, index) => {
+              return(
+                <h1 key={`error-${index}`}>
+                  {error}
+                </h1>
+              )
+            })}
+          </div>
           <form onSubmit={this.handleSubmit}  className="signup-form">
             <label className="signup-label">What's your email?
               <input

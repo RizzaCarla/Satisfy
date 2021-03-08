@@ -45,7 +45,7 @@ class LoginForm extends React.Component {
             </div>
             <p className='login-or'>or</p>
           </div>
-          <h2>{this.props.error}</h2>
+          <h2 className='errors'>{this.props.error}</h2>
           <form className="login-form">
             <label className='login-label'>Email Address
               <input
