@@ -4,7 +4,7 @@ import {
 } from '../../actions/library_tab_actions';
 
 const defaultTab = {
-  currentTab: "Songs"
+  currentTab: "Albums"
 }
 
 const libraryTabReducer = (oldState = defaultTab, action) => {

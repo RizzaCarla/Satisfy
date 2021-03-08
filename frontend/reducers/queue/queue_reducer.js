@@ -3,9 +3,8 @@ import {
   MUTE_SONG,
   PAUSE_SONG,
   REPEAT_SONG,
+  CLEAR_QUEUE,
   SHUFFLE_SONGS,
-  ENQUEUE_SONG,
-  DEQUEUE_SONG,
   SET_PREV_SONG,
   SET_NEXT_SONG,
   SET_CURRENT_SONG,
@@ -42,12 +41,17 @@ const queue = (oldState = defaultState, action) => {
     case SHUFFLE_SONGS:
       newState.shuffling = action.value
       return newState
-    case ENQUEUE_SONG:
-      newState.currentPlaylist.push(action.song)
-      return newState
-    case DEQUEUE_SONG:
-      newState.currentPlaylist.shift()
-      return newState
+    case CLEAR_QUEUE:
+      return newState = {
+        muted: false,
+        playing: false,
+        repeating: false,
+        shuffling: false,
+        prevSongId: null,
+        nextSongId: null,
+        currentSongId: null,
+        currentPlaylist: []
+      }
     case SET_PREV_SONG:
       newState.prevSongId = action.songId
       return newState
