@@ -20,6 +20,8 @@ class Search extends React.Component {
   }
   
   componentDidMount() {
+    this.props.clearSearchQuery()
+
     // FETCHES SONGS, ALBUMS, SONGS
 
     this.props.fetchSongs()
@@ -30,6 +32,7 @@ class Search extends React.Component {
       // CHECK IF SEARCH TERM EXISTS AND IF IT MATCHES SONG TITLE
       this.props.searchSongs(this.props.searchQuery)
         .then((result) => {
+          let filteredSongsList = []
           Object.values(result.songs).forEach((song) => {
             this.props.fetchAlbum(song.album_id)
               .then((result2) => {
@@ -41,37 +44,42 @@ class Search extends React.Component {
                     let artistName = {
                       artistName: result3.artist.artist_name
                     }
-                    this.setState({
-                      filteredSongs: { [song.id]: Object.assign(song, albumPhotoUrl, artistName ) }
-                    })
+                    filteredSongsList.push(Object.assign(song, albumPhotoUrl, artistName))
                   })
+                })
               })
-          })
+              this.setState({
+                filteredSongs: filteredSongsList
+              })
         })
         
       // CHECK IF SEARCH TERM EXISTS AND IF IT MATCHES ALBUM TITLE
       this.props.searchAlbums(this.props.searchQuery)
         .then((result) => {
+          let filteredAlbumsList = []
           Object.values(result.albums).forEach((album) => {
             this.props.fetchArtist(album.artist_id)
               .then((result2) => {
                 let artistName = {
                   artistName: result2.artist.artist_name
                 }
-                this.setState({
-                  filteredAlbums: { [album.id]: Object.assign(album, artistName) }
-                })
+                filteredAlbumsList.push(Object.assign(album, artistName))
               })
-          })
+            })
+            this.setState({
+              filteredAlbums: filteredAlbumsList
+            })
         })
 
       // CHECK IF SEARCH TERM EXISTS AND IF IT MATCHES ARTIST NAME
       this.props.searchArtists(this.props.searchQuery)
         .then((result) => {
+          let filteredArtistsList = []
           Object.values(result.artists).forEach((artist) => {
-            this.setState({
-              filteredArtists: { [artist.id]: artist }
-            })
+            filteredArtistsList.push(artist)
+          })
+          this.setState({
+            filteredArtists: filteredArtistsList
           })
         })
       }
@@ -83,49 +91,55 @@ class Search extends React.Component {
       
       // CHECK IF SEARCH TERM EXISTS AND IF IT MATCHES SONG TITLE
       this.props.searchSongs(this.props.searchQuery)
-      .then((result) => {
-        Object.values(result.songs).forEach((song) => {
-          this.props.fetchAlbum(song.album_id)
-          .then((result2) => {
-            this.props.fetchArtist(result2.album.artist_id)
-            .then((result3) => {
-              let albumPhotoUrl = {
-                albumPhotoUrl: result2.album.albumPhotoUrl
-              }
-              let artistName = {
-                artistName: result3.artist.artist_name
-              }
-              this.setState({
-                filteredSongs: { [song.id]: Object.assign(song, albumPhotoUrl, artistName) }
+        .then((result) => {
+          let filteredSongsList = []
+          Object.values(result.songs).forEach((song) => {
+            this.props.fetchAlbum(song.album_id)
+              .then((result2) => {
+                this.props.fetchArtist(result2.album.artist_id)
+                  .then((result3) => {
+                    let albumPhotoUrl = {
+                      albumPhotoUrl: result2.album.albumPhotoUrl
+                    }
+                    let artistName = {
+                      artistName: result3.artist.artist_name
+                    }
+                    filteredSongsList.push(Object.assign(song, albumPhotoUrl, artistName))
+                  })
               })
-            })
+          })
+          this.setState({
+            filteredSongs: filteredSongsList
           })
         })
-      })
       
       // CHECK IF SEARCH TERM EXISTS AND IF IT MATCHES ALBUM TITLE
       this.props.searchAlbums(this.props.searchQuery)
         .then((result) => {
+          let filteredAlbumsList = []
           Object.values(result.albums).forEach((album) => {
             this.props.fetchArtist(album.artist_id)
               .then((result2) => {
                 let artistName = {
                   artistName: result2.artist.artist_name
                 }
-                this.setState({
-                  filteredAlbums: { [album.id]: Object.assign(album, artistName) }
-                })
+                filteredAlbumsList.push(Object.assign(album, artistName))
               })
+          })
+          this.setState({
+            filteredAlbums: filteredAlbumsList
           })
         })
 
       // CHECK IF SEARCH TERM EXISTS AND IF IT MATCHES ARTIST NAME
       this.props.searchArtists(this.props.searchQuery)
         .then((result) => {
+          let filteredArtistsList = []
           Object.values(result.artists).forEach((artist) => {
-            this.setState({
-              filteredArtists: { [artist.id]: artist }
-            })
+            filteredArtistsList.push(artist)
+          })
+          this.setState({
+            filteredArtists: filteredArtistsList
           })
         })
     }
@@ -219,6 +233,7 @@ class Search extends React.Component {
   }
   
   render() {
+    console.log(this.state)
     // ONLY LOAD THIS IF THERE IS EVEN ONE SINGLE MATCH
     if (this.props.searchQuery !== null && this.props.searchQuery.length > 0) {
       return(
@@ -232,10 +247,10 @@ class Search extends React.Component {
                 {this.handleSongs()}
               </div>
               <div className='filtered-container'>
-                {this.handleArtists()}
+                {this.handleAlbums()}
               </div>
               <div className='filtered-container'>
-                {this.handleAlbums()}
+                {this.handleArtists()}
               </div>
             </div>
           </div>

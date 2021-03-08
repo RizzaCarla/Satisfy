@@ -1,5 +1,6 @@
 import Search from './search';
 import { connect } from 'react-redux';
+import { clearSearchQuery } from '../../actions/search_actions';
 import { fetchSongs, fetchSong, searchSongs } from '../../actions/song_actions';
 import { fetchArtists, fetchArtist, searchArtists } from '../../actions/artist_actions';
 import { fetchAlbums, fetchAlbum, searchAlbums } from '../../actions/album_actions';
@@ -16,8 +17,9 @@ const mdp = dispatch => ({
   fetchArtists: () => dispatch(fetchArtists()),
   fetchAlbums: () => dispatch(fetchAlbums()),
   fetchSong: (song) => dispatch(fetchSong(song)),
-  fetchArtist: (artist) => dispatch(fetchArtist(artist)),
   fetchAlbum: (album) => dispatch(fetchAlbum(album)),
+  clearSearchQuery: () => dispatch(clearSearchQuery()),
+  fetchArtist: (artist) => dispatch(fetchArtist(artist)),
   searchSongs: (searchQuery) => dispatch(searchSongs(searchQuery)),
   searchArtists: (searchQuery) => dispatch(searchArtists(searchQuery)),
   searchAlbums: (searchQuery) => dispatch(searchAlbums(searchQuery))
