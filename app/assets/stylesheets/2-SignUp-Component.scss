@@ -11,6 +11,14 @@
   font-weight: 600;
   padding-top: 50px;
 
+  .errors {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    color: red
+  }
+
   .signup-inner-header {
     text-align: center;
     flex-direction: column;

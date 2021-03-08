@@ -12,6 +12,15 @@
   padding-top: 75px;
   overflow: visible;
   
+  .errors {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-bottom: 5px;
+    color: red
+  }
+  
   .login-inner-header {
     text-align: center;
     line-height: 3.5rem;
