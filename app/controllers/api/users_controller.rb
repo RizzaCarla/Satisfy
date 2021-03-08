@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  before_action :require_logged_in
+  before_action :require_logged_in, only: [:index, :show, :update]
 
   def index
     @users = User.all
@@ -23,9 +23,9 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login(@user)
-      render :index
+      render :show
     else
-      render json: @user.errors.full_messages, status: 404
+      render json: @user.errors.full_messages, status: 422
     end
   end
 
@@ -34,7 +34,7 @@ class Api::UsersController < ApplicationController
     if @user.update
       render :index
     else
-      render json: @user.errors.full_messages, status: 404
+      render json: ["Unable to update user"], status: 422
     end
   end
 
