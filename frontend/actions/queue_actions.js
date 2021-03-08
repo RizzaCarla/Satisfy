@@ -1,6 +1,7 @@
 export const PLAY_SONG = 'PLAY_SONG';
 export const MUTE_SONG = 'MUTE_SONG';
 export const PAUSE_SONG = 'PAUSE_SONG';
+export const CLEAR_QUEUE = 'CLEAR_QUEUE';
 export const REPEAT_SONG = 'REPEAT_SONG';
 export const ENQUEUE_SONG = 'ENQUEUE_SONG';
 export const DEQUEUE_SONG = 'DEQUEUE_SONG';
@@ -33,13 +34,8 @@ export const shuffleSongs = (value) => ({
   value
 })
 
-export const enqueueSong = (song) => ({
-  type: ENQUEUE_SONG,
-  song
-})
-
-export const dequeueSong = () => ({
-  type: DEQUEUE_SONG,
+export const clearQueue = () => ({
+  type: CLEAR_QUEUE,
 })
 
 export const setPrevSong = (songId) => ({
