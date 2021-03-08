@@ -178,12 +178,12 @@ class NavBar extends React.Component {
               </div>
             </div>
             <nav className="library-navbar">
-              <li 
+              {/* <li 
                 className="library-songs-tab" 
                 onClick={this.handleLikedSongsTab}
                 id="Songs">
                 Songs
-              </li>
+              </li> */}
               <li 
                 className="library-albums-tab" 
                 onClick={this.handleLikedAlbumsTab}
@@ -198,6 +198,31 @@ class NavBar extends React.Component {
               </li>
             </nav>
             <nav className='session-navbar-loggedin-library'>
+              <li>
+                <a href='https://github.com/RizzaCarla' target="_blank" >Github</a>
+              </li>
+              <li>
+                <a href='https://www.linkedin.com/in/rizzamarzo/' target="_blank" >LinkedIn</a>
+              </li>
+              {/*<a href=''>Resume</a> */}
+              <li>
+                <Link to='/login' onClick={this.props.logout}>Logout</Link>
+              </li>
+            </nav>
+          </div>
+        )
+      } else if (this.props.location.pathname === '/liked-songs') {
+        return (
+          <div className="app-header-loggedin-liked-songs">
+            <div className="loggedin-navigation">
+              <div className="backward" onClick={() => this.props.history.goBack()}>
+                <i className='fas'>&#xf104;</i>
+              </div>
+              <div className="forward" onClick={() => this.props.history.goForward()}>
+                <i className='fas'>&#xf105;</i>
+              </div>
+            </div>
+            <nav className='session-navbar-loggedin-liked-songs'>
               <li>
                 <a href='https://github.com/RizzaCarla' target="_blank" >Github</a>
               </li>
