@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import SongShow from './song_show';
+import LikedSongs from './liked_songs';
+import { fetchUsers, fetchUser } from '../../actions/user_actions';
 import { fetchAlbum, fetchAlbums } from '../../actions/album_actions';
 import { fetchSong, changeCurrentSong } from '../../actions/song_actions';
 import { fetchLikes, destroyLike, createLike } from '../../actions/like_actions';
@@ -19,6 +20,7 @@ const msp = (state, ownProps) => ({
   likes: state.entities.likes,
   likeId: state.entities.likes,
   albums: state.entities.albums,
+  user: Object.values(state.entities.users),
   userId: state.userSession.userId,
   song: state.entities.songs[ownProps.match.params.songId],
 
@@ -37,6 +39,8 @@ const mdp = dispatch => ({
   fetchSong: (id) => dispatch(fetchSong(id)),
   fetchAlbum: (id) => dispatch(fetchAlbum(id)),
   fetchAlbums: () => dispatch(fetchAlbums()),
+  fetchUser: (id) => dispatch(fetchUser(id)),
+  fetchUsers: () => dispatch(fetchUsers()),
 
   // LIKE
   fetchLikes: () => dispatch(fetchLikes()),
@@ -56,4 +60,4 @@ const mdp = dispatch => ({
   changeCurrentSong: (songId) => dispatch(changeCurrentSong(songId)),
 })
 
-export default connect(msp, mdp)(SongShow)
+export default connect(msp, mdp)(LikedSongs)

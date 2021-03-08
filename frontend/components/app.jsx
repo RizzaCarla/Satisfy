@@ -4,13 +4,13 @@ import { Redirect } from 'react-router'
 import { AuthRoute, ProtectedRoute } from '../util/route_util'
 
 // Containers
+import LikedSongsContainer from './liked-songs/liked_songs_container';
 import SignUpContainer from './signup/signup_form_container';
 import LoginContainer from './login/login_form_container';
 import SplashContainer from './splash/splash_container';
 import HomePageContainer from './home/home_page_container';
 import LibraryContainer from './library/library_container';
 import SearchContainer from './search/search_container';
-
 import SongShowContainer from './song/song_show_container';
 import ArtistShowContainer from './artist/artist_show_container';
 import AlbumShowContainer from './album/album_show_container';
@@ -23,6 +23,7 @@ const App = () => (
       <ProtectedRoute exact path='/albums/:albumId' component={AlbumShowContainer}></ProtectedRoute>
       <ProtectedRoute exact path='/artists/:artistId' component={ArtistShowContainer}></ProtectedRoute>
       <ProtectedRoute exact path='/songs/:songId' component={SongShowContainer}></ProtectedRoute>
+      <ProtectedRoute exact path='/liked-songs' component={LikedSongsContainer}></ProtectedRoute>
       <ProtectedRoute exact path='/search' component={SearchContainer}></ProtectedRoute>
       <ProtectedRoute exact path='/library' component={LibraryContainer}></ProtectedRoute>
       <ProtectedRoute exact path='/home' component={HomePageContainer}></ProtectedRoute>

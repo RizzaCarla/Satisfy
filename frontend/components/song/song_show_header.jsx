@@ -1,4 +1,5 @@
 import React from 'react';
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 
 class SongShowHeader extends React.Component {
 
@@ -8,18 +9,20 @@ class SongShowHeader extends React.Component {
     }
     return (
       <div className='header-container'>
-        <img className='song-item-photo' src={this.props.song.albumPhotoUrl} />
-        <div className='song-item-details'>
+        <img className='item-photo' src={this.props.song.albumPhotoUrl} />
+        <div className='item-details'>
           <h1 className='single'>SINGLE</h1>
-          <h1 className="song-title">
+          <h1 className="title">
             {this.props.songTitle}
           </h1>
-          <div className='song-item-inner-details'>
-            <img className='song-item-artist-photo' src={this.props.song.artistPhotoUrl} />
+          <div className='item-inner-details'>
+            <img className='item-artist-photo' src={this.props.song.artistPhotoUrl} />
             <p>
               {this.props.songArtist.artist_name}
             </p>
-            <i className="fa" id='circle-separator'>&#xf111;</i>
+            <div className='circle-separator'>
+              <FiberManualRecordIcon style={{ fontSize: 8 }} />
+            </div>
             <p>1 song, {this.props.totalSongTime}</p>
           </div>
         </div>

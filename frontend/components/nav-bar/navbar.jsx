@@ -10,7 +10,9 @@ class NavBar extends React.Component {
       query: "",
       currentTab: ""
     }
+    // this.handleBackButton = this.handleBackButton.bind(this);
     this.handleSearchQuery = this.handleSearchQuery.bind(this);
+    // this.handleForwardButton = this.handleForwardButton.bind(this);
     this.handleLikedSongsTab = this.handleLikedSongsTab.bind(this);
     this.handleLikedAlbumsTab = this.handleLikedAlbumsTab.bind(this);
     this.handleLikedArtistsTab = this.handleLikedArtistsTab.bind(this);
@@ -43,24 +45,20 @@ class NavBar extends React.Component {
   
   handleLikedSongsTab(e) {
     e.preventDefault();
-    // this.props.clearCurrentTab()
     this.props.setCurrentTab(e.target.id)
     this.setState({
       currentTab: e.target.id
     })
     this.props.history.push("/library")
-    // console.log(this.props.currentTab)
   }
   
   handleLikedAlbumsTab(e) {
     e.preventDefault();
-    // this.props.clearCurrentTab()
     this.props.setCurrentTab(e.target.id)
     this.setState({
       currentTab: e.target.id
     })
     this.props.history.push("/library");
-    // console.log(this.props.currentTab)
   }
   
   handleLikedArtistsTab(e) {
@@ -70,8 +68,15 @@ class NavBar extends React.Component {
       currentTab: e.target.id
     })
     this.props.history.push("/library");
-    // console.log(this.props.currentTab)
   }
+
+  // handleBackButton() {
+    
+  // }
+
+  // handleForwardButton() {
+
+  // }
   
   render() {
     if (this.props.user) {
@@ -80,10 +85,10 @@ class NavBar extends React.Component {
           <div className="app-header-loggedin-search">
 
             <div className="loggedin-navigation">
-              <div className="backward">
+              <div className="backward" onClick={() => this.props.history.goBack()}>
                 <i className='fas'>&#xf104;</i>
               </div>
-              <div className="forward">
+              <div className="forward" onClick={() => this.props.history.goForward()}>
                 <i className='fas'>&#xf105;</i>
               </div>
             </div>
@@ -140,10 +145,10 @@ class NavBar extends React.Component {
         return (
           <div className="app-header-loggedin-home">
             <div className="loggedin-navigation">
-              <div className="backward">
+              <div className="backward" onClick={() => this.props.history.goBack()}>
                 <i className='fas'>&#xf104;</i>
               </div>
-              <div className="forward">
+              <div className="forward" onClick={() => this.props.history.goForward()}>
                 <i className='fas'>&#xf105;</i>
               </div>
             </div>
@@ -165,20 +170,20 @@ class NavBar extends React.Component {
         return (
           <div className="app-header-loggedin-library">
             <div className="loggedin-navigation-library">
-              <div className="backward">
+              <div className="backward" onClick={() => this.props.history.goBack()}>
                 <i className='fas'>&#xf104;</i>
               </div>
-              <div className="forward">
+              <div className="forward" onClick={() => this.props.history.goForward()}>
                 <i className='fas'>&#xf105;</i>
               </div>
             </div>
             <nav className="library-navbar">
-              <li 
+              {/* <li 
                 className="library-songs-tab" 
                 onClick={this.handleLikedSongsTab}
                 id="Songs">
                 Songs
-              </li>
+              </li> */}
               <li 
                 className="library-albums-tab" 
                 onClick={this.handleLikedAlbumsTab}
@@ -206,14 +211,39 @@ class NavBar extends React.Component {
             </nav>
           </div>
         )
+      } else if (this.props.location.pathname === '/liked-songs') {
+        return (
+          <div className="app-header-loggedin-liked-songs">
+            <div className="loggedin-navigation">
+              <div className="backward" onClick={() => this.props.history.goBack()}>
+                <i className='fas'>&#xf104;</i>
+              </div>
+              <div className="forward" onClick={() => this.props.history.goForward()}>
+                <i className='fas'>&#xf105;</i>
+              </div>
+            </div>
+            <nav className='session-navbar-loggedin-liked-songs'>
+              <li>
+                <a href='https://github.com/RizzaCarla' target="_blank" >Github</a>
+              </li>
+              <li>
+                <a href='https://www.linkedin.com/in/rizzamarzo/' target="_blank" >LinkedIn</a>
+              </li>
+              {/*<a href=''>Resume</a> */}
+              <li>
+                <Link to='/login' onClick={this.props.logout}>Logout</Link>
+              </li>
+            </nav>
+          </div>
+        )
       } else {
         return (
           <div className="app-header-loggedin-home">
             <div className="loggedin-navigation">
-              <div className="backward">
+              <div className="backward" onClick={() => this.props.history.goBack()}>
                 <i className='fas'>&#xf104;</i>
               </div>
-              <div className="forward">
+              <div className="forward" onClick={() => this.props.history.goForward()}>
                 <i className='fas'>&#xf105;</i>
               </div>
             </div>

@@ -1,4 +1,5 @@
-json.extract! user, :id, :username, :email, :likes
+@users.each do |user|
+  json.extract! user, :id, :username, :email, :likes
 
 json.liked_songs user.liked_songs do |song|
   if song.songUrl.attached?    
@@ -46,4 +47,5 @@ json.liked_artists user.liked_artists do |artist|
       json.artistPhotoUrl url_for(artist.artistPhotoUrl)
     end
   end
+end
 end

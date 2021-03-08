@@ -1,12 +1,21 @@
 class Api::UsersController < ApplicationController
-  before_action :require_logged_in, only: [:update, :destroy, :show]
+  before_action :require_logged_in
+
+  def index
+    @users = User.all
+    if @users
+      render :index
+    else
+      render {'No users in the database'}
+    end
+  end
 
   def show
     @user = User.find_by(id: params[:id])
     if @user
-      render "/api/users/show"
+      render :show
     else
-      render {'User was not found'}
+      render {"User was not found"}
     end
   end
 
@@ -14,7 +23,7 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login(@user)
-      render "/api/users/show"
+      render :index
     else
       render json: @user.errors.full_messages, status: 404
     end
@@ -23,7 +32,7 @@ class Api::UsersController < ApplicationController
   def update
     @user = User.find_by(id: params[:id])
     if @user.update
-      render json: "/api/users/show"
+      render :index
     else
       render json: @user.errors.full_messages, status: 404
     end

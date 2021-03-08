@@ -86,7 +86,7 @@
   background-color: #121212;
   font-family: 'Montserrat', sans-serif;
   position: fixed;
-  width: 997px;
+  width: 100%;
   z-index: 3;
   flex-direction: row;
   justify-content: space-between;
@@ -104,7 +104,8 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    
+    margin-left: 270px;
+
     .backward, .forward {
       flex-direction: column;
       display: flex;
@@ -182,7 +183,7 @@
   background-color: #121212;
   font-family: 'Montserrat', sans-serif;
   position: fixed;
-  width: 1014px;
+  width: 100%;
   z-index: 3;
   flex-direction: row;
   justify-content: space-between;
@@ -200,7 +201,8 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    
+    margin-left: 270px;
+
     .backward, .forward {
       flex-direction: column;
       display: flex;
@@ -294,6 +296,103 @@
   }
 }
 
+// -------------------------------------------------
+
+// Navbar for liked-songs
+.app-header-loggedin-liked-songs {
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  flex-direction: row;
+  justify-content: space-between;
+  font-weight: bold;
+  padding: 10px 10px 10px 10px;
+  right: 0px;
+  isolation: isolate;
+  background-color: rgb(74, 51, 150);
+  
+  .app-header-loggedin-liked-songs > a {
+    width: 50%
+  }
+  
+  .loggedin-navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: 270px;
+    
+    .backward, .forward {
+      flex-direction: column;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 10px 15px;
+      margin-left: 20px;
+      border-radius: 75%;
+      color: white;
+
+      cursor: pointer;
+      background-color: rgba(0,0,0,.7)
+    }
+
+    i.fas {
+      display: flex;
+      padding-top: 5px 10px 5px 10px;
+      color: white;
+      font-size: 100%;
+    }
+
+  }
+
+  
+  .session-navbar-loggedin-liked-songs {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    
+    position: relative;
+    align-items: center;
+    align-content: space-between;
+    
+    right: 50px;
+    margin-left: 10px;
+    padding: 10px;
+    
+    li {
+      display: flex;
+      align-items: center;
+      padding: 2px 10px;
+    }
+    
+    li:nth-child(2) {
+      border-right: 2px solid white;
+      padding-right: 20px;
+    }
+    
+    li:nth-child(3) {
+      margin-left: 10px;
+    }
+    
+    
+    li > p, li > a {
+      width: 200%;
+    }
+    
+    a, a:link {
+      text-decoration: none;
+      color: white;
+    }
+    
+  }
+  
+  .session-navbar-liked-songs > a:hover {
+    color: #1ed760;
+  }
+}
+
 // -----------------------------------------------------
 
 // Navbar for search
@@ -302,7 +401,7 @@
   background-color: #121212;
   font-family: 'Montserrat', sans-serif;
   position: fixed;
-  width: 997px;
+  width: 100%;
   z-index: 3;
   flex-direction: row;
   justify-content: space-between;
@@ -320,7 +419,8 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    
+    margin-left: 270px;
+
     .backward, .forward {
       flex-direction: column;
       display: flex;
@@ -370,6 +470,7 @@
       border-radius: 50px;
       padding: 4px 0px 4px 10px;
       cursor: text;
+      margin-left: 20px;
 
       
       #search-close-button {

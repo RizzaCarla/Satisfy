@@ -6,40 +6,118 @@ import MusicPlayerContainer from '../music-player/music_player_container';
 import NavBarContainer from '../nav-bar/navbar_container';
 
 class ArtistShow extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      liked: false,
+      shuffling: false,
+      allLikes: [],
+      artistSongs: [],
+      artistLikeInfo: null,
+    }
+  }
+  
   componentDidMount() {
-    this.props.fetchArtist(this.props.match.params.artistId)
-      .then(() => this.props.fetchAlbums())
+    this.props.fetchAlbums()
+    .then(() => this.props.fetchArtist(this.props.match.params.artistId))
+      .then(() => {
+        this.props.fetchLikes()
+          .then(() => this.setState({
+            allLikes: Object.values(this.props.likes)
+          }))
+          .then(() => {
+            this.state.allLikes.forEach((like) => {
+              if ((like.likeable_id === this.props.artist.id) && (like.liker_id === this.props.userId)) {
+                this.setState({
+                  artistLikeInfo: like
+                })
+              }
+            })
+          })
+      })
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.allLikes && this.props.allLikes !== prevProps.allLikes) {
+      this.props.fetchArtist(this.props.match.params.artistId)
+        .then(() => this.props.fetchAlbums())
+        .then(() => {
+          this.props.fetchLikes()
+            .then(() => this.setState({
+              allLikes: Object.values(this.props.likes)
+            }))
+            .then(() => {
+              this.state.allLikes.forEach((like) => {
+                if ((like.likeable_id === this.props.artist.id) && (like.liker_id === this.props.userId)) {
+                  this.setState({
+                    artistLikeInfo: like
+                  })
+                }
+              })
+            })
+        })
+    }
   }
   
   render() {
-    if (this.props.artist !== undefined) {
-      return (
+    if (!this.props.artist || !this.props.albums) {
+      return null
+    }
+    
+    return (
+      <div className='show-container'>
+      <NavBarContainer />
+      <SideBarContainer />
+      <MusicPlayerContainer />
+      <div className='inner-show-container'>
+          <div className='artist-show-header' style={{ backgroundImage: `url(${this.props.artist.artistPhotoUrl})` }}>
+          <ArtistShowHeader
+            key={this.props.artistId}
+            artistPhotoUrl={this.props.artist.artistPhotoUrl}
+            artistName={this.props.artist.artist_name}
+          />
+        </div>
         <div>
-        <NavBarContainer />
-        <SideBarContainer />
-        <MusicPlayerContainer />
-        <div className='artist-show-container'>
-          <header>
-            <ArtistShowHeader
-              key={this.props.artistId}
-              artistPhotoUrl={this.props.artist.artistPhotoUrl}
-              artistName={this.props.artist.artist_name}
-              />
-          </header>
-          <div>
-            <ArtistShowPlaylist
-              artistSongs={this.props.artist.songs}
-              artistName={this.props.artist.artist_name}
-              changeCurrentSong={this.props.changeCurrentSong}
-              />
+          <ArtistShowPlaylist
+            artist={this.props.artist}
+            albums={this.props.albums}
+            userId={this.props.userId}
+            allLikes={this.state.allLikes}
+            artistId={this.props.artist.id} 
+            fetchLikes={this.props.fetchLikes}
+            createLike={this.props.createLike}
+            destroyLike={this.props.destroyLike}
+            artistSongs={this.props.artist.songs}
+            artistName={this.props.artist.artist_name}
+            artistLikeInfo={this.state.artistLikeInfo}
+            changeCurrentSong={this.props.changeCurrentSong}
+            songId={this.props.songId}
+            
+            muted={this.props.muted}
+            playing={this.props.playing}
+            repeating={this.props.repeating}
+            shuffling={this.props.shuffling}
+            prevSongId={this.props.prevSongId}
+            nextSongId={this.props.nextSongId}
+            currentSongId={this.props.currentSongId}
+            currentPlaylist={this.props.currentPlaylist}
+
+            playSong={this.props.playSong}
+            pauseSong={this.props.pauseSong}
+            clearQueue={this.props.clearQueue}
+            repeatSong={this.props.repeatSong}
+            setPrevSong={this.props.setPrevSong}
+            setNextSong={this.props.setNextSong}
+            shuffleSongs={this.props.shuffleSongs}
+            setCurrentSong={this.props.setCurrentSong}
+            setCurrentPlaylist={this.props.setCurrentPlaylist}
+            />
           </div>
         </div>
       </div>
     )
-  } else {
-    return null
   }
-}
 }
 
 export default ArtistShow

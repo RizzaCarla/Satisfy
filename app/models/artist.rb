@@ -10,7 +10,8 @@
 class Artist < ApplicationRecord
   has_many :albums,
     foreign_key: :artist_id,
-    class_name: :Album
+    class_name: :Album,
+    inverse_of: :artist
 
   has_many :songs,
     through: :albums,
