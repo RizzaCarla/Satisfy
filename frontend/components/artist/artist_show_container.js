@@ -8,11 +8,10 @@ import {
   playSong,
   pauseSong,
   repeatSong,
-  shuffleSongs,
-  enqueueSong,
-  dequeueSong,
+  clearQueue,
   setPrevSong,
   setNextSong,
+  shuffleSongs,
   setCurrentSong,
   setCurrentPlaylist,
 } from '../../actions/queue_actions';
@@ -46,12 +45,11 @@ const mdp = dispatch => ({
   fetchLikes: () => dispatch(fetchLikes()),
   createLike: (like) => dispatch(createLike(like)),
   destroyLike: (like) => dispatch(destroyLike(like)),
-
+  
   // QUEUE
   playSong: () => dispatch(playSong()),
   pauseSong: () => dispatch(pauseSong()),
-  dequeueSong: () => dispatch(dequeueSong()),
-  enqueueSong: (song) => dispatch(enqueueSong(song)),
+  clearQueue: () => dispatch(clearQueue()),
   repeatSong: (value) => dispatch(repeatSong(value)),
   shuffleSongs: (value) => dispatch(shuffleSongs(value)),
   setPrevSong: (songId) => dispatch(setPrevSong(songId)),
@@ -59,7 +57,6 @@ const mdp = dispatch => ({
   setCurrentSong: (songId) => dispatch(setCurrentSong(songId)),
   setCurrentPlaylist: (playlist) => dispatch(setCurrentPlaylist(playlist)),
   changeCurrentSong: (songId) => dispatch(changeCurrentSong(songId)),
-
 })
 
 export default connect(msp, mdp)(ArtistShow)
