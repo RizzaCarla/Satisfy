@@ -28,17 +28,17 @@ class ArtistShowPlaylist extends React.Component {
 
     // console.log(this.props.artistSongs)
     
-    // if (this.props.artistSongs) {
-    //   this.props.artistSongs.forEach((song) => {
-    //     if (song === this.props.currentSongId) {
-    //       this.props.pauseSong()
-    //       this.setState({
-    //         playing: false
-    //       })
-    //       audio.pause()
-    //     }
-    //   })
-    // }
+    if (this.props.artistSongs) {
+      this.props.artistSongs.forEach((song) => {
+        if (song === this.props.currentSongId) {
+          this.props.pauseSong()
+          this.setState({
+            playing: false
+          })
+          audio.pause()
+        }
+      })
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -182,13 +182,27 @@ class ArtistShowPlaylist extends React.Component {
         <div className='playlist-container'>
           <div className='item-play-like'>
             <div className="greenButton-container" onClick={() => {
-              // if (this.props.currentPlaylist.length > 0) {
-              //   this.handleQueue(this.props.currentSongId, this.props.currentPlaylist)
-              // } else {
-                this.handleQueue(this.state.artistSongs[0].id, this.state.artistSongs);
-              // }
+              if (this.props.artistSongs) {
+                this.props.artistSongs.forEach((song) => {
+                  if (song.id === this.props.currentSongId) {
+                    this.props.playSong()
+                    this.setState({
+                      playing: true
+                    })
+                    audio.play()
+                    this.handleQueue(this.props.currentSongId, this.props.currentPlaylist)
+                  } else {
+                    this.props.pauseSong()
+                    this.setState({
+                      playing: false
+                    })
+                    audio.pause()
+                    this.handleQueue(this.state.artistSongs[0].id, this.state.artistSongs);
+                  }
+                })
+              }
               this.handlePlay();
-            }}>
+              }}>
               {greenButton}
             </div>
             <div className="likeButton" onClick={this.handleLike}>{label}</div>

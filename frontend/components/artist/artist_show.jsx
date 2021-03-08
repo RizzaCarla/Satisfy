@@ -11,9 +11,9 @@ class ArtistShow extends React.Component {
     super(props);
     this.state = {
       liked: false,
-      shuffling: false,
       allLikes: [],
       artistSongs: [],
+      shuffling: false,
       artistLikeInfo: null,
     }
   }

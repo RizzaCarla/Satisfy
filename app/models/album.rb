@@ -23,7 +23,7 @@ class Album < ApplicationRecord
     through: :artist,
     source: :artistPhotoUrl_attachment
     
-  has_many :albumLikes,
+  has_many :likes,
     as: :likeable,
     dependent: :destroy
 

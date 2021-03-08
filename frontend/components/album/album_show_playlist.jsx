@@ -158,16 +158,30 @@ class AlbumShowPlaylist extends React.Component {
       <div className='playlist-container'>
         <div className='item-play-like'>
           <div className="greenButton-container" onClick={() => {
-            // if (this.props.currentPlaylist.length > 0) {
-            //   this.handleQueue(this.props.currentSongId, this.props.currentPlaylist)
-            // } else {
-              this.handleQueue(this.state.albumSongs[0].id, this.state.albumSongs);
-            // }
+            if (this.props.albumSongs) {
+              this.props.albumSongs.forEach((song) => {
+                if (song.id === this.props.currentSongId) {
+                  this.props.playSong()
+                  this.setState({
+                    playing: true
+                  })
+                  audio.play()
+                  this.handleQueue(this.props.currentSongId, this.props.currentPlaylist)
+                } else {
+                  this.props.pauseSong()
+                  this.setState({
+                    playing: false
+                  })
+                  audio.pause()
+                  this.handleQueue(this.state.albumSongs[0].id, this.state.albumSongs);
+                }
+              })
+            }
             this.handlePlay();
           }}>
             {greenButton}
           </div>
-          <div className="likeButton" onClick={this.handleLike}>{label}</div>
+        <div className="likeButton" onClick={this.handleLike}>{label}</div>
         </div>
         <div className='playlist-header'>
           <div className="playlist-left">

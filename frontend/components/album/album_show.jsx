@@ -12,9 +12,9 @@ class AlbumShow extends React.Component {
     super(props);
     this.state = {
       liked: false,
-      shuffling: false,
       allLikes: [],
       albumSongs: [],
+      shuffling: false,
       albumLikeInfo: null,
     }
   }
