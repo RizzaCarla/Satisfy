@@ -33,7 +33,6 @@ class SongShowPlaylist extends React.Component {
       this.setState({
         playing: false
       })
-      audio.pause()
     }
 
   }
@@ -69,21 +68,18 @@ class SongShowPlaylist extends React.Component {
   }
   
   handlePlay() {
-    const audio = document.getElementById('audio')
-    if (this.state.playing && audio.played) {
+    if (this.state.playing) {
       this.props.pauseSong()
       this.setState({
         playing: false
       })
-      audio.pause()
     } else {
       this.props.playSong()
       this.setState({
         playing: true
       })
-      audio.play()
     }
-    }
+  }
     
   handleLike() {
     if (this.state.songLikeInfo && this.state.liked === true) {
@@ -111,27 +107,8 @@ class SongShowPlaylist extends React.Component {
   }
 
   handleQueue(songId, allSongs) {
-    // const audio = document.getElementById('audio')
-
-    // if (allSongs && songId) {
-    //   // SETS PREV & NEXT SONG IDS
-    //   for (let i = 0; i < allSongs.length; i++) {
-    //     if (allSongs[i].id === songId) {
-    //       if (allSongs[i - 1] === undefined || allSongs[i - 1] === null) {
-    //         this.props.setPrevSong(null)
-    //       } else {
-    //         this.props.setPrevSong(allSongs[i - 1].id)
-    //       }
-    //       if (allSongs[i + 1] === undefined || allSongs[i + 1] === null) {
-    //         this.props.setNextSong(null)
-    //       } else {
-    //         this.props.setNextSong(allSongs[i + 1].id)
-    //       }
-    //     }
-    //   }
-      // SETS CURRENT PLAYLIST
-      this.props.setCurrentPlaylist(allSongs)
-    // }
+    // SETS CURRENT PLAYLIST
+    this.props.setCurrentPlaylist(allSongs)
 
     // SETS CURRENT SONG
     this.props.playSong();
