@@ -63,7 +63,7 @@ class AlbumShow extends React.Component {
       <div className='show-container'>
         <NavBarContainer />
         <SideBarContainer />
-        <MusicPlayerContainer />
+        {/* <MusicPlayerContainer /> */}
         <div className='inner-show-container'>
             <div>
               <AlbumShowHeader
