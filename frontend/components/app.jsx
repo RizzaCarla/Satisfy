@@ -14,11 +14,13 @@ import SearchContainer from './search/search_container';
 import SongShowContainer from './song/song_show_container';
 import ArtistShowContainer from './artist/artist_show_container';
 import AlbumShowContainer from './album/album_show_container';
+import MusicPlayerContainer from './music-player/music_player_container';
 
 
 
 const App = () => (
   <div className='outermost-div'>
+    <MusicPlayerContainer />
     <Switch>
       <ProtectedRoute exact path='/albums/:albumId' component={AlbumShowContainer}></ProtectedRoute>
       <ProtectedRoute exact path='/artists/:artistId' component={ArtistShowContainer}></ProtectedRoute>
