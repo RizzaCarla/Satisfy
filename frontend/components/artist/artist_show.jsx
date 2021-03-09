@@ -69,7 +69,7 @@ class ArtistShow extends React.Component {
       <div className='show-container'>
       <NavBarContainer />
       <SideBarContainer />
-      <MusicPlayerContainer />
+      {/* <MusicPlayerContainer /> */}
       <div className='inner-show-container'>
           <div className='artist-show-header' style={{ backgroundImage: `url(${this.props.artist.artistPhotoUrl})` }}>
           <ArtistShowHeader
