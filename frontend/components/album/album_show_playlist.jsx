@@ -28,6 +28,24 @@ class AlbumShowPlaylist extends React.Component {
       });
     }
 
+    if (this.props.albumSongs) {
+      this.props.albumSongs.forEach((song) => {
+        if (song.id === this.props.currentSongId) {
+          this.props.playSong()
+          this.setState({
+            playing: true
+          })
+          audio.play()
+          this.handleQueue(this.props.currentSongId, this.props.currentPlaylist)
+        } else {
+          this.props.pauseSong()
+          this.setState({
+            playing: false
+          })
+          audio.pause()
+        }
+      })
+    }
   }
 
   componentDidUpdate(prevProps) {

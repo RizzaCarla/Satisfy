@@ -30,7 +30,14 @@ class ArtistShowPlaylist extends React.Component {
     
     if (this.props.artistSongs) {
       this.props.artistSongs.forEach((song) => {
-        if (song === this.props.currentSongId) {
+        if (song.id === this.props.currentSongId) {
+          this.props.playSong()
+          this.setState({
+            playing: true
+          })
+          audio.play()
+          this.handleQueue(this.props.currentSongId, this.props.currentPlaylist)
+        } else {
           this.props.pauseSong()
           this.setState({
             playing: false
