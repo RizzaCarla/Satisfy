@@ -84,7 +84,7 @@ class LikedSongs extends React.Component {
     }
 
     return (
-      <div className='show-container'>
+      <div className='liked-show-container'>
           <SideBarContainer />
           <NavBarContainer />
           <MusicPlayerContainer />
