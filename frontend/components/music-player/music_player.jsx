@@ -403,6 +403,9 @@ class MusicPlayer extends React.Component {
   }
 
   render() {
+    if (this.props.location.pathname === "/signup" || this.props.location.pathname === "/login" || this.props.location.pathname === "/us") {
+      return null
+    }
     
     // let dot
     // if (this.props.shuffling === true) {
