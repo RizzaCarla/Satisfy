@@ -2,7 +2,6 @@ import React from 'react';
 import AlbumShowHeader from './album_show_header';
 import AlbumShowPlaylist from './album_show_playlist';
 import SideBarContainer from '../side-bar/sidebar_container';
-import MusicPlayerContainer from '../music-player/music_player_container';
 import NavBarContainer from '../nav-bar/navbar_container';
 
 
@@ -63,7 +62,6 @@ class AlbumShow extends React.Component {
       <div className='show-container'>
         <NavBarContainer />
         <SideBarContainer />
-        {/* <MusicPlayerContainer /> */}
         <div className='inner-show-container'>
             <div>
               <AlbumShowHeader

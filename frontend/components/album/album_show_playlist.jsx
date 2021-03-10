@@ -37,7 +37,7 @@ class AlbumShowPlaylist extends React.Component {
           })
           this.handleQueue(this.props.currentSongId, this.props.currentPlaylist)
         } else {
-          this.props.pauseSong()
+          // this.props.pauseSong()
           this.setState({
             playing: false
           })
