@@ -35,6 +35,23 @@ class SongShowPlaylist extends React.Component {
       })
     }
 
+    if (this.props.songs) {
+      this.props.songs.forEach((song) => {
+        if (song.id === this.props.currentSongId) {
+          this.props.playSong()
+          this.setState({
+            playing: true
+          })
+          this.handleQueue(this.props.currentSongId, this.props.currentPlaylist)
+        } else {
+          // this.props.pauseSong()
+          this.setState({
+            playing: false
+          })
+        }
+      })
+    }
+
   }
   
   componentDidUpdate(prevProps) {

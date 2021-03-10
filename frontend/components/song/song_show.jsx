@@ -2,7 +2,6 @@ import React from 'react';
 import SongShowHeader from './song_show_header';
 import SongShowPlaylist from './song_show_playlist';
 import SideBarContainer from '../side-bar/sidebar_container';
-import MusicPlayerContainer from '../music-player/music_player_container';
 import NavBarContainer from '../nav-bar/navbar_container';
 
 class SongShow extends React.Component {
@@ -67,7 +66,6 @@ class SongShow extends React.Component {
       <div className='show-container'>
         <NavBarContainer />
         <SideBarContainer />
-        <MusicPlayerContainer />
         <div className='inner-show-container'>
           <div>
             <SongShowHeader
