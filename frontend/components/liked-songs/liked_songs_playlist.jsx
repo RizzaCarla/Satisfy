@@ -16,7 +16,6 @@ class LikedSongsPlaylist extends React.Component {
       allSongLikes: this.props.allSongLikes,
     }
     this.handlePlay = this.handlePlay.bind(this);
-    this.handleLike = this.handleLike.bind(this);
     this.handleQueue = this.handleQueue.bind(this);
   }
 
@@ -72,47 +71,19 @@ class LikedSongsPlaylist extends React.Component {
   }
   
   handlePlay() {
-    let audio = document.getElementById('audio')
-    if (this.state.playing && audio.played) {
+    if (this.state.playing) {
       this.props.pauseSong()
       this.setState({
         playing: false
       })
-      audio.pause()
     } else {
       this.props.playSong()
       this.setState({
         playing: true
       })
-      audio.play()
     }
   }
-  
-  handleLike() {
-    // if (this.state.allSongLikes && this.state.liked === true) {
-      //   this.props.destroyLike(this.state.allSongLikes.id)
-      //     .then(() => this.setState({
-        //       liked: false,
-        //       allSongLikes: null
-        //     }))
-        // } else {
-          //   this.props.createLike({ likeable_id: this.props.song.id, likeable_type: "Song" })
-          //     .then(() => {
-            //       this.props.fetchLikes()
-            //         .then((result) => {
-              //           Object.values(result.likes).map((like) => {
-                //             if ((like.likeable_id === this.props.song.id) && (like.liker_id === this.props.userId)) {
-                  //               this.setState({
-                    //                 liked: true,
-                    //                 allSongLikes: like
-                    //               })
-                    //             }
-                    //           })
-                    //         })
-                    //     })
-                    // }
-  }
-  
+
   handleQueue(songId, allSongs) {
                     
     if (allSongs && songId) {
@@ -147,7 +118,6 @@ class LikedSongsPlaylist extends React.Component {
   render() {
     
     const greenButton = this.props.playing === true ? <PauseCircleFilledIcon id='greenButton' /> : <PlayCircleFilledIcon id='greenButton' />
-    const label = this.state.allSongLikes ? <FavoriteIcon style={{ fontSize: 40 }} /> : <FavoriteBorderIcon style={{ fontSize: 40 }} />
     if (this.props.allLikedSongs && this.props.allSongLikes) {
       
       return (
@@ -163,7 +133,6 @@ class LikedSongsPlaylist extends React.Component {
             }}>
               {greenButton}
             </div>
-            {/* <div className="likeButton" onClick={this.handleLike}>{label}</div> */}
           </div>
           <div className='playlist-header'>
             <div className='playlist-left'>

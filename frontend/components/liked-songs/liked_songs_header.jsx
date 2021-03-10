@@ -8,12 +8,9 @@ class LikedSongsHeader extends React.Component {
       return null
     }
 
-    if (this.props.totalSongs) {
-
-    }
     let totalSongs
-    if (this.props.totalSongs <= 1) {
-      totalSongs = "1 Song"
+    if (this.props.totalSongs <= 0) {
+      totalSongs = "0 Song"
     } else {
       totalSongs = `${this.props.totalSongs} Songs`
     }

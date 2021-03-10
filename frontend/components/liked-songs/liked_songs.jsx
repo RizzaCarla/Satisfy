@@ -2,7 +2,6 @@ import React from 'react';
 import LikedSongsHeader from './liked_songs_header';
 import LikedSongsPlaylist from './liked_songs_playlist';
 import SideBarContainer from '../side-bar/sidebar_container';
-import MusicPlayerContainer from '../music-player/music_player_container';
 import NavBarContainer from '../nav-bar/navbar_container';
 
 class LikedSongs extends React.Component {
@@ -87,7 +86,6 @@ class LikedSongs extends React.Component {
       <div className='liked-show-container'>
           <SideBarContainer />
           <NavBarContainer />
-          <MusicPlayerContainer />
         <div className='inner-show-container'>
           <div className='liked-songs-header'>
             <LikedSongsHeader
