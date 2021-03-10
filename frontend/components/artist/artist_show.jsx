@@ -2,7 +2,6 @@ import React from 'react';
 import ArtistShowHeader from './artist_show_header';
 import ArtistShowPlaylist from './artist_show_playlist';
 import SideBarContainer from '../side-bar/sidebar_container';
-import MusicPlayerContainer from '../music-player/music_player_container';
 import NavBarContainer from '../nav-bar/navbar_container';
 
 class ArtistShow extends React.Component {
@@ -69,7 +68,6 @@ class ArtistShow extends React.Component {
       <div className='show-container'>
       <NavBarContainer />
       <SideBarContainer />
-      {/* <MusicPlayerContainer /> */}
       <div className='inner-show-container'>
           <div className='artist-show-header' style={{ backgroundImage: `url(${this.props.artist.artistPhotoUrl})` }}>
           <ArtistShowHeader

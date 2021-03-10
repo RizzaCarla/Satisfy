@@ -35,7 +35,7 @@ class ArtistShowPlaylist extends React.Component {
           })
           this.handleQueue(this.props.currentSongId, this.props.currentPlaylist)
         } else {
-          this.props.pauseSong()
+          // this.props.pauseSong()
           this.setState({
             playing: false
           })
@@ -163,7 +163,6 @@ class ArtistShowPlaylist extends React.Component {
     // if (this.props.playing === true) {
     //   this.props.artistSongs.forEach((song) => {
     //     if (song === this.props.currentSongId) {
-    //       console.log('YOU CHANGED ARTISTS')
     //       greenButton = <PauseCircleFilledIcon id='greenButton'/>
     //     } else {
     //       greenButton = <PlayCircleFilledIcon id='greenButton'/>
