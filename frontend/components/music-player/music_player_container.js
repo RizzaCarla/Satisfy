@@ -3,6 +3,7 @@ import MusicPlayer from './music_player'
 import { fetchSong, fetchSongs, changeCurrentSong } from '../../actions/song_actions';
 import { fetchLikes, destroyLike, createLike } from '../../actions/like_actions';
 import {
+  muteSong,
   playSong,
   pauseSong,
   repeatSong,

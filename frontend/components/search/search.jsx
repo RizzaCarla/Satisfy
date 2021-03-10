@@ -1,6 +1,5 @@
 import React from 'react';
 import SideBarContainer from '../side-bar/sidebar_container';
-import MusicPlayerContainer from '../music-player/music_player_container';
 import NavBarContainer from '../nav-bar/navbar_container';
 import SearchSongIndexItem from './search-result/search_song_index_item';
 import SearchAlbumIndexItem from './search-result/search_album_index_item';
@@ -233,24 +232,22 @@ class Search extends React.Component {
   }
   
   render() {
-    console.log(this.state)
     // ONLY LOAD THIS IF THERE IS EVEN ONE SINGLE MATCH
     if (this.props.searchQuery !== null && this.props.searchQuery.length > 0) {
       return(
         <div>
           <NavBarContainer />
           <SideBarContainer />
-          <MusicPlayerContainer />
           <div className="search-results-container">
             <div className='inner-search-results-container'>
               <div className='filtered-container'>
-                {this.handleSongs()}
+                {this.handleArtists()}
               </div>
               <div className='filtered-container'>
                 {this.handleAlbums()}
               </div>
               <div className='filtered-container'>
-                {this.handleArtists()}
+                {this.handleSongs()}
               </div>
             </div>
           </div>
@@ -261,7 +258,6 @@ class Search extends React.Component {
         <div>
           <NavBarContainer />
           <SideBarContainer />
-          <MusicPlayerContainer />
           <div className="search-results-container">
             <div className='inner-search-results-container'>
               <h1 className='default-message'></h1>

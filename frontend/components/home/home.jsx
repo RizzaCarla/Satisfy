@@ -3,7 +3,6 @@ import SongIndexComponent from '../song/song_index';
 import ArtistIndexComponent from '../artist/artist_index';
 import AlbumIndexComponent from '../album/album_index';
 import SideBarContainer from '../side-bar/sidebar_container';
-import MusicPlayerContainer from '../music-player/music_player_container';
 import NavBarContainer from '../nav-bar/navbar_container';
 
 class HomePage extends React.Component {
@@ -92,16 +91,15 @@ class HomePage extends React.Component {
       <div>
         <NavBarContainer />
         <SideBarContainer />
-        <MusicPlayerContainer />
         <div className='home-page-container'>
           <div className='inner-home-page-container'>
             <div className='discover-container'>
-              <h1>Discover New Songs</h1>
+              <h1>Discover New Artists</h1>
               <div className='discover-index'>
-                <SongIndexComponent 
+                <ArtistIndexComponent 
+                  songs={this.props.songs}
                   albums={this.props.albums}
-                  artists={this.props.artists}
-                  songs={this.state.songs}
+                  artists={this.state.artists}
                   changeCurrentSong={this.props.changeCurrentSong}
                   />
               </div>
@@ -118,12 +116,12 @@ class HomePage extends React.Component {
               </div>
             </div>
             <div className='discover-container'>
-              <h1>Discover New Artists</h1>
+              <h1>Discover New Songs</h1>
               <div className='discover-index'>
-                <ArtistIndexComponent 
-                  songs={this.props.songs}
+                <SongIndexComponent 
                   albums={this.props.albums}
-                  artists={this.state.artists}
+                  artists={this.props.artists}
+                  songs={this.state.songs}
                   changeCurrentSong={this.props.changeCurrentSong}
                   />
               </div>

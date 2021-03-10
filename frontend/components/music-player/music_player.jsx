@@ -6,14 +6,12 @@ import VolumeDownIcon from '@material-ui/icons/VolumeDown';
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 
-// import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-// import FavoriteIcon from '@material-ui/icons/Favorite';
-
 class MusicPlayer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       liked: false,
+      songs: this.props.songs,
       muted: this.props.muted,
       playing: this.props.playing,
       repeating: this.props.repeating,
@@ -38,6 +36,7 @@ class MusicPlayer extends React.Component {
 
   componentDidMount() {
     this.props.fetchSongs()
+    .then(() => this.setState({ songs: this.props.songs}))
     if (this.props.songLikeInfo !== null) {
       this.setState({
         liked: true,
@@ -45,10 +44,12 @@ class MusicPlayer extends React.Component {
       });
     }
     if (this.props.repeating === true) {
+      this.props.repeatSong(true);
       this.setState({
         repeating: true
       })
     } else {
+      this.props.repeatSong(false);
       this.setState({
         repeating: false
       })
@@ -68,10 +69,12 @@ class MusicPlayer extends React.Component {
     }
     if (this.props.repeating && this.props.repeating !== prevProps.repeating) {
       if (this.props.repeating === true) {
+        this.props.repeatSong(true);
         this.setState({
           repeating: true
         })
       } else {
+        this.props.repeatSong(false);
         this.setState({
           repeating: false
         })
@@ -192,8 +195,8 @@ class MusicPlayer extends React.Component {
   }
 
   handleTime() {
-    const audio = document.getElementById('audio')
-    const myRange = document.getElementById('myRange')
+    let audio = document.getElementById('audio')
+    let myRange = document.getElementById('myRange')
     let audioEndTime = document.getElementById('audioEndTime')
     let audioStartTime = document.getElementById('audioStartTime')
     let durationMinutes
@@ -243,11 +246,11 @@ class MusicPlayer extends React.Component {
   }
 
   handleSeek(e) {
-    const audio = document.getElementById('audio')
-    const myRange = document.getElementById('myRange')
+    let audio = document.getElementById('audio')
+    let myRange = document.getElementById('myRange')
 
-    const clickPosition = (e.pageX - myRange.offsetLeft) / myRange.offsetWidth;
-    const clickTime = clickPosition * audio.duration;
+    let clickPosition = (e.pageX - myRange.offsetLeft) / myRange.offsetWidth;
+    let clickTime = clickPosition * audio.duration;
 
     // move the playhead to the correct position
     audio.currentTime = clickTime;
@@ -255,7 +258,7 @@ class MusicPlayer extends React.Component {
   }
 
   handleShuffle() {
-    const shuffleDot = document.getElementById("shuffleDot")
+    let shuffleDot = document.getElementById("shuffleDot")
     if (this.props.shuffling === false) {
       this.props.shuffleSongs(true)
     } else {
@@ -403,6 +406,9 @@ class MusicPlayer extends React.Component {
   }
 
   render() {
+    if (this.props.location.pathname === "/signup" || this.props.location.pathname === "/login" || this.props.location.pathname === "/us") {
+      return null
+    }
     
     // let dot
     // if (this.props.shuffling === true) {
@@ -430,12 +436,11 @@ class MusicPlayer extends React.Component {
     let info
     if (this.props.currentSongId) {
       info = <div className="left-container">
-                  <img className='music-player-photo' src={this.props.songs[this.props.currentSongId].albumPhotoUrl} />
+                  <img className='music-player-photo' src={this.state.songs[this.props.currentSongId].albumPhotoUrl} />
                   <div>
-                    <h1>{this.props.songs[this.props.currentSongId].song_title}</h1>
-                    <p>{this.props.songs[this.props.currentSongId].artist.artist_name}</p>
+                    <h1>{this.state.songs[this.props.currentSongId].song_title}</h1>
+                    <p>{this.state.songs[this.props.currentSongId].artist.artist_name}</p>
                   </div>
-                  {/* <div className="likeButton" onClick={this.handleLike}>{likeLabel}</div> */}
                 </div>
     } else {
       info = <div className="left-container"></div>
@@ -448,9 +453,7 @@ class MusicPlayer extends React.Component {
       src = ''
     }
 
-    // const likeLabel = this.state.songLikeInfo ? <FavoriteIcon style={{ fontSize: 40 }} /> : <FavoriteBorderIcon style={{ fontSize: 40 }} />
-
-    if (this.props.location.pathname !== "/us") {
+    if (this.props.currentSongId) {
       if (this.props.songId && this.props.song) {
         const audio = document.getElementById('audio')
         if (audio) {
@@ -500,7 +503,6 @@ class MusicPlayer extends React.Component {
         return (
           <div className="musicPlayer">
             <div className="left-container">
-              {/* <div className="likeButton" onClick={this.handleLike}>{label}</div> */}
             </div>
             <div className="middle-container">              
               <div className="middle-top-container">

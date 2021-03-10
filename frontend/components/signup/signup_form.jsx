@@ -31,14 +31,15 @@ class SignUpForm extends React.Component {
       email: "LuckyDemoUser@gmail.com",
       password: "99999999"
     })
-      .then(() => (this.props.history.push('/us')))
+      .then(() => (this.props.history.push('/home')))
   }
-
+  
   handleSubmit(e) {
     e.preventDefault()
     this.props.signup(this.state)
+      .then(() => (this.props.history.push('/home')))
   }
-
+  
   componentWillUnmount() {
     this.props.clearUserErrors()
   }

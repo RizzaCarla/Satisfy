@@ -19,23 +19,26 @@ class ArtistShowPlaylist extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.artistLikeInfo !== null) {
+    if (this.props.artistLikeInfo) {
       this.setState({
         liked: true,
         artistLikeInfo: this.props.artistLikeInfo
       });
     }
-
-    // console.log(this.props.artistSongs)
     
     if (this.props.artistSongs) {
       this.props.artistSongs.forEach((song) => {
-        if (song === this.props.currentSongId) {
-          this.props.pauseSong()
+        if (song.id === this.props.currentSongId) {
+          this.props.playSong()
+          this.setState({
+            playing: true
+          })
+          this.handleQueue(this.props.currentSongId, this.props.currentPlaylist)
+        } else {
+          // this.props.pauseSong()
           this.setState({
             playing: false
           })
-          audio.pause()
         }
       })
     }
@@ -43,12 +46,10 @@ class ArtistShowPlaylist extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.artistLikeInfo && this.props.artistLikeInfo != prevProps.artistLikeInfo) {
-      if (this.props.artistLikeInfo !== null) {
-        this.setState({
-          liked: true,
-          artistLikeInfo: this.props.artistLikeInfo
-        });
-      }
+      this.setState({
+        liked: true,
+        artistLikeInfo: this.props.artistLikeInfo
+      });
     }
 
     if (this.props.shuffling && this.props.shuffling !== prevProps.shuffling) {
@@ -84,19 +85,16 @@ class ArtistShowPlaylist extends React.Component {
   }
 
   handlePlay() {
-    const audio = document.getElementById('audio')
-    if (this.state.playing && audio.played) {
+    if (this.state.playing) {
       this.props.pauseSong()
       this.setState({
         playing: false
       })
-      audio.pause()
     } else {
       this.props.playSong()
       this.setState({
         playing: true
       })
-      audio.play()
     }
   }
 
@@ -165,7 +163,6 @@ class ArtistShowPlaylist extends React.Component {
     // if (this.props.playing === true) {
     //   this.props.artistSongs.forEach((song) => {
     //     if (song === this.props.currentSongId) {
-    //       console.log('YOU CHANGED ARTISTS')
     //       greenButton = <PauseCircleFilledIcon id='greenButton'/>
     //     } else {
     //       greenButton = <PlayCircleFilledIcon id='greenButton'/>
@@ -189,14 +186,12 @@ class ArtistShowPlaylist extends React.Component {
                     this.setState({
                       playing: true
                     })
-                    audio.play()
                     this.handleQueue(this.props.currentSongId, this.props.currentPlaylist)
                   } else {
                     this.props.pauseSong()
                     this.setState({
                       playing: false
                     })
-                    audio.pause()
                     this.handleQueue(this.state.artistSongs[0].id, this.state.artistSongs);
                   }
                 })

@@ -28,6 +28,22 @@ class AlbumShowPlaylist extends React.Component {
       });
     }
 
+    if (this.props.albumSongs) {
+      this.props.albumSongs.forEach((song) => {
+        if (song.id === this.props.currentSongId) {
+          this.props.playSong()
+          this.setState({
+            playing: true
+          })
+          this.handleQueue(this.props.currentSongId, this.props.currentPlaylist)
+        } else {
+          // this.props.pauseSong()
+          this.setState({
+            playing: false
+          })
+        }
+      })
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -73,19 +89,16 @@ class AlbumShowPlaylist extends React.Component {
   }
 
   handlePlay() {
-    const audio = document.getElementById('audio')
-    if (this.state.playing && audio.played) {
+    if (this.state.playing) {
       this.props.pauseSong()
       this.setState({
         playing: false
       })
-      audio.pause()
     } else {
       this.props.playSong()
       this.setState({
         playing: true
       })
-      audio.play()
     }
   }
 
@@ -165,14 +178,12 @@ class AlbumShowPlaylist extends React.Component {
                   this.setState({
                     playing: true
                   })
-                  audio.play()
                   this.handleQueue(this.props.currentSongId, this.props.currentPlaylist)
                 } else {
                   this.props.pauseSong()
                   this.setState({
                     playing: false
                   })
-                  audio.pause()
                   this.handleQueue(this.state.albumSongs[0].id, this.state.albumSongs);
                 }
               })

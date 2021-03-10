@@ -1,7 +1,6 @@
 import React from 'react';
 import NavBarContainer from '../nav-bar/navbar_container';
 import SideBarContainer from '../side-bar/sidebar_container';
-import MusicPlayerContainer from '../music-player/music_player_container';
 import LikedArtists from '../artist/artist_index_item';
 import LikedAlbums from '../album/album_index_item';
 
@@ -46,7 +45,6 @@ class Library extends React.Component {
         <div>
           <NavBarContainer />
           <SideBarContainer />
-          <MusicPlayerContainer />
         <div className='outer-library-container'>
           <div className='inner-library-container'>
             <div className='library-container'>
@@ -81,7 +79,6 @@ class Library extends React.Component {
         <div>
           <NavBarContainer />
           <SideBarContainer />
-          <MusicPlayerContainer />
         <div className='outer-library-container'>
           <div className='inner-library-container'>
             <div className='library-container'>
