@@ -122,7 +122,7 @@ class NavBar extends React.Component {
       } else if (this.props.location.pathname === "/us") {
         return (
           <div className="app-header-loggedin-splash">
-            <Link to='/us'>
+            <Link to='/home'>
               <div className="loggedin-logo">
                 <img id="fullLogo-splash" src={window.fullLogo} />
               </div>

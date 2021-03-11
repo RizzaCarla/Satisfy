@@ -31,9 +31,23 @@ class LikedSongsPlaylist extends React.Component {
         allLikedSongs: this.props.allLikedSongs
       });
     }
+
+    if (this.props.currentPlaylist.length >= 1) {
+      let playlistCheck = this.props.currentPlaylist.every(song => this.props.allLikedSongs.includes(song))
+      if (playlistCheck) {
+        this.setState({
+          playing: true
+        })
+      } else {
+        this.setState({
+          playing: false
+        })
+      }
+    }
   }
   
   componentDidUpdate(prevProps) {
+    // CHECK IF ALL SONG LIKES CHANGED
     if (this.props.allSongLikes && this.props.allSongLikes != prevProps.allSongLikes) {
       if (this.props.allSongLikes !== null) {
         this.setState({
@@ -42,6 +56,7 @@ class LikedSongsPlaylist extends React.Component {
       }
     }
     
+    // CHECK IF ALL LIKED SONGS CHANGED
     if (this.props.allLikedSongs && this.props.allLikedSongs != prevProps.allLikedSongs) {
       if (this.props.allLikedSongs !== null) {
         this.setState({
@@ -50,6 +65,7 @@ class LikedSongsPlaylist extends React.Component {
       }
     }
     
+    // SHUFFLE LIKED SONGS PLAYLIST
     if (this.props.shuffling && this.props.shuffling !== prevProps.shuffling) {
       let randomPlaylist = this.props.allLikedSongs
       if (this.props.shuffling === true) {
@@ -66,6 +82,22 @@ class LikedSongsPlaylist extends React.Component {
         this.setState({
           allLikedSongs: this.props.allLikedSongs
         })
+      }
+    }
+
+    // CHECK IF CURRENT PLAYLIST IS THE SAME AS LIKED SONGS PLAYLIST
+    if (this.props.currentPlaylist && this.props.currentPlaylist !== prevProps.currentPlaylist) {
+      if (this.props.currentPlaylist.length >= 1) {
+        let playlistCheck = this.props.currentPlaylist.every( song => this.props.allLikedSongs.includes(song))
+        if (playlistCheck) {
+          this.setState({
+            playing: true
+          })
+        } else {
+          this.setState({
+            playing: false
+          })
+        }
       }
     }
   }
@@ -117,9 +149,8 @@ class LikedSongsPlaylist extends React.Component {
   
   render() {
     
-    const greenButton = this.props.playing === true ? <PauseCircleFilledIcon id='greenButton' /> : <PlayCircleFilledIcon id='greenButton' />
+    const greenButton = this.state.playing === true ? <PauseCircleFilledIcon id='greenButton' /> : <PlayCircleFilledIcon id='greenButton' />
     if (this.props.allLikedSongs && this.props.allSongLikes) {
-      
       return (
         <div className='playlist-container'>
           <div className='item-play-like'>

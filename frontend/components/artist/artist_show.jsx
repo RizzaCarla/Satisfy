@@ -27,7 +27,7 @@ class ArtistShow extends React.Component {
           }))
           .then(() => {
             this.state.allLikes.forEach((like) => {
-              if ((like.likeable_id === this.props.artist.id) && (like.liker_id === this.props.userId)) {
+              if ((like.likeable_id === this.props.artist.id) && (like.liker_id === this.props.userId) && (like.likeable_type === 'Artist')) {
                 this.setState({
                   artistLikeInfo: like
                 })

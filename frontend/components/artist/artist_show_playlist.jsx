@@ -9,7 +9,7 @@ class ArtistShowPlaylist extends React.Component {
     this.state = {
       liked: false,
       shuffling: false,
-      playing: this.props.playing,
+      playing: false,
       artistSongs: this.props.artistSongs,
       artistLikeInfo: this.props.artistLikeInfo,
     }
@@ -26,21 +26,16 @@ class ArtistShowPlaylist extends React.Component {
       });
     }
     
-    if (this.props.artistSongs) {
-      this.props.artistSongs.forEach((song) => {
-        if (song.id === this.props.currentSongId) {
-          this.props.playSong()
-          this.setState({
-            playing: true
-          })
-          this.handleQueue(this.props.currentSongId, this.props.currentPlaylist)
-        } else {
-          // this.props.pauseSong()
-          this.setState({
-            playing: false
-          })
-        }
-      })
+    if (this.props.currentPlaylist.length >= 1) {
+      if (this.props.currentPlaylist === this.props.artistSongs) {
+        this.setState({
+          playing: true
+        })
+      } else {
+        this.setState({
+          playing: false
+        })
+      }
     }
   }
 
@@ -80,6 +75,21 @@ class ArtistShowPlaylist extends React.Component {
         this.setState({
           playing: false
         })
+      }
+    }
+
+
+    if (this.props.currentPlaylist && this.props.currentPlaylist !== prevProps.currentPlaylist) {
+      if (this.props.currentPlaylist.length >= 1) {
+        if (this.props.currentPlaylist === this.props.artistSongs) {
+          this.setState({
+            playing: true
+          })
+        } else {
+          this.setState({
+            playing: false
+          })
+        }
       }
     }
   }
@@ -171,7 +181,7 @@ class ArtistShowPlaylist extends React.Component {
     // } else { 
     //   greenButton = <PlayCircleFilledIcon id='greenButton'/>
     // }
-    const greenButton = this.props.playing === true ? <PauseCircleFilledIcon id='greenButton' /> : <PlayCircleFilledIcon id='greenButton' />
+    const greenButton = this.state.playing === true ? <PauseCircleFilledIcon id='greenButton' /> : <PlayCircleFilledIcon id='greenButton' />
     const label = this.state.artistLikeInfo ? <button className='followButton'>FOLLOWING</button> : <button className='followButton'>FOLLOW</button>
     
     if (this.props.artistSongs !== undefined) {  
@@ -210,10 +220,10 @@ class ArtistShowPlaylist extends React.Component {
               this.props.artistSongs.map((song, count) => {
                 return(
                   <li className='playlist-item' key={song.id} onClick={() => this.handleQueue(song.id, this.state.artistSongs)}>
-                    <div className='playlist-left'>
-                      <p className='playlist-item-count'>{count}</p>
-                      <img className='playlist-item-photo' src={this.props.albums[song.album_id].albumPhotoUrl}></img>
-                      <div className='playlist-left-title-name'>
+                    <div className='playlist-left-other'>
+                      <p className='playlist-item-count-other'>{count}</p>
+                      <img className='playlist-item-photo-other' src={this.props.albums[song.album_id].albumPhotoUrl}></img>
+                      <div className='playlist-left-title-name-other-other'>
                         <h1>{song.song_title}</h1>
                         <h1>{this.props.artistName}</h1>
                       </div>
