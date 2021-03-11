@@ -2,7 +2,12 @@ import { connect } from 'react-redux';
 import Splash from './splash'
 
 const msp = state => ({
-  userId: state.userSession.userId
+  userId: state.userSession.userId,
+  albums: state.entities.albums
 })
 
-export default connect(msp, null)(Splash);
+const mdp = dispatch => ({
+
+})
+
+export default connect(msp, mdp)(Splash);
