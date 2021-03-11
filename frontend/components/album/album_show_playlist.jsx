@@ -11,7 +11,7 @@ class AlbumShowPlaylist extends React.Component {
     this.state = {
       liked: false,
       shuffling: false,
-      playing: this.props.playing,
+      playing: false,
       albumSongs: this.props.albumSongs,
       albumLikeInfo: this.props.albumLikeInfo,
     }
@@ -28,21 +28,16 @@ class AlbumShowPlaylist extends React.Component {
       });
     }
 
-    if (this.props.albumSongs) {
-      this.props.albumSongs.forEach((song) => {
-        if (song.id === this.props.currentSongId) {
-          this.props.playSong()
-          this.setState({
-            playing: true
-          })
-          this.handleQueue(this.props.currentSongId, this.props.currentPlaylist)
-        } else {
-          // this.props.pauseSong()
-          this.setState({
-            playing: false
-          })
-        }
-      })
+    if (this.props.currentPlaylist.length >= 1) {
+      if (this.props.currentPlaylist === this.props.albumSongs) {
+        this.setState({
+          playing: true
+        })
+      } else {
+        this.setState({
+          playing: false
+        })
+      }
     }
   }
 
@@ -84,6 +79,20 @@ class AlbumShowPlaylist extends React.Component {
         this.setState({
           playing: false
         })
+      }
+    }
+
+    if (this.props.currentPlaylist && this.props.currentPlaylist !== prevProps.currentPlaylist) {
+      if (this.props.currentPlaylist.length >= 1) {
+        if (this.props.currentPlaylist === this.props.albumSongs) {
+          this.setState({
+            playing: true
+          })
+        } else {
+          this.setState({
+            playing: false
+          })
+        }
       }
     }
   }
@@ -164,7 +173,7 @@ class AlbumShowPlaylist extends React.Component {
       return null
     }
 
-    const greenButton = this.props.playing === true ? <PauseCircleFilledIcon id='greenButton' /> : <PlayCircleFilledIcon id='greenButton' />
+    const greenButton = this.state.playing === true ? <PauseCircleFilledIcon id='greenButton' /> : <PlayCircleFilledIcon id='greenButton' />
     const label = this.state.albumLikeInfo ? <FavoriteIcon style={{ fontSize: 40 }} /> : <FavoriteBorderIcon style={{ fontSize: 40 }} />
 
     return (
@@ -195,9 +204,9 @@ class AlbumShowPlaylist extends React.Component {
         <div className="likeButton" onClick={this.handleLike}>{label}</div>
         </div>
         <div className='playlist-header'>
-          <div className="playlist-left">
-            <h1 className='playlist-item-count'>#</h1>
-            <div className='playlist-left-title-name'>
+          <div className="playlist-left-other">
+            <h1 className='playlist-item-count-other'>#</h1>
+            <div className='playlist-left-title-name-other'>
               <h1>TITLE</h1>
             </div>
           </div>
@@ -208,9 +217,9 @@ class AlbumShowPlaylist extends React.Component {
           {this.props.albumSongs.map((song, count) => {
             return (
               <li className='playlist-item' key={song.id} onClick={() => this.handleQueue(song.id, this.state.albumSongs)}>
-                <div className='playlist-left'>
-                  <p className='playlist-item-count'>{count}</p>
-                  <div className='playlist-left-title-name'>
+                <div className='playlist-left-other'>
+                  <p className='playlist-item-count-other'>{count}</p>
+                  <div className='playlist-left-title-name-other'>
                     <h1>{song.song_title}</h1>
                     <h1>{this.props.artistName}</h1>
                   </div>

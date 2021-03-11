@@ -27,7 +27,7 @@ class AlbumShow extends React.Component {
           }))
           .then(() => {
             this.state.allLikes.forEach((like) => {
-              if ((like.likeable_id === this.props.album.id) && (like.liker_id === this.props.userId)) {
+              if ((like.likeable_id === this.props.album.id) && (like.liker_id === this.props.userId) && (like.likeable_type === 'Album')) {
                 this.setState({
                   albumLikeInfo: like
                 })
