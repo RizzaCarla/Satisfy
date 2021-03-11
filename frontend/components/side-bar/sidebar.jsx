@@ -9,7 +9,7 @@ class Sidebar extends React.Component {
     if (this.props.location.pathname !== "/us") {
       return ( 
         <div className='sidebar'>
-          <Link to='/us'>
+          <Link to='/home'>
             <img id="fullLogo" src={window.fullLogo} />
           </Link>
           <ul className='sidebar-list'>
