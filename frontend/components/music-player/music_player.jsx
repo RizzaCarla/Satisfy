@@ -406,24 +406,24 @@ class MusicPlayer extends React.Component {
   }
 
   render() {
-    if (this.props.location.pathname === "/signup" || this.props.location.pathname === "/login" || this.props.location.pathname === "/us") {
-      return null
-    }
+    // if (this.props.location.pathname === "/signup" || this.props.location.pathname === "/login" || this.props.location.pathname === "/us") {
+      //   return null
+      // }
+      
+      // let dot
+      // if (this.props.shuffling === true) {
+        //   dot = <i className='fas' id='shuffleDot'>&#xf111;</i>
+        // } else {
+          //   dot = <div></div>
+          // }
+          // if (this.props.repeating === true) {
+            //   dot = <i className='fas' id='loopDot'>&#xf111;</i>
+            // } else {
+              //   dot = <div></div>
+              // }
     
-    // let dot
-    // if (this.props.shuffling === true) {
-    //   dot = <i className='fas' id='shuffleDot'>&#xf111;</i>
-    // } else {
-    //   dot = <div></div>
-    // }
-    // if (this.props.repeating === true) {
-    //   dot = <i className='fas' id='loopDot'>&#xf111;</i>
-    // } else {
-    //   dot = <div></div>
-    // }
-
     const pButton = this.props.playing === true ? <PauseCircleFilledIcon id='pButton' /> : <PlayCircleFilledIcon id='pButton' />
-
+    
     let volumeLabel
     if (this.state.muted === true) {
       volumeLabel = <VolumeOffIcon id='volumeButton' style={{ fontSize: 25 }} />
@@ -432,7 +432,7 @@ class MusicPlayer extends React.Component {
     } else if (this.state.muted === null) {
       volumeLabel = <VolumeDownIcon id='volumeButton' style={{ fontSize: 25 }} />
     }
-
+    
     let info
     if (this.props.currentSongId) {
       info = <div className="left-container">
@@ -445,17 +445,15 @@ class MusicPlayer extends React.Component {
     } else {
       info = <div className="left-container"></div>
     }
-
+    
     let src
-    if (this.props.songs[this.props.currentSongId]) {
-      src = this.props.songs[this.props.currentSongId].songUrl
+    if (this.state.songs[this.props.currentSongId]) {
+      src = this.state.songs[this.props.currentSongId].songUrl
     } else {
       src = ''
     }
-
+    
     if (this.props.currentSongId) {
-      if (this.props.songId && this.props.song) {
-        const audio = document.getElementById('audio')
         if (audio) {
           {this.handleTime()}
         }
@@ -499,51 +497,48 @@ class MusicPlayer extends React.Component {
             <audio id='audio' src={`${src}`} type="audio/mp3" preload='metadata' onEnded={this.handleQueueChange} />
           </div>
         )
-      } else if (!this.props.currentSongId) {
-        return (
-          <div className="musicPlayer">
-            <div className="left-container">
-            </div>
-            <div className="middle-container">              
-              <div className="middle-top-container">
-                <div className="shuffleButton-container" onClick={this.handleShuffle}>
-                  <i id='shuffleButton' className="material-icons">&#xe043;</i>
-                </div>
-                <div className='prevButton-container'>
-                  <i id='prevButton' className="material-icons">&#xe045;</i>
-                </div>
-                <div className='pButton-container' onClick={this.handlePlay}>
-                  {pButton}
-                </div>
-                <div className='nextButton-container'>
-                  <i id='nextButton' className="material-icons">&#xe044;</i>
-                </div>
-                <div className='loopButton-container' onClick={this.handleLoop}>
-                  <i id='loopButton' className="material-icons">&#xe040;</i>
-                </div>
-              </div>
-              <div className='middle-bottom-container'>
-                <div className="slidecontainer">
-                  <p id='audioStartTime'>0:00</p>
-                  <input type="range" min="0" max="100" defaultValue="0" className="slider" id="myRange" onClick={this.handleSeek}></input>
-                  <p id='audioEndTime'></p>
-                </div>
-              </div>
-            </div>
-            <div className='right-container'>
-              <div className='volume-container' onClick={this.handleVolume}>
-                {volumeLabel}
-              </div>
-              <div className="volume-slidecontainer">
-                     <input type="range" min="0" max="100" defaultValue="100" className="slider" id="myVolume" onClick={this.handleVolume}></input>
-              </div>
-            </div>
-            <audio id='audio' src="" type="audio/mp3"/>
-          </div>
-        )
-      }
     } else {
-      return null
+      return (
+        <div className="musicPlayer">
+          <div className="left-container">
+          </div>
+          <div className="middle-container">
+            <div className="middle-top-container">
+              <div className="shuffleButton-container" onClick={this.handleShuffle}>
+                <i id='shuffleButton' className="material-icons">&#xe043;</i>
+              </div>
+              <div className='prevButton-container'>
+                <i id='prevButton' className="material-icons">&#xe045;</i>
+              </div>
+              <div className='pButton-container' onClick={this.handlePlay}>
+                {pButton}
+              </div>
+              <div className='nextButton-container'>
+                <i id='nextButton' className="material-icons">&#xe044;</i>
+              </div>
+              <div className='loopButton-container' onClick={this.handleLoop}>
+                <i id='loopButton' className="material-icons">&#xe040;</i>
+              </div>
+            </div>
+            <div className='middle-bottom-container'>
+              <div className="slidecontainer">
+                <p id='audioStartTime'>0:00</p>
+                <input type="range" min="0" max="100" defaultValue="0" className="slider" id="myRange" onClick={this.handleSeek}></input>
+                <p id='audioEndTime'></p>
+              </div>
+            </div>
+          </div>
+          <div className='right-container'>
+            <div className='volume-container' onClick={this.handleVolume}>
+              {volumeLabel}
+            </div>
+            <div className="volume-slidecontainer">
+              <input type="range" min="0" max="100" defaultValue="100" className="slider" id="myVolume" onClick={this.handleVolume}></input>
+            </div>
+          </div>
+          <audio id='audio' src="" type="audio/mp3" />
+        </div>
+      )
     }
   }
 }
