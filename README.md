@@ -2,7 +2,7 @@
 
 #Satisfy your music cravings... Get Satisfied
 
-![logo](https://drive.google.com/file/d/1aFwMbsB8G8i4SG5cPOjNpJYVXN7qQ51k/view?usp=sharing)
+![logo](https://satisfy-seed.s3-us-west-1.amazonaws.com/images/Satisfy-Final-Logo.png)
 
 * Ruby & Rails version
   (Insert Red Ruby) ruby 2.5.1
