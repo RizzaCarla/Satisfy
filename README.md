@@ -2,7 +2,7 @@
 
 #Satisfy your music cravings... Get Satisfied
 
-![logo](https://(https://satisfy-your-music-cravings.herokuapp.com/assets/Satisfy-Final-Logo-c54eaf0abc9c02900264a11e907618dac9257b7ab22eca8b516da85aa0432f8f.png) "Photo Title Text 1")
+![logo](https://drive.google.com/file/d/1aFwMbsB8G8i4SG5cPOjNpJYVXN7qQ51k/view?usp=sharing)
 
 * Ruby & Rails version
   (Insert Red Ruby) ruby 2.5.1
