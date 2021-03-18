@@ -1,6 +1,4 @@
-# README
-
-# Satisfy your music cravings... Get Satisfied
+Satisfy your music cravings... Get Satisfied
 
 ![logo](https://satisfy-seed.s3-us-west-1.amazonaws.com/images/Satisfy-Final-Logo.png)
 
