@@ -106,12 +106,14 @@ class NavBar extends React.Component {
               </form>
               <div className='search-navbar-right'>
                 <li>
+                  <a href='https://rizzacarla.github.io/myPortfolio/' target="_blank" >Portfolio</a>
+                </li>
+                <li>
                   <a href='https://github.com/RizzaCarla' target="_blank" >Github</a>
                 </li>
                 <li>
                   <a href='https://www.linkedin.com/in/rizzamarzo/' target="_blank" >LinkedIn</a>
                 </li>
-                {/*<a href=''>Resume</a> */}
                 <li>
                   <Link to='/login' onClick={this.props.logout}>Logout</Link>
                 </li>
@@ -129,12 +131,14 @@ class NavBar extends React.Component {
             </Link>
             <nav className='session-navbar-loggedin'>
               <li>
+                <a href='https://rizzacarla.github.io/myPortfolio/' target="_blank" >Portfolio</a>
+              </li>
+              <li>
                 <a href='https://github.com/RizzaCarla' target="_blank" >Github</a>
               </li>
               <li>
                 <a href='https://www.linkedin.com/in/rizzamarzo/' target="_blank" >LinkedIn</a>
               </li>
-              {/*<a href=''>Resume</a> */}
               <li>
                 <Link to='/login' onClick={this.props.logout}>Logout</Link>
               </li>
@@ -153,6 +157,9 @@ class NavBar extends React.Component {
               </div>
             </div>
             <nav className='session-navbar-loggedin-home'>
+              <li>
+                <a href='https://rizzacarla.github.io/myPortfolio/' target="_blank" >Portfolio</a>
+              </li>
               <li>
                 <a href='https://github.com/RizzaCarla' target="_blank" >Github</a>
               </li>
@@ -199,12 +206,14 @@ class NavBar extends React.Component {
             </nav>
             <nav className='session-navbar-loggedin-library'>
               <li>
+                <a href='https://rizzacarla.github.io/myPortfolio/' target="_blank" >Portfolio</a>
+              </li>
+              <li>
                 <a href='https://github.com/RizzaCarla' target="_blank" >Github</a>
               </li>
               <li>
                 <a href='https://www.linkedin.com/in/rizzamarzo/' target="_blank" >LinkedIn</a>
               </li>
-              {/*<a href=''>Resume</a> */}
               <li>
                 <Link to='/login' onClick={this.props.logout}>Logout</Link>
               </li>
@@ -224,12 +233,14 @@ class NavBar extends React.Component {
             </div>
             <nav className='session-navbar-loggedin-liked-songs'>
               <li>
+                <a href='https://rizzacarla.github.io/myPortfolio/' target="_blank" >Portfolio</a>
+              </li>
+              <li>
                 <a href='https://github.com/RizzaCarla' target="_blank" >Github</a>
               </li>
               <li>
                 <a href='https://www.linkedin.com/in/rizzamarzo/' target="_blank" >LinkedIn</a>
               </li>
-              {/*<a href=''>Resume</a> */}
               <li>
                 <Link to='/login' onClick={this.props.logout}>Logout</Link>
               </li>
@@ -249,12 +260,14 @@ class NavBar extends React.Component {
             </div>
             <nav className='session-navbar-loggedin-home'>
               <li>
+                <a href='https://rizzacarla.github.io/myPortfolio/' target="_blank" >Portfolio</a>
+              </li>
+              <li>
                 <a href='https://github.com/RizzaCarla' target="_blank" >Github</a>
               </li>
               <li>
                 <a href='https://www.linkedin.com/in/rizzamarzo/' target="_blank" >LinkedIn</a>
               </li>
-              {/*<a href=''>Resume</a> */}
               <li>
                 <Link to='/login' onClick={this.props.logout}>Logout</Link>
               </li>
@@ -270,6 +283,9 @@ class NavBar extends React.Component {
           </Link>
           <nav className='session-navbar-loggedout'>
             <li>
+              <a href='https://rizzacarla.github.io/myPortfolio/' target="_blank" >Portfolio</a>
+            </li>
+            <li>
               <a href='https://github.com/RizzaCarla' target="_blank" >Github</a>
             </li>
             <li>
@@ -281,7 +297,6 @@ class NavBar extends React.Component {
             <li>
               <Link to='/login'>Login</Link>
             </li>
-            {/* <a href=''>Resume</a> */}
           </nav>
         </div>
       )
