@@ -45,8 +45,8 @@
 ## Technologies
 
 * Ruby & Rails version
-  - Ruby 2.5.1
-  - Ruby on Rails 5.2.4.4
+  - Ruby 3.0.0
+  - Ruby on Rails 6.1.1
 
 * System dependencies
   - `webpack`
